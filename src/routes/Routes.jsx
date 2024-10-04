@@ -3,7 +3,6 @@ import Books from '../components/books/books.jsx';
 import BookDetails from '../components/books/BookDetails.jsx';
 import PageNotFound from '../pages/PageNotFound.jsx';
 import FAQs from '../components/faq/FAQs.jsx';
-import Banner from '../components/homepage/Banner.jsx';
 import DevelopmentInProgress from '../pages/DevelopmentInProgress.jsx';
 import { ROUTES } from './index.js';
 
@@ -11,15 +10,16 @@ import {
     createBrowserRouter,
     useParams,
 } from "react-router-dom";
+import MainLayout from '../layouts/MainLayout.jsx';
 
 const router = createBrowserRouter([
     {
       path: ROUTES.HOME,
-      element: <HomePage></HomePage>,
+      element: <MainLayout></MainLayout>,
       children: [
         {
           path: ROUTES.HOME,
-          element: <div><Banner></Banner><Books></Books></div>
+          element: <HomePage></HomePage>
         },
         {
           path: ROUTES.ABOUT,
