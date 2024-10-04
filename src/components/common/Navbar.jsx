@@ -29,13 +29,7 @@ function Navbar() {
                     <Link to={ROUTES.HOME}>Home</Link>
                 </li>
                 <li>
-                    <Link to={ROUTES.ABOUT}>About</Link>
-                </li>
-                <li>
-                    <Link to={ROUTES.BLOG}>Blog</Link>
-                </li>
-                <li>
-                    <Link to={ROUTES.FAQ}>FAQ</Link>
+                    <Link to={ROUTES.BOOKS}>Products</Link>
                 </li>
                 <li className="border-t">
                     <Link to={ROUTES.BUY}>Buy Book</Link>
@@ -58,13 +52,7 @@ function Navbar() {
                     <Link to={ROUTES.HOME}>Home</Link>
                 </li>
                 <li>
-                    <Link to={ROUTES.ABOUT}>About</Link>
-                </li>
-                <li>
-                    <Link to={ROUTES.BLOG}>Blog</Link>
-                </li>
-                <li>
-                    <Link to={ROUTES.FAQ}>FAQ</Link>
+                    <Link to={ROUTES.BOOKS}>Products</Link>
                 </li>
             </ul>
         </div>
