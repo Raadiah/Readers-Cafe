@@ -17,13 +17,15 @@ const TopBooks = ()=>{
 
     return (
         <>
-            <SectionHeader headerText='Our Latest Collections'></SectionHeader>
-            <div className="border p-4">
-                <Marquee autoFill="true" pauseOnHover="true" speed={50}>
-                    {
-                        topBooks?.map((topBook)=><TopBook {...topBook}></TopBook>)
-                    }
-                </Marquee>
+            <div>
+                <SectionHeader headerText='Our Latest Collections'></SectionHeader>
+                <div className="border p-4">
+                    <Marquee autoFill="true" pauseOnHover="true" speed={50}>
+                        {
+                            topBooks?.map((topBook)=><TopBook {...topBook}></TopBook>)
+                        }
+                    </Marquee>
+                </div>
             </div>
         </>
     )
