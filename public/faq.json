@@ -1,0 +1,37 @@
+[
+    {
+        "questionNo": 1,
+        "question": "What is React.js and Explain the concept of \"components\" in React.",
+        "answer": "React is a library which can be used to build user interfaces (UI) of web and mobile applications. Components are smaller, independent and reusable parts in the interfaces. Each interface can be divided into modular components."
+    },
+    {
+        "questionNo": 2,
+        "question": "What is JSX in React, and how does it work?",
+        "answer": "JSX is a short form for JavaScript XML. It helps in adding HTML inside JavaScript codes."
+    },
+    {
+        "questionNo": 3,
+        "question": "What is the Virtual DOM, and how does React use it to optimize performance?",
+        "answer": "Virtual DOMs are lighweight copy of Real DOMs. React uses virtual DOMs and re-renders its components by making changes to the necessary parts only. As a result productivity increases."
+    },
+    {
+        "questionNo": 4,
+        "question": "Explain the concept of \"props\" in React and how they are used.",
+        "answer": "Props are the read-only properties (data) that a parent component passes onto child component. They are similar to function arguments. Child components use them accordingly."
+    },
+    {
+        "questionNo": 5,
+        "question": "What is \"state\" in React, and how does it differ from props?",
+        "answer": "States are the inner properties in the components. They are not passed from the parent component. They are variables while props are read-only. The components re-render accordingly when the states of them change."
+    },
+    {
+        "questionNo": 6,
+        "question": "Explain the useState hook and provide an example of how it is used.",
+        "answer": "The hook \"useState\" initializes a state and returns a function which can update that state. An example might be using useState for counter. [counter, setCounter] = useState(0) will initialize the counter to 0, and setCounter(anyNumber) will make counter = anyNumber."
+    },
+    {
+        "questionNo": 7,
+        "question": "What is the purpose of the useEffect hook in React, and when would you use it?",
+        "answer": "The hook \"useEffect\" is used for handling side effects specially in cases of fetching APIs. It runs for every rendering of the component. To limit that, the second parameter (dependencies) of the hook can be added. Then only changes on the dependencies will trigger the effect. We use it when we want to run a function based on a change/rendering of a component."
+    }
+]
