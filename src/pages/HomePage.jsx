@@ -8,11 +8,11 @@ function HomePage() {
     return (
         <div className="min-h-screen flex flex-col justify-between">
             <Banner></Banner>
-            <div className="space-y-12 m-2 md:w-2/3 md:m-auto">
-                <HowItWorks></HowItWorks>
+            <div className="space-y-12 py-8 m-2 md:w-2/3 md:m-auto">
                 <TopBooks></TopBooks>
-                <ContactUs></ContactUs>
+                <HowItWorks></HowItWorks>
                 <AboutUs></AboutUs>
+                <ContactUs></ContactUs>
             </div>
         </div>
     )

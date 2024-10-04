@@ -4,7 +4,7 @@ import bookImage from '../../assets/books.png'
 
 function Banner() {
   return (
-    <div className="hero bg-base-200 min-h-screen max-w-screen">
+    <div className="hero border-b border-amber-50 text-amber-950 bg-gradient-to-br from-lime-50 min-h-screen max-w-screen">
         <div className="hero-content flex-col w-full lg:flex-row-reverse">
             <img
             src={bookImage}

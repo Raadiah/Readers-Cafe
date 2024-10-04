@@ -19,8 +19,8 @@ const TopBooks = ()=>{
         <>
             <div>
                 <SectionHeader headerText='Our Latest Collections'></SectionHeader>
-                <div className="border p-4">
-                    <Marquee autoFill="true" pauseOnHover="true" speed={50}>
+                <div className="border rounded-lg shadow-md p-4">
+                    <Marquee autoFill="true" speed={50}>
                         {
                             topBooks?.map((topBook)=><TopBook {...topBook}></TopBook>)
                         }
