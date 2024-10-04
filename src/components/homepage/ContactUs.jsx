@@ -6,7 +6,7 @@ const ContactUs = ()=>{
                     <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold">Contact Us</h1>
                         <p className="py-6">
-                            Have a question? Want you favourite book in the collection? Contact us for support!
+                            Have a question? Feel free to contact us.
                         </p>
                     </div>
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
@@ -21,7 +21,7 @@ const ContactUs = ()=>{
                                 <label className="label">
                                     <span className="label-text">Message</span>
                                 </label>
-                                <textarea className="textarea textarea-bordered" placeholder="Type here"></textarea>
+                                <textarea className="textarea textarea-bordered" placeholder="Write your message here.."></textarea>
                             </div>
                             <div className="form-control mt-6">
                                 <button className="btn btn-accent">Send Message</button>

@@ -9,8 +9,8 @@ function HomePage() {
         <div className="min-h-screen flex flex-col justify-between">
             <Banner></Banner>
             <div className="space-y-12 py-8 m-2 md:w-2/3 md:m-auto">
-                <TopBooks></TopBooks>
                 <HowItWorks></HowItWorks>
+                <TopBooks></TopBooks>
                 <AboutUs></AboutUs>
                 <ContactUs></ContactUs>
             </div>
