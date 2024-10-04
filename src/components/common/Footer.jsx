@@ -3,7 +3,7 @@ import { SocialIcon } from 'react-social-icons'
 function Footer() {
     return (
         <div>
-            <footer className="footer footer-center bg-base-200 text-base-content p-4 border-t-2">
+            <footer className="footer footer-center bg-base-200 text-base-content p-4 border-t">
                 <aside>
                     <p className='space-x-2'>
                         <SocialIcon className='w-6 h-6' title='LinkedIn' url='https://www.linkedin.com/in/soomanib/' target='_blank'></SocialIcon>
