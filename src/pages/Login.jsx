@@ -30,13 +30,15 @@ const Login = ()=>{
             </svg>
             <input type="password" className="grow" placeholder="******" />
             </label>
+            <div className="flex justify-center">
+                <button className="btn btn-wide">Login</button>
+            </div>
             <div className="divider py-6">Or Login With</div>
             <div className="flex justify-center items-center gap-4">
                 <FaGoogle className="text-3xl text-red-600 cursor-pointer hover:text-red-700" title="Google"></FaGoogle>
                 <FaGithub className="text-3xl cursor-pointer text-black hover:text-slate-700" title="GitHub"></FaGithub>
             </div>
-        </div>
-        
+        </div>   
     )
 }
 
