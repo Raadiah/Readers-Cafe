@@ -1,14 +1,18 @@
 import { SocialIcon } from 'react-social-icons'
+import { FaGithub, FaLinkedin } from 'react-icons/fa'
 
 function Footer() {
     return (
         <div>
             <footer className="footer footer-center bg-base-200 text-base-content p-4">
                 <aside>
-                    <p className='space-x-2'>
-                        <SocialIcon className='w-6 h-6' title='LinkedIn' url='https://www.linkedin.com/in/soomanib/' target='_blank'></SocialIcon>
-                        <SocialIcon title='GitHub' url='https://github.com/Raadiah' target='_blank'></SocialIcon>
-                        <SocialIcon title='LeetCode' url='https://leetcode.com/u/soomanibkz/' target='_blank'></SocialIcon>
+                    <p className='flex gap-3 items-center'>
+                        <a href='https://www.linkedin.com/in/soomanib/'>
+                            <FaLinkedin className='w-8 h-8 text-sky-600'></FaLinkedin>
+                        </a>
+                        <a href='https://github.com/Raadiah'>
+                            <FaGithub className='w-8 h-8'></FaGithub>
+                        </a>
                     </p>
                     <p>
                         Reader's Cafe, Dhaka, Bangladesh
