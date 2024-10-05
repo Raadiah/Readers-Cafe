@@ -32,10 +32,10 @@ function Navbar() {
                     <Link to={ROUTES.BOOKS}>Products</Link>
                 </li>
                 <li className="border-t">
-                    <Link to={ROUTES.BUY}>Buy Book</Link>
+                    <Link to={ROUTES.SIGNIN}>Sign In</Link>
                 </li>
                 <li>
-                    <Link to={ROUTES.SIGNIN}>Sign In</Link>
+                    <Link to={ROUTES.REGISTER}>Register</Link>
                 </li>
             </ul>
             </div>
@@ -58,11 +58,11 @@ function Navbar() {
         </div>
         <div className="navbar-end hidden gap-x-2 lg:flex">
             <Link 
-            to={ROUTES.BUY}
-            className="btn bg-teal-600 text-white">Buy Book</Link>
-            <Link 
             to={ROUTES.SIGNIN}
-            className="btn btn-outline">Sign In</Link>
+            className="btn bg-teal-600 text-white">Sign In</Link>
+            <Link 
+            to={ROUTES.REGISTER}
+            className="btn btn-outline">Register</Link>
         </div>
     </div>
   )
