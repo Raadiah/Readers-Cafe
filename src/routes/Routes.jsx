@@ -11,6 +11,8 @@ import {
     useParams,
 } from "react-router-dom";
 import MainLayout from '../layouts/MainLayout.jsx';
+import Login from '../pages/Login.jsx';
+import Register from '../pages/Register.jsx';
 
 const router = createBrowserRouter([
     {
@@ -34,12 +36,12 @@ const router = createBrowserRouter([
           element: <FAQs></FAQs>
         },
         {
-          path: ROUTES.SIGNIN,
-          element: <DevelopmentInProgress pageName='Sign In'></DevelopmentInProgress>
+          path: ROUTES.LOGIN,
+          element: <Login></Login>
         },
         {
-          path: ROUTES.BUY,
-          element: <DevelopmentInProgress pageName='Buy book'></DevelopmentInProgress>
+          path: ROUTES.REGISTER,
+          element: <Register></Register>
         },
         {
           path: ROUTES.BOOKS,

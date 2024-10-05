@@ -4,7 +4,7 @@ export const ROUTES = {
     'BOOK_DETAIL': '/book/:id',
     'ABOUT': '/about',
     'BLOG': '/blog',
-    'SIGNIN': '/signin',
+    'LOGIN': '/login',
     'REGISTER': '/register',
     'BUY': '/buy',
     'FAQ': '/faq',

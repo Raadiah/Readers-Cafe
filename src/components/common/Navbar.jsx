@@ -32,7 +32,7 @@ function Navbar() {
                     <Link to={ROUTES.BOOKS}>Products</Link>
                 </li>
                 <li className="border-t">
-                    <Link to={ROUTES.SIGNIN}>Sign In</Link>
+                    <Link to={ROUTES.LOGIN}>Sign In</Link>
                 </li>
                 <li>
                     <Link to={ROUTES.REGISTER}>Register</Link>
@@ -58,7 +58,7 @@ function Navbar() {
         </div>
         <div className="navbar-end hidden gap-x-2 lg:flex">
             <Link 
-            to={ROUTES.SIGNIN}
+            to={ROUTES.LOGIN}
             className="btn bg-teal-600 text-white">Sign In</Link>
             <Link 
             to={ROUTES.REGISTER}
