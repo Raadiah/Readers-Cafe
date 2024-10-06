@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
 import { ROUTES } from '../../routes/index';
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+import User from "./User";
 
 function Navbar() {
   const ACTIVE_BUTTON_CLASS = 'rounded btn-active btn-ghost'
+  const {user} = useContext(AuthContext);
+
+  console.log(user);
 
   return (
     <div className="navbar bg-white border-b fixed top-0 z-10">
@@ -31,12 +37,21 @@ function Navbar() {
                 <li>
                     <Link to={ROUTES.BOOKS}>Products</Link>
                 </li>
-                <li className="border-t">
-                    <Link to={ROUTES.LOGIN}>Sign In</Link>
-                </li>
-                <li>
-                    <Link to={ROUTES.REGISTER}>Register</Link>
-                </li>
+                {
+                    user ? <>
+                        <User></User>
+                        <li>
+                            <Link to={ROUTES.REGISTER}>Log Out</Link>
+                        </li>
+                    </>:<>
+                        <li className="border-t">
+                            <Link to={ROUTES.LOGIN}>Sign In</Link>
+                        </li>
+                        <li>
+                            <Link to={ROUTES.REGISTER}>Register</Link>
+                        </li>
+                    </>
+                }
             </ul>
             </div>
             <Link 
@@ -57,12 +72,21 @@ function Navbar() {
             </ul>
         </div>
         <div className="navbar-end hidden gap-x-2 lg:flex">
-            <Link 
-            to={ROUTES.LOGIN}
-            className="btn bg-teal-600 text-white">Sign In</Link>
-            <Link 
-            to={ROUTES.REGISTER}
-            className="btn btn-outline">Register</Link>
+        {
+            user ? <>
+                <User></User>
+                <Link 
+                to={ROUTES.REGISTER}
+                className="btn">Log Out</Link>
+            </> : <>
+                <Link 
+                to={ROUTES.LOGIN}
+                className="btn bg-teal-600 text-white">Sign In</Link>
+                <Link 
+                to={ROUTES.REGISTER}
+                className="btn btn-outline">Register</Link>
+            </>
+        }
         </div>
     </div>
   )
