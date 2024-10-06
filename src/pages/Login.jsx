@@ -3,10 +3,13 @@ import { Link, useNavigate } from "react-router-dom"
 import { ROUTES } from "../routes"
 import { useContext } from "react"
 import { AuthContext } from "../provider/AuthProvider"
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth"
 
 const Login = ()=>{
-    const { loginWithEmailPassword } = useContext(AuthContext);
+    const { loginWithEmailPassword, loginWithGoogle, loginWithGitHub } = useContext(AuthContext);
     const navigate = useNavigate();
+    const googleProvider = new GoogleAuthProvider();
+    const githubProvider = new GithubAuthProvider();
 
     const handleLogin = (event)=>{
         event.preventDefault();
@@ -15,6 +18,20 @@ const Login = ()=>{
         loginWithEmailPassword(email, password)
         .then(()=>{
             alert('You are successfully logged in');
+        })
+    }
+
+    const handleGoogleLogin = ()=>{
+        loginWithGoogle(googleProvider)
+        .then(()=>{
+            alert('You are successfully logged in with Google');
+        })
+    }
+
+    const handleGithubLogin = ()=>{
+        loginWithGitHub(githubProvider)
+        .then(()=>{
+            alert('You are successfully logged in with Github');
         })
     }
 
@@ -54,8 +71,8 @@ const Login = ()=>{
             </form>
             <div className="divider py-6">Or Login With</div>
             <div className="flex justify-center items-center gap-4">
-                <FaGoogle className="text-3xl text-red-600 cursor-pointer hover:text-red-700" title="Google"></FaGoogle>
-                <FaGithub className="text-3xl cursor-pointer text-black hover:text-slate-700" title="GitHub"></FaGithub>
+                <FaGoogle onClick={handleGoogleLogin} className="text-3xl text-red-600 cursor-pointer hover:text-red-700" title="Google"></FaGoogle>
+                <FaGithub onClick={handleGithubLogin} className="text-3xl cursor-pointer text-black hover:text-slate-700" title="GitHub"></FaGithub>
             </div>
             <div className="text-xs italic text-center p-2">
                 Don't have an account? <Link className="font-semibold text-cyan-700" to={ROUTES.REGISTER}>Register</Link> here.

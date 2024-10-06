@@ -22,12 +22,12 @@ const AuthProvider = ({children})=>{
         return signInWithEmailAndPassword(auth, email, password);
     }
 
-    const loginWithGoogle = ()=>{
-
+    const loginWithGoogle = (provider)=>{
+        return signInWithPopup(auth, provider);
     }
 
-    const loginWithGitHub = ()=>{
-
+    const loginWithGitHub = (provider)=>{
+        return signInWithPopup(auth, provider);
     }
 
     const logout = ()=>{

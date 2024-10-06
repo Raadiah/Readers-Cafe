@@ -80,7 +80,7 @@ function Navbar() {
         <div className="navbar-end hidden gap-x-2 lg:flex">
         {
             user ? <>
-                <User></User>
+                <User {...user}></User>
                     <button
                     onClick={handleLogout}
                     className="btn">Log Out</button>
