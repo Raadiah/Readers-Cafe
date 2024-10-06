@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ROUTES } from '../../routes/index';
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
@@ -6,9 +6,15 @@ import User from "./User";
 
 function Navbar() {
   const ACTIVE_BUTTON_CLASS = 'rounded btn-active btn-ghost'
-  const {user} = useContext(AuthContext);
+  const {user, logout} = useContext(AuthContext);
+  const navigate = useNavigate();
 
-  console.log(user);
+  const handleLogout = ()=>{
+    logout()
+    .then(()=>{
+        alert('You are successfully signed out')
+    });
+  }
 
   return (
     <div className="navbar bg-white border-b fixed top-0 z-10">
@@ -40,8 +46,8 @@ function Navbar() {
                 {
                     user ? <>
                         <User></User>
-                        <li>
-                            <Link to={ROUTES.REGISTER}>Log Out</Link>
+                        <li onClick={handleLogout} className="border-t">
+                            Log Out
                         </li>
                     </>:<>
                         <li className="border-t">
@@ -75,10 +81,10 @@ function Navbar() {
         {
             user ? <>
                 <User></User>
-                <Link 
-                to={ROUTES.REGISTER}
-                className="btn">Log Out</Link>
-            </> : <>
+                    <button
+                    onClick={handleLogout}
+                    className="btn">Log Out</button>
+                </> : <>
                 <Link 
                 to={ROUTES.LOGIN}
                 className="btn bg-teal-600 text-white">Sign In</Link>
