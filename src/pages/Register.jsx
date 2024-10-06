@@ -1,4 +1,6 @@
 import { FaGoogle, FaGithub } from "react-icons/fa"
+import { Link } from "react-router-dom"
+import { ROUTES } from "../routes"
 
 const Register = ()=>{
     return (
@@ -45,6 +47,9 @@ const Register = ()=>{
             </label>
             <div className="flex justify-center">
                 <button className="btn btn-wide">Register</button>
+            </div>
+            <div className="text-xs italic text-center p-2">
+                Already have an account? <Link className="font-semibold text-cyan-700" to={ROUTES.LOGIN}>Login</Link> here.
             </div>
         </div>   
     )

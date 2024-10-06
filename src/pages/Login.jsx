@@ -1,4 +1,6 @@
 import { FaGoogle, FaGithub } from "react-icons/fa"
+import { Link } from "react-router-dom"
+import { ROUTES } from "../routes"
 
 const Login = ()=>{
     return (
@@ -37,6 +39,9 @@ const Login = ()=>{
             <div className="flex justify-center items-center gap-4">
                 <FaGoogle className="text-3xl text-red-600 cursor-pointer hover:text-red-700" title="Google"></FaGoogle>
                 <FaGithub className="text-3xl cursor-pointer text-black hover:text-slate-700" title="GitHub"></FaGithub>
+            </div>
+            <div className="text-xs italic text-center p-2">
+                Don't have an account? <Link className="font-semibold text-cyan-700" to={ROUTES.REGISTER}>Register</Link> here.
             </div>
         </div>   
     )
