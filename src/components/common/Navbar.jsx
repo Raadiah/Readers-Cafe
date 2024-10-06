@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { ROUTES } from '../../routes/index';
 import { useContext } from "react";
+import toast from "react-hot-toast";
 import { AuthContext } from "../../provider/AuthProvider";
 import User from "./User";
 
@@ -12,8 +13,12 @@ function Navbar() {
   const handleLogout = ()=>{
     logout()
     .then(()=>{
-        alert('You are successfully signed out')
-    });
+        toast.success('You are successfully signed out')
+    })
+    .catch((error)=>{
+        toast.error('Request could not be processed')
+        console.error(error);
+    });;
   }
 
   return (

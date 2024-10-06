@@ -2,24 +2,30 @@ import { FaGoogle, FaGithub } from "react-icons/fa"
 import { Link, useNavigate } from "react-router-dom"
 import { ROUTES } from "../routes"
 import { useContext } from "react"
+import toast from "react-hot-toast";
 import { AuthContext } from "../provider/AuthProvider"
 
 const Register = ()=>{
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleRegister = (event)=>{
         event.preventDefault();
         const email = event.target.email.value;
         const password = event.target.password.value;
-        const username = event.target.username.value;
-        const photoUrl = event.target.photoUrl.value;
+
+        const newUserProfile = {
+            displayName: event.target.username.value,
+            photoURL: "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
+        }
 
         createUser(email, password)
         .then(()=>{
-            navigate(ROUTES.LOGIN)
+            toast.succes("Successfully Registered")
+            updateUserProfile(newUserProfile)
         })
         .catch((error)=>{
+            toast.error('Request could not be processed')
             console.error(error);
         });
     }
@@ -36,7 +42,7 @@ const Register = ()=>{
                     <path
                     d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
                 </svg>
-                <input id="username" type="text" className="grow" placeholder="Username" />
+                <input id="username" type="text" className="grow" placeholder="Full Name" />
                 </label>
                 <label className="input input-bordered flex items-center gap-2">
                 <svg
@@ -63,9 +69,6 @@ const Register = ()=>{
                     clipRule="evenodd" />
                 </svg>
                 <input id="password" type="password" className="grow" placeholder="******" />
-                </label>
-                <label className="input input-bordered flex items-center gap-2">
-                <input id="photoUrl" type="text" className="grow" placeholder="Photo URL" />
                 </label>
                 <div className="flex justify-center">
                     <button type="submit" className="btn btn-wide">Register</button>

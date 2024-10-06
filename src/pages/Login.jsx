@@ -2,6 +2,7 @@ import { FaGoogle, FaGithub } from "react-icons/fa"
 import { Link, useNavigate } from "react-router-dom"
 import { ROUTES } from "../routes"
 import { useContext } from "react"
+import toast from "react-hot-toast";
 import { AuthContext } from "../provider/AuthProvider"
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth"
 
@@ -17,22 +18,34 @@ const Login = ()=>{
         const password = event.target.password.value;
         loginWithEmailPassword(email, password)
         .then(()=>{
-            alert('You are successfully logged in');
+            toast.success('You are successfully logged in');
         })
+        .catch((error)=>{
+            toast.error('Request could not be processed')
+            console.error(error);
+        });
     }
 
     const handleGoogleLogin = ()=>{
         loginWithGoogle(googleProvider)
         .then(()=>{
-            alert('You are successfully logged in with Google');
+            toast.success('You are successfully logged in with Google');
         })
+        .catch((error)=>{
+            toast.error('Request could not be processed')
+            console.error(error);
+        });
     }
 
     const handleGithubLogin = ()=>{
         loginWithGitHub(githubProvider)
         .then(()=>{
-            alert('You are successfully logged in with Github');
+            toast.success('You are successfully logged in with Github');
         })
+        .catch((error)=>{
+            toast.error('Request could not be processed')
+            console.error(error);
+        });
     }
 
     return (
