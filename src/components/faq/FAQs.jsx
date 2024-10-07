@@ -1,19 +1,8 @@
-import { useEffect, useState } from "react";
-import apiCall from "../../utils/common/apiCall";
 import FAQ from "./FAQ";
+import { useLoaderData } from "react-router-dom";
 
 const FAQs = ()=>{
-    const [faqs, setFAQs] = useState([]);
-    const faqJsonUrl = '/faq.json'
-
-    const getFAQs = async () => {
-        const faqs = await apiCall(faqJsonUrl);
-        setFAQs(faqs);
-    };
-
-    useEffect(()=>{
-        getFAQs();
-    }, [])
+    const faqs = useLoaderData()
 
     return (
         <>

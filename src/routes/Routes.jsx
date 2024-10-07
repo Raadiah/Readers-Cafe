@@ -15,8 +15,8 @@ import Login from '../pages/Login.jsx';
 import Register from '../pages/Register.jsx';
 import PrivateRoute from './PrivateRoute.jsx';
 
-const devBaseUrl = 'http://localhost:5000/';
-const prodBaseUrl = 'https://readers-cafe-backend.vercel.app/';
+const devBaseUrl = 'http://localhost:5000';
+const prodBaseUrl = 'https://readers-cafe-backend.vercel.app';
 const baseUrl = prodBaseUrl;
 
 const router = createBrowserRouter([
@@ -38,7 +38,8 @@ const router = createBrowserRouter([
         },
         {
           path: ROUTES.FAQ,
-          element: <FAQs></FAQs>
+          element: <FAQs></FAQs>,
+          loader: ()=>fetch(`${baseUrl}/faq`)
         },
         {
           path: ROUTES.LOGIN,
@@ -51,12 +52,12 @@ const router = createBrowserRouter([
         {
           path: ROUTES.BOOKS,
           element: <PrivateRoute><Books></Books></PrivateRoute>,
-          loader: ()=>fetch(`${baseUrl}books`)
+          loader: ()=>fetch(`${baseUrl}/books`)
         },
         {
           path: ROUTES.BOOK_DETAIL,
           element: <PrivateRoute><BookDetails></BookDetails></PrivateRoute>,
-          loader: ({params})=>fetch(`${baseUrl}book/${params.id}`)
+          loader: ({params})=>fetch(`${baseUrl}/book/${params.id}`)
         },
         {
           path: '*',
