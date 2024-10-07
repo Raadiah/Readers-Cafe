@@ -6,9 +6,9 @@ import TopBooks from "../components/homepage/TopBooks"
 
 function HomePage() {
     return (
-        <div className="min-h-screen flex flex-col justify-between">
+        <div className="min-h-screen flex flex-col justify-between gap-4">
             <Banner></Banner>
-            <div className="space-y-12 py-8 m-2 md:w-2/3 md:m-auto">
+            <div className="space-y-12 px-8 py-4 m-2 md:mx-32 md:my-14 bg-white rounded-lg border-2 border-black">
                 <HowItWorks></HowItWorks>
                 <TopBooks></TopBooks>
                 <AboutUs></AboutUs>

@@ -22,7 +22,7 @@ const TopBooks = ()=>{
                 <div className="border rounded-lg shadow-md p-4">
                     <Marquee autoFill="true" speed={50}>
                         {
-                            topBooks?.map((topBook)=><TopBook {...topBook}></TopBook>)
+                            topBooks?.map((topBook, index)=><TopBook key={index+1} {...topBook}></TopBook>)
                         }
                     </Marquee>
                 </div>

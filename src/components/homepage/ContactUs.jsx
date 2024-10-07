@@ -1,7 +1,7 @@
 const ContactUs = ()=>{
     return (
         <div>
-            <div className="hero p-4 border rounded-lg shadow-md">
+            <div className="hero border rounded-lg shadow-md mb-4">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold">Contact Us</h1>
