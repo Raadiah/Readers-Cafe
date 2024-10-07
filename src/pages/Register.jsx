@@ -21,8 +21,10 @@ const Register = ()=>{
 
         createUser(email, password)
         .then(()=>{
-            toast.succes("Successfully Registered")
             updateUserProfile(newUserProfile)
+            .then(()=>{
+                toast.success("Successfully Registered")
+            })
         })
         .catch((error)=>{
             toast.error('Request could not be processed')

@@ -50,7 +50,7 @@ function Navbar() {
                 </li>
                 {
                     user ? <>
-                        <User></User>
+                        <User key={user} {...user}></User>
                         <li onClick={handleLogout} className="border-t">
                             Log Out
                         </li>
@@ -85,7 +85,7 @@ function Navbar() {
         <div className="navbar-end hidden gap-x-2 lg:flex">
         {
             user ? <>
-                <User {...user}></User>
+                <User key={user} {...user}></User>
                     <button
                     onClick={handleLogout}
                     className="btn">Log Out</button>
