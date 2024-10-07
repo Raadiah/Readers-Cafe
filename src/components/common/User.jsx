@@ -3,7 +3,7 @@ const User = ({displayName, photoURL})=>{
     return (
         <div className="flex items-center mr-2 gap-2">
             <img className="w-8 rounded-full" src={displayPhotoUrl} alt="" />
-            <span className="text-sm hidden lg:flex">{displayName}</span>
+            <span className="text-sm hidden md:flex">{displayName}</span>
         </div>
     )
 }

@@ -25,7 +25,7 @@ function Navbar() {
     <div className="navbar bg-white border-b fixed top-0 z-50">
         <div className="navbar-start">
             <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
                 <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -71,7 +71,7 @@ function Navbar() {
                 <span>Reader's Cafe</span>
             </Link>
         </div>
-        <div className="navbar-center hidden lg:flex">
+        <div className="navbar-center hidden md:flex">
             <ul className="menu menu-horizontal px-1">
                 <li>
                     <Link to={ROUTES.HOME}>Home</Link>
@@ -87,10 +87,10 @@ function Navbar() {
                     <User key={user} {...user}></User>
                     <button
                     onClick={handleLogout}
-                    className="btn hidden lg:flex">Log Out</button>
+                    className="btn hidden md:flex">Log Out</button>
                 </div>
             </>:<>
-                <div className="navbar-end hidden gap-x-2 lg:flex">
+                <div className="navbar-end hidden gap-x-2 md:flex">
                     <Link 
                     to={ROUTES.LOGIN}
                     className="btn bg-teal-600 text-white">Sign In</Link>
