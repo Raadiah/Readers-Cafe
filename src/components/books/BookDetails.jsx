@@ -18,7 +18,7 @@ const BookDetails = ()=>{
     }
     
     return (
-        <div className="hero max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg max-h-screen">
+        <div className="hero max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg">
             <div className="border hero-content md:mt-24 md:mb-16 mx-auto bg-white rounded-md min-h-2/3 flex-col lg:flex-row shadow-lg">
                 <img
                 src={image}
