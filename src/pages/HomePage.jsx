@@ -5,6 +5,7 @@ import HowItWorks from "../components/homepage/HowItWorks"
 import TopBooks from "../components/homepage/TopBooks"
 
 function HomePage() {
+    window.scrollTo(0,0);
     return (
         <div className="min-h-screen flex flex-col justify-between gap-4">
             <Banner></Banner>

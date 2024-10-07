@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 
 const Books = ()=>{
     const books = useLoaderData();
+    window.scrollTo(0,0);
 
     return (
         <div id='bookList' className="lg:m-20 my-10 p-4 bg-white z-10 border ">
