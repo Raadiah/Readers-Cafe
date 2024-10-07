@@ -16,14 +16,13 @@ import Register from '../pages/Register.jsx';
 import PrivateRoute from './PrivateRoute.jsx';
 
 const devBaseUrl = 'http://localhost:5000/';
-const prodBaseUrl = 'https://readers-cafe-backend-gebselhrb-soomanibs-projects.vercel.app/';
+const prodBaseUrl = 'https://readers-cafe-backend.vercel.app/';
 const baseUrl = prodBaseUrl;
 
 const router = createBrowserRouter([
     {
       path: ROUTES.HOME,
       element: <MainLayout></MainLayout>,
-      errorElement: <div>Some Error Occured</div>,
       children: [
         {
           path: ROUTES.HOME,
