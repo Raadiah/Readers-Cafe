@@ -1,12 +1,12 @@
 import { useLoaderData } from 'react-router-dom';
 import Rating from "../common/Rating"
-import { FaCartPlus, FaHeart } from 'react-icons/fa';
+import { FaCartPlus, FaHeart, FaDollarSign } from 'react-icons/fa';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
 
 const BookDetails = ()=>{
     const [ toastMessage, setToastMessage ] = useState('');
-    const { bookId, review, totalPages, publisher, yearOfPublishing, bookName, author, image, tags, category, rating } = useLoaderData();
+    const { bookId, review, totalPages, publisher, yearOfPublishing, bookName, author, image, tags, category, rating, price } = useLoaderData();
     window.scrollTo(0,0);
 
     function handleReadToast() {
@@ -45,6 +45,8 @@ const BookDetails = ()=>{
                         <span className='col-span-2'>{publisher}</span>
                         <span className='col-span-1 font-semibold'>Year of Publishing</span>
                         <span className='col-span-2'>{yearOfPublishing}</span>
+                        <span className='col-span-1 font-semibold'>Price</span>
+                        <span className='col-span-2 font-semibold'>{price}</span>
                     </div>
                     <div className='flex justify-center gap-4'>
                         <button onClick={handleReadToast} className="btn btn-outline">
