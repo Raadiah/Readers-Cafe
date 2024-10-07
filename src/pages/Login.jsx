@@ -53,7 +53,9 @@ const Login = ()=>{
     }
 
     return (
-        <div className="max-w-screen-sm mx-2 my-10 md:w-3/4 md:mx-auto space-y-2 border p-8 md:px-32 shadow-md rounded-lg">
+        <div className="max-w-screen-sm mx-2 my-10 md:w-3/4 md:mx-auto space-y-2 
+        border p-8 md:px-32 shadow-md rounded-lg
+        bg-white z-20">
             <form onSubmit={handleLogin} className="space-y-2">
                 <div className="text-center pb-3">Login With Email</div>
                 <label className="input input-bordered flex items-center gap-2">
