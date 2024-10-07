@@ -19,7 +19,7 @@ const BookDetails = ()=>{
     
     return (
         <div className="hero min-w-fit max-h-screen">
-            <div className="border-2 border-black hero-content mt-16 md:mt-24 md:mb-16 mx-auto bg-white rounded-md min-h-2/3 lg:w-3/4 flex-col lg:flex-row">
+            <div className="border  hero-content mt-16 md:mt-24 md:mb-16 mx-auto bg-white rounded-md min-h-2/3 lg:w-3/4 flex-col lg:flex-row">
                 <img
                 src={image}
                 className="max-w-sm rounded-lg shadow-2xl" />

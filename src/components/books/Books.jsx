@@ -5,7 +5,7 @@ const Books = ()=>{
     const books = useLoaderData();
 
     return (
-        <div id='bookList' className="lg:mx-20 my-10 pb-8 bg-white z-10 border-2 border-black">
+        <div id='bookList' className="lg:mx-20 my-10 pb-8 bg-white z-10 border ">
             <h1 className="text-center text-xl font-semibold p-8">Check out our latest books!</h1>
             <div className="m-4 md:m-auto md:w-fit grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {

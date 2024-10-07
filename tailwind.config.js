@@ -2,6 +2,8 @@
 
 import daisyui from './node_modules/daisyui'
 
+const backgroundImageUrl = "https://img.freepik.com/free-vector/stylish-hexagonal-line-pattern-background_1017-19742.jpg";
+
 export default {
   content: [
     "./index.html",
@@ -10,7 +12,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'body-pattern': "url('https://img.freepik.com/free-vector/vintage-ornamental-flowers-background_52683-28040.jpg')"
+        'body-pattern': `url(${backgroundImageUrl})`
       }
     },
   },
