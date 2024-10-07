@@ -8,7 +8,11 @@ export default {
     "./src/**/*.{js,jsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'body-pattern': "url('https://img.freepik.com/free-vector/vintage-ornamental-flowers-background_52683-28040.jpg')"
+      }
+    },
   },
   plugins: [
     daisyui,
