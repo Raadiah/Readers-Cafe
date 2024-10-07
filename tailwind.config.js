@@ -13,6 +13,9 @@ export default {
     extend: {
       backgroundImage: {
         'body-pattern': `url(${backgroundImageUrl})`
+      },
+      spacing: {
+        '90': '22rem'
       }
     },
   },

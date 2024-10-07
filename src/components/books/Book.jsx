@@ -5,17 +5,17 @@ const Book = (book)=>{
     const {bookId, bookName, author, image, tags, category, rating} = book
 
     return (
-        <div className="card bg-base-100 max-w-80 h-96 shadow-xl m-auto">
+        <div className="card bg-base-100 w-90 h-96 shadow-xl">
             <figure className="h-3/5 bg-base-300">
                 <img
                 src={image}
                 alt={bookName} />
             </figure>
             <div className="card-body">
-                <h2 className="card-title">
-                { bookName?.length > 30 ? `${bookName?.substring(0, 25)}...` : bookName }
-                <div className="badge bg-pink-300">{category}</div>
-                </h2>
+                <div className="flex items-center justify-between">
+                    <div className="font-bold text-xl text-ellipsis line-clamp-1 overflow-hidden mr-2">{ bookName }</div>
+                    <div className="badge bg-pink-300 min-w-content overflow-hidden">{category}</div>
+                </div>
                 <h3 className="card">
                 {author}
                 </h3>
