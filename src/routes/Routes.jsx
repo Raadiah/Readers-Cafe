@@ -13,6 +13,11 @@ import {
 import MainLayout from '../layouts/MainLayout.jsx';
 import Login from '../pages/Login.jsx';
 import Register from '../pages/Register.jsx';
+import PrivateRoute from './PrivateRoute.jsx';
+
+const devBaseUrl = 'http://localhost:5000/';
+const prodBaseUrl = '';
+const baseUrl = devBaseUrl;
 
 const router = createBrowserRouter([
     {
@@ -45,13 +50,13 @@ const router = createBrowserRouter([
         },
         {
           path: ROUTES.BOOKS,
-          element: <Books></Books>,
-          loader: ()=>fetch('http://localhost:5000/books')
+          element: <PrivateRoute><Books></Books></PrivateRoute>,
+          loader: ()=>fetch(`${baseUrl}books`)
         },
         {
           path: ROUTES.BOOK_DETAIL,
-          element: <BookDetails></BookDetails>,
-          loader: ({params})=>fetch(`http://localhost:5000/book/${params.id}`)
+          element: <PrivateRoute><BookDetails></BookDetails></PrivateRoute>,
+          loader: ({params})=>fetch(`${baseUrl}book/${params.id}`)
         },
         {
           path: '*',
