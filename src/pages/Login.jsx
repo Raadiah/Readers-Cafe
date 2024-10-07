@@ -1,5 +1,5 @@
 import { FaGoogle, FaGithub } from "react-icons/fa"
-import { Link, useNavigate } from "react-router-dom"
+import { Link, useLocation, useNavigate } from "react-router-dom"
 import { ROUTES } from "../routes"
 import { useContext } from "react"
 import toast from "react-hot-toast";
@@ -11,6 +11,7 @@ const Login = ()=>{
     const navigate = useNavigate();
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
+    const {state} = useLocation();
 
     const handleLogin = (event)=>{
         event.preventDefault();
@@ -19,6 +20,7 @@ const Login = ()=>{
         loginWithEmailPassword(email, password)
         .then(()=>{
             toast.success('You are successfully logged in');
+            navigate( state ? state : ROUTES.HOME );
         })
         .catch((error)=>{
             toast.error('Request could not be processed')
@@ -30,6 +32,7 @@ const Login = ()=>{
         loginWithGoogle(googleProvider)
         .then(()=>{
             toast.success('You are successfully logged in with Google');
+            navigate( state ? state : ROUTES.HOME );
         })
         .catch((error)=>{
             toast.error('Request could not be processed')
@@ -41,6 +44,7 @@ const Login = ()=>{
         loginWithGitHub(githubProvider)
         .then(()=>{
             toast.success('You are successfully logged in with Github');
+            navigate( state ? state : ROUTES.HOME );
         })
         .catch((error)=>{
             toast.error('Request could not be processed')

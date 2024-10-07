@@ -24,6 +24,7 @@ const Register = ()=>{
             updateUserProfile(newUserProfile)
             .then(()=>{
                 toast.success("Successfully Registered")
+                navigate(ROUTES.HOME)
             })
         })
         .catch((error)=>{
