@@ -2,7 +2,7 @@ const ContactUs = ()=>{
     return (
         <div>
             <div className="hero border rounded-lg shadow-md mb-4
-            max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl min-h-screen">
+            max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="text-center lg:text-left">
                         <h1 className="text-lg md:text-5xl font-bold">Contact Us</h1>
