@@ -8,7 +8,7 @@ function Footer() {
                 <aside>
                     <img
                     className='w-10 h-10'
-                    src='title-icon.png'
+                    src='/title-icon.png'
                     ></img>
                     <p>
                         Reader's Cafe
