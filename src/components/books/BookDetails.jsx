@@ -1,7 +1,7 @@
 import { useLoaderData } from 'react-router-dom';
 import Rating from "../common/Rating"
 import { FaCartPlus, FaHeart } from 'react-icons/fa';
-import Toast from '../common/Toast';
+import toast from 'react-hot-toast';
 import { useState } from 'react';
 
 const BookDetails = ()=>{
@@ -10,24 +10,15 @@ const BookDetails = ()=>{
     window.scrollTo(0,0);
 
     function handleReadToast() {
-        setToastMessage(`${bookId}${bookName} has been successfully added to the Wishlist`);
-        showToastMessage();
+        toast.success(`${bookName} has been successfully added to the Wishlist`);
     }
 
     function handleCartToast() {
-        setToastMessage(`${bookId}${bookName} has been successfully added to the Cart`);
-        showToastMessage();
-    }
-
-    function showToastMessage() {
-        document.getElementById('toast').showModal()
+        toast.success(`${bookName} has been successfully added to the Cart`);
     }
     
     return (
         <div className="hero min-w-fit max-h-screen">
-            <dialog id="toast" className="modal">
-                <Toast message={toastMessage}></Toast>
-            </dialog>
             <div className="hero-content mt-16 md:mt-24 md:mb-16 mx-auto bg-white rounded-md min-h-2/3 lg:w-3/4 flex-col lg:flex-row">
                 <img
                 src={image}
