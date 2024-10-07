@@ -50,9 +50,8 @@ function Navbar() {
                 </li>
                 {
                     user ? <>
-                        <User key={user} {...user}></User>
                         <li onClick={handleLogout} className="border-t">
-                            Log Out
+                            <a>Log Out</a>
                         </li>
                     </>:<>
                         <li className="border-t">
@@ -82,23 +81,25 @@ function Navbar() {
                 </li>
             </ul>
         </div>
-        <div className="navbar-end hidden gap-x-2 lg:flex">
         {
             user ? <>
-                <User key={user} {...user}></User>
+                <div className="navbar-end">
+                    <User key={user} {...user}></User>
                     <button
                     onClick={handleLogout}
-                    className="btn">Log Out</button>
-                </> : <>
-                <Link 
-                to={ROUTES.LOGIN}
-                className="btn bg-teal-600 text-white">Sign In</Link>
-                <Link 
-                to={ROUTES.REGISTER}
-                className="btn btn-outline">Register</Link>
+                    className="btn hidden lg:flex">Log Out</button>
+                </div>
+            </>:<>
+                <div className="navbar-end hidden gap-x-2 lg:flex">
+                    <Link 
+                    to={ROUTES.LOGIN}
+                    className="btn bg-teal-600 text-white">Sign In</Link>
+                    <Link 
+                    to={ROUTES.REGISTER}
+                    className="btn btn-outline">Register</Link>
+                </div>
             </>
         }
-        </div>
     </div>
   )
 }
