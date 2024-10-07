@@ -20,7 +20,7 @@ const Login = ()=>{
         loginWithEmailPassword(email, password)
         .then(()=>{
             toast.success('You are successfully logged in');
-            navigate( state ? state : ROUTES.HOME );
+            navigate( state ? state : ROUTES.BOOKS );
         })
         .catch((error)=>{
             toast.error('Request could not be processed')
@@ -32,7 +32,7 @@ const Login = ()=>{
         loginWithGoogle(googleProvider)
         .then(()=>{
             toast.success('You are successfully logged in with Google');
-            navigate( state ? state : ROUTES.HOME );
+            navigate( state ? state : ROUTES.BOOKS );
         })
         .catch((error)=>{
             toast.error('Request could not be processed')
@@ -44,7 +44,7 @@ const Login = ()=>{
         loginWithGitHub(githubProvider)
         .then(()=>{
             toast.success('You are successfully logged in with Github');
-            navigate( state ? state : ROUTES.HOME );
+            navigate( state ? state : ROUTES.BOOKS );
         })
         .catch((error)=>{
             toast.error('Request could not be processed')
