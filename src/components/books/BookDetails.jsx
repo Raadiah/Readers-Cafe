@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import Rating from "../common/Rating"
 import { FaCartPlus, FaHeart } from 'react-icons/fa';
 import Toast from '../common/Toast';
@@ -6,8 +6,7 @@ import { useState } from 'react';
 
 const BookDetails = ()=>{
     const [ toastMessage, setToastMessage ] = useState('');
-    const { state } = useLocation();
-    const { bookId, review, totalPages, publisher, yearOfPublishing, bookName, author, image, tags, category, rating } = state.book;
+    const { bookId, review, totalPages, publisher, yearOfPublishing, bookName, author, image, tags, category, rating } = useLoaderData();
     window.scrollTo(0,0);
 
     function handleReadToast() {
