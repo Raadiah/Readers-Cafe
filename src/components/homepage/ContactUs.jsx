@@ -5,13 +5,13 @@ const ContactUs = ()=>{
             max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl min-h-screen">
                 <div className="hero-content flex-col lg:flex-row">
                     <div className="text-center lg:text-left">
-                        <h1 className="text-5xl font-bold">Contact Us</h1>
-                        <p className="py-6">
+                        <h1 className="text-lg md:text-5xl font-bold">Contact Us</h1>
+                        <p className="py-6 text-wrap">
                             Have a question? Feel free to contact us.
                         </p>
                     </div>
-                    <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                        <form className="card-body">
+                    <div className="md:card md:w-full md:shrink-0 md:max-w-sm bg-base-100 md:shadow-2xl">
+                        <form className="md:card-body">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>

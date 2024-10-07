@@ -12,7 +12,7 @@ function Banner() {
         <div className="hero-content flex-col w-full lg:flex-row-reverse">
             <img
             src={bookImage}
-            className="max-w-xs max-h-xs mt-6 lg:mt-0 rounded-lg shadow-2xl" />
+            className="max-h-90 md:max-w-x md:max-h-xs mt-6 lg:mt-0 rounded-lg shadow-2xl" />
             <div>
             <p className="py-6 pr-6">
             Unlock a World of Stories – Find Your Next Favorite Book at <span className='font-semibold text-green-700'>Reader's Cafe</span>
