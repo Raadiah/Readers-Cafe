@@ -1,20 +1,8 @@
-import { useState } from "react";
-import apiCall from "../../utils/common/apiCall"
 import Book from "./Book";
-import { useEffect } from "react";
+import { useLoaderData } from "react-router-dom";
 
 const Books = ()=>{
-    const bookJsonUrl = '/books.json';
-    const [books, setBooks] = useState([]);
-    
-    const getBookList = async () => {
-        const books = await apiCall(bookJsonUrl);
-        setBooks(books);
-    };
-
-    useEffect(() => {
-        getBookList();
-    }, []);
+    const books = useLoaderData();
 
     return (
         <div id='bookList' className="pt-16">
