@@ -9,6 +9,8 @@ const Register = ()=>{
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const navigate = useNavigate();
 
+    window.scrollTo(0,0);
+
     const handleRegister = (event)=>{
         event.preventDefault();
         const email = event.target.email.value;

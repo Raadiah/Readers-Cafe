@@ -35,7 +35,7 @@ const Book = (book)=>{
                     <Link 
                     className="btn btn-wide bg-white border border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white"
                     state={{book: book}} 
-                    to={`/book/${bookId}`}>Book Details</Link>
+                    to={`/products/${bookId}`}>Book Details</Link>
                 </div>
             </div>
         </div>

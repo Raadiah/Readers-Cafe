@@ -13,6 +13,8 @@ const Login = ()=>{
     const githubProvider = new GithubAuthProvider();
     const {state} = useLocation();
 
+    window.scrollTo(0,0);
+
     const handleLogin = (event)=>{
         event.preventDefault();
         const email = event.target.email.value;
