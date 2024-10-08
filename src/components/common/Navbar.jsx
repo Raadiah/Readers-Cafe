@@ -68,7 +68,7 @@ function Navbar() {
             to={ROUTES.HOME}
             className="btn btn-ghost text-xl">
                 <img className="w-10 h-10" src="/title-icon.png" alt="" />
-                <span>Reader's Cafe</span>
+                <span className="hidden md:flex">Reader's Cafe</span>
             </Link>
         </div>
         <div className="navbar-center hidden md:flex">
