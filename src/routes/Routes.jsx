@@ -14,10 +14,7 @@ import MainLayout from '../layouts/MainLayout.jsx';
 import Login from '../pages/Login.jsx';
 import Register from '../pages/Register.jsx';
 import PrivateRoute from './PrivateRoute.jsx';
-
-const devBaseUrl = 'http://localhost:5000';
-const prodBaseUrl = 'https://readers-cafe-backend.vercel.app';
-const baseUrl = prodBaseUrl;
+import baseUrl from './sites.js';
 
 const router = createBrowserRouter([
     {

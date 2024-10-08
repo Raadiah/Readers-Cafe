@@ -13,9 +13,10 @@ function Banner() {
             src={bookImage}
             className="max-h-90 md:max-w-x md:max-h-xs mt-6 lg:mt-0 rounded-lg shadow-2xl" />
             <div>
-            <p className="py-6 pr-6">
-            Unlock a World of Stories – Find Your Next Favorite Book at <span className='font-semibold text-green-700'>Reader's Cafe</span>
-            </p>
+            <div className="py-6 pr-6">
+              <h1 className="card-title mb-6 text-3xl lg:text-5xl font-bold text-green-800">Reader's Cafe</h1>
+              Unlock a World of Stories – Find Your Next Favorite Book.
+            </div>
             <Link 
             to={ROUTES.BUY}
             className="btn bg-teal-600 text-white">Buy Book</Link>

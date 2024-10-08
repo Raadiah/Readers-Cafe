@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 import TopBook from "./TopBook";
 import SectionHeader from "../common/SectionHeader";
+import baseUrl from "../../routes/sites";
 
 const TopBooks = ()=>{
     const [topBooks, setTopBooks] = useState([]);
     const getTopBooks = async ()=>{
-        const topBooksJson = await fetch('https://readers-cafe-backend.vercel.app/featured');
+        const topBooksJson = await fetch(`${baseUrl}/featured`);
         const topBooks = await topBooksJson.json();
         setTopBooks(topBooks);
     }

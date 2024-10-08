@@ -16,7 +16,7 @@ const ContactUs = ()=>{
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" placeholder="email" className="input input-bordered" required />
+                                <input type="email" placeholder="e.g. john.doe@gmail.com" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">
