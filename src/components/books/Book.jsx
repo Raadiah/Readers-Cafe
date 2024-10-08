@@ -13,9 +13,9 @@ const Book = (book)=>{
                 alt={bookName} />
             </figure>
             <div className="card-body">
-                <div className="flex items-center justify-between">
+                <div className="md:flex items-center justify-between">
                     <div className="font-bold text-xl text-ellipsis line-clamp-1 overflow-hidden mr-2">{ bookName }</div>
-                    <div className="badge bg-pink-300 min-w-content">{category}</div>
+                    <div className="badge bg-pink-300 min-w-content text-ellipsis line-clamp-1">{category}</div>
                 </div>
                 <h3 className="card">
                 {author}
