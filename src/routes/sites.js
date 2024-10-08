@@ -3,6 +3,6 @@ const SITES = {
     PROD: 'https://readers-cafe-backend.vercel.app'
 }
 
-const baseUrl = SITES.PROD 
+const baseUrl = SITES.DEV 
 
 export default baseUrl

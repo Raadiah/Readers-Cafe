@@ -22,7 +22,7 @@ const BookDetails = ()=>{
             <div className="border hero-content md:mt-24 md:mb-16 mx-auto bg-white rounded-md min-h-2/3 flex-col lg:flex-row shadow-lg">
                 <img
                 src={image}
-                className="rounded-lg shadow-2xl max-h-96" />
+                className="rounded-lg shadow-2xl max-h-96 max-w-96" />
                 <div className='space-y-4'>
                     <h1 className="text-3xl font-bold">{bookName}</h1>
                     <h3 className="card-title">
@@ -35,6 +35,8 @@ const BookDetails = ()=>{
                         "{review}"
                     </p>
                     <div className='grid grid-cols-3 gap-x-4'>
+                        <span className='col-span-1 font-semibold'>Price</span>
+                        <span className='col-span-2 font-semibold'>{price}</span>
                         <span className='col-span-1 font-semibold'>Category</span>
                         <span className='col-span-2'>{category}</span>
                         <span className='col-span-1 font-semibold'>Tags</span>
@@ -45,8 +47,6 @@ const BookDetails = ()=>{
                         <span className='col-span-2'>{publisher}</span>
                         <span className='col-span-1 font-semibold'>Year of Publishing</span>
                         <span className='col-span-2'>{yearOfPublishing}</span>
-                        <span className='col-span-1 font-semibold'>Price</span>
-                        <span className='col-span-2 font-semibold'>{price}</span>
                     </div>
                     <div className='flex justify-center gap-4'>
                         <button onClick={handleReadToast} className="btn btn-outline">
