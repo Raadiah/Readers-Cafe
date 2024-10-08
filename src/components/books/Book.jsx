@@ -20,7 +20,7 @@ const Book = (book)=>{
                 <h3 className="card">
                 {author}
                 </h3>
-                <div className="flex justify-between">
+                <div className="flex flex-wrap justify-between">
                     <div className="card-actions">  
                         <Rating ratingValue={rating}></Rating> 
                     </div>
