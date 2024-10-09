@@ -22,7 +22,7 @@ const BookDetails = ()=>{
             <div className="border hero-content md:mt-24 md:mb-16 mx-auto bg-white rounded-md min-h-2/3 flex-col lg:flex-row shadow-lg">
                 <img
                 src={image}
-                className="rounded-lg shadow-2xl max-h-96 max-w-96" />
+                className="rounded-lg shadow-2xl max-h-96 max-w-72 md:max-w-96" />
                 <div className='space-y-4'>
                     <h1 className="text-3xl font-bold">{bookName}</h1>
                     <h3 className="card-title">
