@@ -8,4 +8,5 @@ export const ROUTES = {
     'REGISTER': '/register',
     'BUY': '/buy',
     'FAQ': '/faq',
+    'DASHBOARD': '/dashboard'
 }

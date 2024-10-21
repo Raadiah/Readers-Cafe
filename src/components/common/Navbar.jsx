@@ -48,6 +48,9 @@ function Navbar() {
                 <li>
                     <Link to={ROUTES.BOOKS}>Products</Link>
                 </li>
+                <li>
+                    <Link to={ROUTES.DASHBOARD}>Dashboard</Link>
+                </li>
                 {
                     user ? <>
                         <li onClick={handleLogout} className="border-t">
@@ -78,6 +81,9 @@ function Navbar() {
                 </li>
                 <li>
                     <Link to={ROUTES.BOOKS}>Products</Link>
+                </li>
+                <li>
+                    <Link to={ROUTES.DASHBOARD}>Dashboard</Link>
                 </li>
             </ul>
         </div>
