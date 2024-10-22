@@ -15,6 +15,7 @@ import Login from '../pages/Login.jsx';
 import Register from '../pages/Register.jsx';
 import PrivateRoute from './PrivateRoute.jsx';
 import baseUrl from './sites.js';
+import DashboardLayout from '../layouts/DashboardLayout.jsx';
 
 const router = createBrowserRouter([
     {
@@ -62,6 +63,13 @@ const router = createBrowserRouter([
         }
       ]
     },
+    {
+      path: ROUTES.DASHBOARD,
+      element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+      children: [
+
+      ]
+    }
 ]);
 
 export default router
