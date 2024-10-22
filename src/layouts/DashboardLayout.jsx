@@ -8,7 +8,10 @@ import Drawer from "../components/dashboard/Drawer"
 function DashboardLayout() {
     return (
         <div className="min-h-screen flex flex-col justify-between bg-body-pattern bg-repeat">
-            <Drawer></Drawer>
+            <Navbar></Navbar>
+            <div className="hidden lg:block">
+                <Drawer></Drawer>
+            </div>
             <DashboardContent></DashboardContent>
             <div className="mt-16">
             </div>

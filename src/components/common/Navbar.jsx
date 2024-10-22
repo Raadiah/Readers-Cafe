@@ -4,6 +4,8 @@ import { useContext } from "react";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../provider/AuthProvider";
 import User from "./User";
+import { FaUser, FaUsersLine } from "react-icons/fa6"
+import { FaBook, FaHeart, FaShoppingCart } from "react-icons/fa"
 
 function Navbar() {
   const ACTIVE_BUTTON_CLASS = 'rounded btn-active btn-ghost'
@@ -48,8 +50,37 @@ function Navbar() {
                 <li>
                     <Link to={ROUTES.BOOKS}>Products</Link>
                 </li>
-                <li>
-                    <Link to={ROUTES.DASHBOARD}>Dashboard</Link>
+                <li className="border-t">
+                    <Link to={ROUTES.DASHBOARD}>
+                        Dashboard
+                    </Link>
+                    <ul className="p-2">
+                        <li>
+                            <Link to={ROUTES.BOOKS}>
+                                Profile
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={ROUTES.BOOKS}>
+                                My Wishlist
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={ROUTES.BOOKS}>
+                                My Orders
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={ROUTES.BOOKS}>
+                                User List
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={ROUTES.BOOKS}>
+                                New Product
+                            </Link>
+                        </li>
+                    </ul>
                 </li>
                 {
                     user ? <>
@@ -83,7 +114,42 @@ function Navbar() {
                     <Link to={ROUTES.BOOKS}>Products</Link>
                 </li>
                 <li>
-                    <Link to={ROUTES.DASHBOARD}>Dashboard</Link>
+                    <Link className="hidden lg:block" to={ROUTES.DASHBOARD}>Dashboard</Link>
+                    <details className="lg:hidden">
+                        <summary>Dashboard</summary>
+                        <ul className="p-2 w-60">
+                            <li>
+                                <Link to={ROUTES.BOOKS}>
+                                    <FaUser></FaUser>
+                                    Profile
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={ROUTES.BOOKS}>
+                                    <FaHeart></FaHeart>
+                                    My Wishlist
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={ROUTES.BOOKS}>
+                                    <FaShoppingCart></FaShoppingCart>
+                                    My Orders
+                                </Link>
+                            </li>
+                            <li className="border-t">
+                                <Link to={ROUTES.BOOKS}>
+                                    <FaUsersLine></FaUsersLine>
+                                    User List
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={ROUTES.BOOKS}>
+                                    <FaBook></FaBook>
+                                    New Product
+                                </Link>
+                            </li>
+                        </ul>
+                    </details>
                 </li>
             </ul>
         </div>

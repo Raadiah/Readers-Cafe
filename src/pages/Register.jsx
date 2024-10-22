@@ -73,6 +73,7 @@ const Register = ()=>{
                 :
                 <>
                 <form className="space-y-2" onSubmit={handleRegister}>
+                    <div className="text-center pb-3 font-semibold">Welcome to Reader's Cafe!</div>
                     <label className="input input-bordered flex items-center gap-2">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

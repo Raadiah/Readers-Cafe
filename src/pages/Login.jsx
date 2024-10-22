@@ -77,7 +77,7 @@ const Login = ()=>{
                 :
                 <>
                     <form onSubmit={handleLogin} className="space-y-2">
-                        <div className="text-center pb-3">Login With Email</div>
+                        <div className="text-center pb-3 font-semibold">Please Login</div>
                         <label className="input input-bordered flex items-center gap-2">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -108,8 +108,8 @@ const Login = ()=>{
                             <button type="submit" className="btn btn-wide">Login</button>
                         </div>
                     </form>
-                    <div className="divider py-6">Or Login With</div>
-                    <div className="flex justify-center items-center gap-4">
+                    <div className="divider py-6 hidden">Or Login With</div>
+                    <div className="justify-center items-center gap-4 hidden">
                         <FaGoogle onClick={handleGoogleLogin} className="text-3xl text-red-600 cursor-pointer hover:text-red-700" title="Google"></FaGoogle>
                         <FaGithub onClick={handleGithubLogin} className="text-3xl cursor-pointer text-black hover:text-slate-700" title="GitHub"></FaGithub>
                     </div>

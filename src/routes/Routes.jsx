@@ -49,7 +49,7 @@ const router = createBrowserRouter([
         },
         {
           path: ROUTES.BOOKS,
-          element: <PrivateRoute><Books></Books></PrivateRoute>,
+          element: <Books></Books>,
           loader: ()=>fetch(`${baseUrl}/books`)
         },
         {
