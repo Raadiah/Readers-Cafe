@@ -12,6 +12,8 @@ export const ROUTES = {
     'PROFILE': '/dashboard/profile',
     'WISHLIST': '/dashboard/wishlist',
     'ORDERS': '/dashboard/orders',
-    'USERS': '/dashboard/users',
-    'NEW_BOOK': '/dashboard/book/new'
+    'USERS': '/dashboard/users/list',
+    'ALL_PRODUCTS': '/dashboard/books/list',
+    'NEW_BOOK': '/dashboard/book/new',
+    'PRODUCT_CATEGORY': '/dashboard/category'
 }

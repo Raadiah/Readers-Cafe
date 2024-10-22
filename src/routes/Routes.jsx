@@ -84,8 +84,16 @@ const router = createBrowserRouter([
           element: <div>Users Page</div>
         },
         {
+          path: ROUTES.ALL_PRODUCTS,
+          element: <div>All Books</div>
+        },
+        {
           path: ROUTES.NEW_BOOK,
           element: <div>New Book Page</div>
+        },
+        {
+          path: ROUTES.PRODUCT_CATEGORY,
+          element: <div>Product Category Page</div>
         }
       ]
     }

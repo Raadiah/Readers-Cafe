@@ -4,7 +4,7 @@ import { AuthContext } from "../../provider/AuthProvider"
 import User from "../common/User"
 import { useContext } from "react"
 import { FaUser, FaUsersLine } from "react-icons/fa6"
-import { FaBook, FaHeart, FaShoppingCart } from "react-icons/fa"
+import { FaBook, FaHeart, FaList, FaPlusSquare, FaShoppingCart } from "react-icons/fa"
 
 const Drawer = ()=>{
     return (
@@ -36,10 +36,22 @@ const Drawer = ()=>{
                             User List
                         </Link>
                     </li>
+                    <li className="border-t pt-2">
+                        <Link to={ROUTES.ALL_PRODUCTS}>
+                            <FaBook></FaBook>
+                            All Products
+                        </Link>
+                    </li>
                     <li>
                         <Link to={ROUTES.NEW_BOOK}>
-                            <FaBook></FaBook>
+                            <FaPlusSquare></FaPlusSquare>
                             New Product
+                        </Link>
+                    </li>
+                    <li>
+                        <Link to={ROUTES.PRODUCT_CATEGORY}>
+                            <FaList></FaList>
+                            Product Categories
                         </Link>
                     </li>
                 </ul>
