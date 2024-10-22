@@ -67,7 +67,26 @@ const router = createBrowserRouter([
       path: ROUTES.DASHBOARD,
       element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
       children: [
-
+        {
+          path: ROUTES.PROFILE,
+          element: <div>Profile Page</div>
+        },
+        {
+          path: ROUTES.WISHLIST,
+          element: <div>Wishlist Page</div>
+        },
+        {
+          path: ROUTES.ORDERS,
+          element: <div>Orders Page</div>
+        },
+        {
+          path: ROUTES.USERS,
+          element: <div>Users Page</div>
+        },
+        {
+          path: ROUTES.NEW_BOOK,
+          element: <div>New Book Page</div>
+        }
       ]
     }
 ]);

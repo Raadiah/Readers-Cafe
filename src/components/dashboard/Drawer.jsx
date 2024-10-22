@@ -9,35 +9,35 @@ import { FaBook, FaHeart, FaShoppingCart } from "react-icons/fa"
 const Drawer = ()=>{
     return (
         <div className="drawer">
-            <div className="min-h-screen mt-16">
+            <div className="min-h-screen">
                 <ul className="menu bg-white shadow-md min-h-full w-80 p-4">
                 {/* Sidebar content here */}
                     <li>
-                        <Link to={ROUTES.BOOKS}>
+                        <Link to={ROUTES.PROFILE}>
                             <FaUser></FaUser>
                             Profile
                         </Link>
                     </li>
                     <li>
-                        <Link to={ROUTES.BOOKS}>
+                        <Link to={ROUTES.WISHLIST}>
                             <FaHeart></FaHeart>
                             My Wishlist
                         </Link>
                     </li>
                     <li>
-                        <Link to={ROUTES.BOOKS}>
+                        <Link to={ROUTES.ORDERS}>
                             <FaShoppingCart></FaShoppingCart>
                             My Orders
                         </Link>
                     </li>
                     <li className="border-t">
-                        <Link to={ROUTES.BOOKS}>
+                        <Link to={ROUTES.USERS}>
                             <FaUsersLine></FaUsersLine>
                             User List
                         </Link>
                     </li>
                     <li>
-                        <Link to={ROUTES.BOOKS}>
+                        <Link to={ROUTES.NEW_BOOK}>
                             <FaBook></FaBook>
                             New Product
                         </Link>

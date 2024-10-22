@@ -56,27 +56,27 @@ function Navbar() {
                     </Link>
                     <ul className="p-2">
                         <li>
-                            <Link to={ROUTES.BOOKS}>
+                            <Link to={ROUTES.PROFILE}>
                                 Profile
                             </Link>
                         </li>
                         <li>
-                            <Link to={ROUTES.BOOKS}>
+                            <Link to={ROUTES.WISHLIST}>
                                 My Wishlist
                             </Link>
                         </li>
                         <li>
-                            <Link to={ROUTES.BOOKS}>
+                            <Link to={ROUTES.ORDERS}>
                                 My Orders
                             </Link>
                         </li>
                         <li>
-                            <Link to={ROUTES.BOOKS}>
+                            <Link to={ROUTES.USERS}>
                                 User List
                             </Link>
                         </li>
                         <li>
-                            <Link to={ROUTES.BOOKS}>
+                            <Link to={ROUTES.NEW_BOOK}>
                                 New Product
                             </Link>
                         </li>
@@ -119,31 +119,31 @@ function Navbar() {
                         <summary>Dashboard</summary>
                         <ul className="p-2 w-60">
                             <li>
-                                <Link to={ROUTES.BOOKS}>
+                                <Link to={ROUTES.PROFILE}>
                                     <FaUser></FaUser>
                                     Profile
                                 </Link>
                             </li>
                             <li>
-                                <Link to={ROUTES.BOOKS}>
+                                <Link to={ROUTES.WISHLIST}>
                                     <FaHeart></FaHeart>
                                     My Wishlist
                                 </Link>
                             </li>
                             <li>
-                                <Link to={ROUTES.BOOKS}>
+                                <Link to={ROUTES.ORDERS}>
                                     <FaShoppingCart></FaShoppingCart>
                                     My Orders
                                 </Link>
                             </li>
                             <li className="border-t">
-                                <Link to={ROUTES.BOOKS}>
+                                <Link to={ROUTES.USERS}>
                                     <FaUsersLine></FaUsersLine>
                                     User List
                                 </Link>
                             </li>
                             <li>
-                                <Link to={ROUTES.BOOKS}>
+                                <Link to={ROUTES.NEW_BOOK}>
                                     <FaBook></FaBook>
                                     New Product
                                 </Link>

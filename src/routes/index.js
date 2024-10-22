@@ -8,5 +8,10 @@ export const ROUTES = {
     'REGISTER': '/register',
     'BUY': '/buy',
     'FAQ': '/faq',
-    'DASHBOARD': '/dashboard'
+    'DASHBOARD': '/dashboard',
+    'PROFILE': '/dashboard/profile',
+    'WISHLIST': '/dashboard/wishlist',
+    'ORDERS': '/dashboard/orders',
+    'USERS': '/dashboard/users',
+    'NEW_BOOK': '/dashboard/book/new'
 }
