@@ -23,6 +23,7 @@ const Register = ()=>{
         const address = event.target.address.value;
         const password = event.target.password.value;
         const isAdmin = false;
+        const isBanned = false;
         const photoURL = "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png";
 
         const newUserProfile = {
@@ -33,7 +34,7 @@ const Register = ()=>{
         createUser(email, password)
         .then((user)=>{
             const uid = user?.user?.uid;
-            const userInfo = {email, name, phone, address, isAdmin, photoURL, uid}
+            const userInfo = {email, name, phone, address, isAdmin, isBanned, photoURL, uid}
 
             fetch(`${baseUrl}/user`, {
                 method: "POST",
