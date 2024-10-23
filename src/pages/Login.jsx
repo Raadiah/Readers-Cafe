@@ -26,7 +26,7 @@ const Login = ()=>{
         .then(()=>{
             toast.success('You are successfully logged in');
             setLoader(false);
-            navigate( state ? state : ROUTES.BOOKS );
+            navigate( state ? state : ROUTES.HOME );
         })
         .catch((error)=>{
             toast.error('Request could not be processed')

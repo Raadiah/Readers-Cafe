@@ -43,7 +43,7 @@ const Register = ()=>{
                 if(data?.acknowledged) {
                     toast.success("Successfully Registered")
                     setLoader(false);
-                    navigate(ROUTES.BOOKS)
+                    navigate(ROUTES.HOME)
                 } else {
                     console.error("DB: Data Insertion Error");
                     setLoader(false);
