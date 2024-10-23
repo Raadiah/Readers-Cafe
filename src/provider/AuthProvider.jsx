@@ -2,7 +2,6 @@ import { createContext, useEffect, useState } from "react"
 import { 
     getAuth, 
     createUserWithEmailAndPassword, 
-    updateProfile,
     signInWithPopup,
     signInWithEmailAndPassword,
     onAuthStateChanged,
@@ -21,10 +20,6 @@ const AuthProvider = ({children})=>{
     const createUser = (email, password)=>{
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password);
-    }
-
-    const updateUserProfile = (profile)=>{
-        return updateProfile(auth.currentUser, profile)
     }
 
     const loginWithEmailPassword = (email, password)=>{
@@ -76,7 +71,6 @@ const AuthProvider = ({children})=>{
         user,
         loading,
         createUser,
-        updateUserProfile,
         loginWithEmailPassword,
         loginWithGoogle,
         loginWithGitHub,

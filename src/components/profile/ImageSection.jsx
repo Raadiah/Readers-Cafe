@@ -1,7 +1,7 @@
 import { FaCamera } from "react-icons/fa"
 import Title from "../dashboard/Title"
 
-const ImageSection = ({displayName, photoURL, email})=>{
+const ImageSection = ({name, photoURL, email})=>{
     return (
         <div>
             <div className="bg-blue-100 h-40 w-full shadow-sm"></div>
@@ -19,7 +19,7 @@ const ImageSection = ({displayName, photoURL, email})=>{
                 </span>
             </div>
             <div className="flex flex-col items-center gap-2 my-4">
-                <span className="text-2xl">{displayName}</span>
+                <span className="text-2xl">{name}</span>
                 <span>{email}</span>
             </div>
         </div>

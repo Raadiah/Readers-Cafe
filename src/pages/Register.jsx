@@ -9,7 +9,7 @@ import baseUrl from "../routes/sites";
 
 const Register = ()=>{
     const [loader, setLoader] = useState(false);
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const { createUser } = useContext(AuthContext);
     const navigate = useNavigate();
 
     window.scrollTo(0,0);
@@ -26,11 +26,6 @@ const Register = ()=>{
         const isBanned = false;
         const photoURL = "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png";
 
-        const newUserProfile = {
-            displayName: event.target.username.value,
-            photoURL: photoURL
-        }
-
         createUser(email, password)
         .then((user)=>{
             const uid = user?.user?.uid;
@@ -46,16 +41,9 @@ const Register = ()=>{
             .then(res=>res.json())
             .then(data=>{
                 if(data?.acknowledged) {
-                    updateUserProfile(newUserProfile)
-                    .then(()=>{
-                        toast.success("Successfully Registered")
-                        setLoader(false);
-                        navigate(ROUTES.BOOKS)
-                    }).catch((error)=>{
-                        toast.error('Request could not be processed')
-                        setLoader(false);
-                        console.error(error);
-                    });
+                    toast.success("Successfully Registered")
+                    setLoader(false);
+                    navigate(ROUTES.BOOKS)
                 } else {
                     console.error("DB: Data Insertion Error");
                     setLoader(false);

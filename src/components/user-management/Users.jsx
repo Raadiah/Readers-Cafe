@@ -36,7 +36,7 @@ const Users = ()=>{
                             return(
                                 <tr className="max-w-full">
                                     <td className="w-72 text-ellipsis p-2">
-                                        <User key={email} displayName={name} photoURL={photoURL} showNameOnSmallDevice={true}></User>
+                                        <User key={email} name={name} photoURL={photoURL} showNameOnSmallDevice={true}></User>
                                     </td>
                                     <td className="w-24 text-ellipsis p-2">{email}</td>
                                     <td className="w-24 text-ellipsis p-2 text-center">
