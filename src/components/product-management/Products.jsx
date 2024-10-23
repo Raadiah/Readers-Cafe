@@ -1,6 +1,6 @@
 import { useLoaderData } from "react-router-dom"
 import Title from "../dashboard/Title";
-import { FaEdit, FaTrash } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
 import { FaTrashCan } from "react-icons/fa6";
 
 const Products = ()=>{

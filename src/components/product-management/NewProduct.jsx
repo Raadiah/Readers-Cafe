@@ -46,8 +46,6 @@ const NewProduct = ()=>{
                     available: true
                 };
 
-                console.log(product);
-
                 //Save product information to the database
                 const result = await fetch(`${baseUrl}/product`, {
                     method: 'POST',
