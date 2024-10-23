@@ -77,7 +77,7 @@ const Categories = ()=>{
                     <tr>
                     {
                         tableColumns.map((tableColumn, index)=>{
-                            return(<th key={index+1} className={`p-2 ${tableColumnsClass[index]}`}>{tableColumn}</th>)
+                            return(<th key={index+1} className={`p-2 border-b border-double ${tableColumnsClass[index]}`}>{tableColumn}</th>)
                         })
                     }
                     </tr>
@@ -87,8 +87,8 @@ const Categories = ()=>{
                         categories.map(({_id, category})=>{
                             return(
                                 <tr key={_id}>
-                                    <td>{category}</td>
-                                    <td className="flex gap-2">
+                                    <td className="p-2 border-b">{category}</td>
+                                    <td className="p-2 border-b flex gap-2">
                                         <button className="btn bg-green-200">
                                             <FaEdit></FaEdit> Edit
                                         </button>
