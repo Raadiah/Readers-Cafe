@@ -40,7 +40,7 @@ const Users = ()=>{
                                     </td>
                                     <td className="w-24 text-ellipsis p-2">{email}</td>
                                     <td className="w-24 text-ellipsis p-2 text-center">
-                                        <span className={`${(isAdmin ? "bg-pink-50" : "bg-lime-50")} p-2 text-xs rounded-3xl w-20`}>
+                                        <span className={`${(isAdmin ? "bg-pink-50" : "bg-lime-50")} flex items-center justify-center p-2 text-sm rounded-3xl w-20`}>
                                             {isAdmin ? 'Admin' : 'User'}
                                         </span>
                                     </td>

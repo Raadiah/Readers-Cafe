@@ -8,7 +8,7 @@ import { FaBook, FaHeart, FaList, FaPlusSquare, FaShoppingCart } from "react-ico
 
 const Drawer = ()=>{
     return (
-        <div className="drawer h-full">
+        <div className="drawer">
             <div className="h-full">
                 <ul className="menu bg-white shadow-md min-h-full w-80 p-4">
                 {/* Sidebar content here */}
