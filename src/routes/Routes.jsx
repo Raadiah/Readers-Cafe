@@ -59,7 +59,7 @@ const router = createBrowserRouter([
         {
           path: ROUTES.BOOK_DETAIL,
           element: <PrivateRoute><BookDetails></BookDetails></PrivateRoute>,
-          loader: ({params})=>fetch(`${baseUrl}/book/${params.id}`)
+          loader: ({params})=>fetch(`${baseUrl}/product/${params.id}`)
         },
         {
           path: '*',

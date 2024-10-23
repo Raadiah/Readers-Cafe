@@ -3,7 +3,7 @@ import Rating from "../common/Rating"
 import { FaDollarSign } from "react-icons/fa"
 
 const Book = (book)=>{
-    const {bookId, bookName, author, image, tags, category, rating, price} = book
+    const {_id, bookName, author, image, tags, category, rating, price} = book
 
     return (
         <div className="card bg-base-100 max-w-72 shrink h-full shadow-xl">
@@ -41,7 +41,7 @@ const Book = (book)=>{
                     <Link 
                     className="btn min-w-fit w-4/5 bg-white border border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white"
                     state={{book: book}} 
-                    to={`/products/${bookId}`}>Book Details</Link>
+                    to={`/products/${_id}`}>Book Details</Link>
                 </div>
             </div>
         </div>

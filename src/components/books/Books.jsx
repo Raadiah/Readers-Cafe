@@ -10,7 +10,7 @@ const Books = ()=>{
             <h1 className="text-center text-xl font-bold mb-8">Check out our latest books!</h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 w-fit gap-6">
             {
-                books?.map((book)=>(<Book key={book.id} {...book}></Book>))
+                books?.map((book)=>(<Book key={book._id} {...book}></Book>))
             }
             </div>
         </div>
