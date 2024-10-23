@@ -19,6 +19,7 @@ import DashboardLayout from '../layouts/DashboardLayout.jsx';
 import Products from '../components/product-management/Products.jsx';
 import Categories from '../components/product-management/Categories.jsx';
 import Users from '../components/user-management/Users.jsx';
+import NewProduct from '../components/product-management/NewProduct.jsx';
 
 const router = createBrowserRouter([
     {
@@ -53,7 +54,7 @@ const router = createBrowserRouter([
         {
           path: ROUTES.BOOKS,
           element: <Books></Books>,
-          loader: ()=>fetch(`${baseUrl}/books`)
+          loader: ()=>fetch(`${baseUrl}/products`)
         },
         {
           path: ROUTES.BOOK_DETAIL,
@@ -94,7 +95,7 @@ const router = createBrowserRouter([
         },
         {
           path: ROUTES.NEW_BOOK,
-          element: <div>New Book Page</div>
+          element: <NewProduct></NewProduct>
         },
         {
           path: ROUTES.PRODUCT_CATEGORY,
