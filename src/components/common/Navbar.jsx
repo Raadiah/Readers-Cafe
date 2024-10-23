@@ -57,7 +57,7 @@ function Navbar() {
                     </Link>
                 </li>
                 <li className="border-t">
-                    <Link to={ROUTES.DASHBOARD}>
+                    <Link to={ROUTES.PROFILE}>
                         <FaCog></FaCog>
                         Dashboard
                     </Link>
@@ -141,7 +141,7 @@ function Navbar() {
                     <Link to={ROUTES.BOOKS}>Products</Link>
                 </li>
                 <li>
-                    <Link className="hidden lg:block" to={ROUTES.DASHBOARD}>Dashboard</Link>
+                    <Link className="hidden lg:block" to={ROUTES.PROFILE}>Dashboard</Link>
                     <details className="lg:hidden">
                         <summary>Dashboard</summary>
                         <ul className="p-2 w-60">
@@ -195,7 +195,7 @@ function Navbar() {
         {
             user ? <>
                 <div className="navbar-end">
-                    <User key={user} {...user}></User>
+                    <User key={user} {...user} showNameOnSmallDevice={false}></User>
                     <button
                     onClick={handleLogout}
                     className="btn hidden md:flex">Log Out</button>

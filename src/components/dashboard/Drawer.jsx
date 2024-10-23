@@ -30,13 +30,15 @@ const Drawer = ()=>{
                             My Orders
                         </Link>
                     </li>
-                    <li className="border-t">
+                    <div className="divider"></div>
+                    <li>
                         <Link to={ROUTES.USERS}>
                             <FaUsersLine></FaUsersLine>
                             User List
                         </Link>
                     </li>
-                    <li className="border-t pt-2">
+                    <div className="divider"></div>
+                    <li>
                         <Link to={ROUTES.ALL_PRODUCTS}>
                             <FaBook></FaBook>
                             All Products

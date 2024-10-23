@@ -23,13 +23,14 @@ const Register = ()=>{
         const address = event.target.address.value;
         const password = event.target.password.value;
         const isAdmin = false;
+        const photoURL = "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png";
 
         const newUserProfile = {
             displayName: event.target.username.value,
-            photoURL: "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"
+            photoURL: photoURL
         }
 
-        const user = {email, name, phone, address, isAdmin}
+        const user = {email, name, phone, address, isAdmin, photoURL}
 
         createUser(email, password)
         .then(()=>{

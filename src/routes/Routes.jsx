@@ -16,6 +16,9 @@ import Register from '../pages/Register.jsx';
 import PrivateRoute from './PrivateRoute.jsx';
 import baseUrl from './sites.js';
 import DashboardLayout from '../layouts/DashboardLayout.jsx';
+import Products from '../components/product-management/Products.jsx';
+import Categories from '../components/product-management/Categories.jsx';
+import Users from '../components/user-management/Users.jsx';
 
 const router = createBrowserRouter([
     {
@@ -81,11 +84,13 @@ const router = createBrowserRouter([
         },
         {
           path: ROUTES.USERS,
-          element: <div>Users Page</div>
+          element: <Users></Users>,
+          loader: ()=>fetch(`${baseUrl}/users`)
         },
         {
           path: ROUTES.ALL_PRODUCTS,
-          element: <div>All Books</div>
+          element: <Products></Products>,
+          loader: ()=>fetch(`${baseUrl}/products`)
         },
         {
           path: ROUTES.NEW_BOOK,
@@ -93,7 +98,8 @@ const router = createBrowserRouter([
         },
         {
           path: ROUTES.PRODUCT_CATEGORY,
-          element: <div>Product Category Page</div>
+          element: <Categories></Categories>,
+          loader: ()=>fetch(`${baseUrl}/categories`)
         }
       ]
     }
