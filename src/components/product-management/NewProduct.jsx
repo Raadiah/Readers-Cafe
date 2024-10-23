@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Title from "../dashboard/Title"
 import toast from "react-hot-toast";
 import baseUrl from "../../routes/sites";
 
 const NewProduct = ()=>{
+    const [categories, setCategories] = useState([]);
+
     const [formData, setFormData] = useState({
         bookName: '',
         author: '',
@@ -79,48 +81,82 @@ const NewProduct = ()=>{
         setFormData({ ...formData, image: e.target.files[0] });
     };
 
+    useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                const res = await fetch(`${baseUrl}/categories`);
+                const data = await res.json();
+                setCategories(data);
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            }
+        };
+
+        fetchCategories();
+    }, [])
+
     return(<div className="p-8">
         <Title title={'Add New Book'}></Title>
         <div>
             <form className="p-8 rounded-lg border shadow-sm" onSubmit={handleNewBook}>
-                <span className="text-lg label-text">Book Name</span>
-                <label className="input input-bordered flex items-center gap-2 my-2 ">
-                    <input name="bookName" type="text" className="grow" onChange={handleInputChange} />
+                <span className="text-base label-text">Book Name</span>
+                <label className="border p-2 rounded-lg flex items-center gap-2 my-2 ">
+                    <input name="bookName" type="text" className="grow outline-none" onChange={handleInputChange} />
                 </label>
-                <span className="text-lg label-text">Author</span>
-                <label className="input input-bordered flex items-center gap-2 my-2 ">
-                    <input name="author" type="text" className="grow" onChange={handleInputChange} />
+                <span className="text-base label-text">Author</span>
+                <label className="border p-2 rounded-lg flex items-center gap-2 my-2 ">
+                    <input name="author" type="text" className="grow outline-none" onChange={handleInputChange} />
                 </label>
-                <span className="text-lg label-text">Category</span>
-                <label className="input input-bordered flex items-center gap-2 my-2 ">
-                    <input name="category" type="text" className="grow" onChange={handleInputChange} />
-                </label>
-                <span className="text-lg label-text">Tags <span className="text-sm ml-2">(Maximum three, separated by comma)</span></span>
-                <label className="input input-bordered flex items-center gap-2 my-2 ">
-                    <input name="tags" type="text" className="grow" onChange={handleInputChange} />
-                </label>
-                <span className="text-lg label-text">Price</span>
-                <label className="input input-bordered flex items-center gap-2 my-2 ">
-                    <input name="price" type="number" className="grow" onChange={handleInputChange} />
-                </label>
-                <span className="text-lg label-text">Total Pages</span>
-                <label className="input input-bordered flex items-center gap-2 my-2 ">
-                    <input name="totalPages" type="text" className="grow" onChange={handleInputChange} />
-                </label>
-                <span className="text-lg label-text">Publisher</span>
-                <label className="input input-bordered flex items-center gap-2 my-2 ">
-                    <input name="publisher" type="text" className="grow" onChange={handleInputChange} />
-                </label>
-                <span className="text-lg label-text">Year of Publishing</span>
-                <label className="input input-bordered flex items-center gap-2 my-2 ">
-                    <input name="yearOfPublishing" type="number" min={1000} max={2024} className="grow" onChange={handleInputChange} />
-                </label>
-                <span className="text-lg label-text">Image</span>
-                <label className="input input-bordered flex items-center gap-2 my-2 ">
-                    <input
-                    onChange={handleFileChange}
-                    type="file" className="grow" />
-                </label>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6">
+                    <div>
+                        <span className="text-base label-text">Category</span>
+                        <label className="border p-2 rounded-lg flex items-center gap-2 my-2 ">
+                            <select className="grow outline-none" onChange={handleInputChange}>
+                                {categories.map(({category})=>{
+                                    return <option value={category}>{category}</option>
+                                })}
+                            </select>
+                        </label>
+                    </div>
+                    <div>
+                        <span className="text-base label-text">Tags <span className="text-sm ml-2">(Maximum three, separated by comma)</span></span>
+                        <label className="border p-2 rounded-lg flex items-center gap-2 my-2 ">
+                            <input name="tags" type="text" className="grow outline-none" onChange={handleInputChange} />
+                    </label>
+                    </div>
+                    <div>
+                        <span className="text-base label-text">Price</span>
+                        <label className="border p-2 rounded-lg flex items-center gap-2 my-2 ">
+                            <input name="price" type="number" className="grow outline-none" onChange={handleInputChange} />
+                        </label>
+                    </div>
+                    <div>
+                        <span className="text-base label-text">Total Pages</span>
+                        <label className="border p-2 rounded-lg flex items-center gap-2 my-2 ">
+                            <input name="totalPages" type="text" className="grow outline-none" onChange={handleInputChange} />
+                        </label> 
+                    </div>
+                    <div>
+                        <span className="text-base label-text">Publisher</span>
+                        <label className="border p-2 rounded-lg flex items-center gap-2 my-2 ">
+                            <input name="publisher" type="text" className="grow outline-none" onChange={handleInputChange} />
+                        </label>
+                    </div>
+                    <div>
+                        <span className="text-base label-text">Year of Publishing</span>
+                        <label className="border p-2 rounded-lg flex items-center gap-2 my-2 ">
+                            <input name="yearOfPublishing" type="number" min={1000} max={2024} className="grow outline-none" onChange={handleInputChange} />
+                        </label>                        
+                    </div>
+                </div>
+                <div>
+                    <span className="text-base label-text">Image</span>
+                    <label className="border p-2 rounded-lg flex items-center gap-2 my-2 ">
+                        <input
+                        onChange={handleFileChange}
+                        type="file" className="grow outline-none" />
+                    </label>
+                </div>
                 <div className="flex justify-center">
                     <input type="submit" className="btn btn-wide" value='Save Product'></input>
                 </div>
