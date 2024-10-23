@@ -9,6 +9,7 @@ import {
     signOut
 } from "firebase/auth";
 import app from "../Firebase/firebase.init";
+import baseUrl from "../routes/sites";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -47,9 +48,23 @@ const AuthProvider = ({children})=>{
     }
 
     useEffect(()=>{
-        const unsubscribe = onAuthStateChanged(auth, (currentUser)=>{
-            setUser(currentUser);
-            setLoading(false)
+        const unsubscribe = onAuthStateChanged(auth, async (currentUser)=>{
+            if(currentUser) {
+                try {
+                    const res = await fetch(
+                      `${baseUrl}/user/${currentUser.uid}`
+                    );
+                    if (!res.ok) {
+                      throw new Error("Failed to fetch user data.");
+                    }
+                    const data = await res.json();
+                    setUser(data);
+                  } catch (error) {
+                    console.error("Error fetching user data:", error.message);
+                  }
+            } else {
+                setUser(currentUser);
+            }
         })
 
         return ()=>{

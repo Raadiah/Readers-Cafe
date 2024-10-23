@@ -20,6 +20,7 @@ import Products from '../components/product-management/Products.jsx';
 import Categories from '../components/product-management/Categories.jsx';
 import Users from '../components/user-management/Users.jsx';
 import NewProduct from '../components/product-management/NewProduct.jsx';
+import Profile from '../components/profile/Profile.jsx';
 
 const router = createBrowserRouter([
     {
@@ -73,7 +74,7 @@ const router = createBrowserRouter([
       children: [
         {
           path: ROUTES.PROFILE,
-          element: <div>Profile Page</div>
+          element: <Profile></Profile>
         },
         {
           path: ROUTES.WISHLIST,
