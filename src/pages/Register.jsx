@@ -30,29 +30,35 @@ const Register = ()=>{
             photoURL: photoURL
         }
 
-        const user = {email, name, phone, address, isAdmin, photoURL}
-
         createUser(email, password)
-        .then(()=>{
-            updateUserProfile(newUserProfile)
-            .then(()=>{
-                fetch(`${baseUrl}/user`, {
-                    method: "POST",
-                    headers: {
-                        "content-type": "application/json"
-                    },
-                    body: JSON.stringify(user)
-                })
-                .then(res=>res.json())
-                .then(data=>{
-                    if(data?.acknowledged) {
+        .then((user)=>{
+            const uid = user?.user?.uid;
+            const userInfo = {email, name, phone, address, isAdmin, photoURL, uid}
+
+            fetch(`${baseUrl}/user`, {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(userInfo)
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                if(data?.acknowledged) {
+                    updateUserProfile(newUserProfile)
+                    .then(()=>{
                         toast.success("Successfully Registered")
+                        setLoader(false);
                         navigate(ROUTES.BOOKS)
-                    } else {
-                        console.error("DB: Data Insertion Error");
-                    }
+                    }).catch((error)=>{
+                        toast.error('Request could not be processed')
+                        setLoader(false);
+                        console.error(error);
+                    });
+                } else {
+                    console.error("DB: Data Insertion Error");
                     setLoader(false);
-                })
+                }
             })
         })
         .catch((error)=>{
