@@ -40,11 +40,12 @@ const Users = ()=>{
                                     </td>
                                     <td className="w-24 text-ellipsis p-2">{email}</td>
                                     <td className="w-24 text-ellipsis p-2 text-center">
-                                        <span className={`${(isAdmin ? "bg-pink-50" : "bg-lime-50")} flex items-center justify-center p-2 text-sm rounded-3xl w-20`}>
+                                        <div 
+                                        className={`${(isAdmin ? "bg-pink-50" : "bg-lime-50")} text-xs rounded-2xl w-24 border px-2 py-1 overflow-hidden text-ellipsis cursor-default`}>
                                             {isAdmin ? 'Admin' : 'User'}
-                                        </span>
+                                        </div>
                                     </td>
-                                    <td className="flex gap-2 p-2">
+                                    <td className="flex gap-2">
                                         <button className="btn" onClick={(id=_id)=>handleUserEdit(id)}>
                                             <FaEdit></FaEdit> Edit
                                         </button>

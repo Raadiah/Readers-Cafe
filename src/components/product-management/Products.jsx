@@ -32,12 +32,14 @@ const Products = ()=>{
                                     </td>
                                     <td>{ author }</td>
                                     <td className="text-center">
-                                        <span className="flex items-center justify-center text-sm p-2 w-32 text-ellipsis bg-pink-100 rounded-2xl">
+                                        <div 
+                                        className="text-xs rounded-2xl w-24 border p-2 overflow-hidden text-ellipsis bg-pink-50 cursor-default"
+                                        title={category}>
                                         { category }
-                                        </span>
+                                        </div>
                                     </td>
                                     <td className="text-center">${ price }</td>
-                                    <td className="flex gap-2 p-2">
+                                    <td className="flex gap-2">
                                         <button className="btn bg-green-200">
                                             <FaEdit></FaEdit> Edit
                                         </button>

@@ -5,29 +5,39 @@ import { FaTrashCan } from "react-icons/fa6";
 import { useState } from "react";
 import baseUrl from "../../routes/sites";
 import toast from "react-hot-toast";
+import ErrorMessage from "../common/ErrorMessage";
 
 const Categories = ()=>{
-    const {newCategoryError, setNewCategoryError} = useState(null);
+    const [newCategoryError, setNewCategoryError] = useState(false);
     const categories = useLoaderData();
     const tableColumns = ['Category', 'Action'];
     const tableColumnsClass = ['text-start min-w-60', 'min-w-24'];
+    const categoryErrorMessage = 'Category already present';
 
     const checkDuplicateCategory = (newCategory)=>{
-        if(categories.find((category)=>category.category==newCategory)) {
-            toast.error('Category already present');
-            return true;
-        } 
+        if(categories.find(({category})=>category?.toLowerCase()==newCategory?.toLowerCase().replaceAll(" ", ""))) {
+            setNewCategoryError(true)
+        } else setNewCategoryError(false);
+    }
 
-        return false;
+    const handleNewCategoryInput = (event)=>{
+        const { value:category } = event.target;
+        checkDuplicateCategory(category)
     }
 
     const handleNewCategory = async (event)=>{
         event.preventDefault();
+        const newCategory = event.target.category.value?.replaceAll(" ", "")
         const category = {
-            category: event.target.category.value
+            category: newCategory
         }
 
-        if (checkDuplicateCategory(category.category)) return;
+        if(!category.category) return;
+
+        if (newCategoryError) {
+            toast.error(categoryErrorMessage);
+            return;
+        };
 
         const result = await fetch(`${baseUrl}/category`, {
             method: 'POST',
@@ -48,9 +58,19 @@ const Categories = ()=>{
     return(
         <div className="p-8">
             <Title title='Book Categories'></Title>
-            <form onSubmit={handleNewCategory} className="flex gap-2 mb-4">
-                <input name="category" className="w-96 border-2 p-2 rounded-2xl"></input>
-                <button className="btn" type="submit">Add New</button>
+            <form onSubmit={handleNewCategory} className="mb-8">
+                <div className="flex gap-2 mb-4">
+                    <input 
+                    name="category" 
+                    className="w-96 border-2 p-2 rounded-lg"
+                    onChange={handleNewCategoryInput}></input>
+                    <button className="btn" type="submit">
+                        Add New
+                    </button>
+                </div>
+                {
+                    newCategoryError && <div className="flex w-96 mb-8"><ErrorMessage message={categoryErrorMessage}></ErrorMessage></div> 
+                }
             </form>
             <table>
                 <thead>
@@ -68,7 +88,7 @@ const Categories = ()=>{
                             return(
                                 <tr key={_id}>
                                     <td>{category}</td>
-                                    <td className="flex gap-2 p-2">
+                                    <td className="flex gap-2">
                                         <button className="btn bg-green-200">
                                             <FaEdit></FaEdit> Edit
                                         </button>
