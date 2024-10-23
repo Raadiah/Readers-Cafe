@@ -24,8 +24,8 @@ const Book = (book)=>{
                     <div className="card-actions">  
                         <Rating ratingValue={rating}></Rating> 
                     </div>
-                    <div className="card-actions flex items-center font-semibold">  
-                        $ {price}
+                    <div className="card-actions flex items-center text-lg font-semibold">  
+                        ${price}
                     </div>
                 </div>
                 <div className="card-actions">  
