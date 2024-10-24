@@ -58,7 +58,7 @@ const router = createBrowserRouter([
           loader: ({params})=>fetch(`${baseUrl}/products/${params.category ? params.category : ''}`)
         },
         {
-          path: ROUTES.BOOK_DETAIL,
+          path: `${ROUTES.BOOK_DETAIL}/:id`,
           element: <PrivateRoute><BookDetails></BookDetails></PrivateRoute>,
           loader: ({params})=>fetch(`${baseUrl}/product/${params.id}`)
         },
