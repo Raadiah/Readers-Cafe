@@ -5,7 +5,7 @@ import Footer from "../components/common/Footer"
 
 function MainLayout() {
     return (
-        <div className="min-h-screen flex flex-col justify-between bg-body-pattern bg-repeat">
+        <div className="min-h-screen flex flex-col justify-between">
             <Navbar></Navbar>
             <div className="mt-16">
                 <Outlet></Outlet>
