@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Title from "../dashboard/Title"
 import toast from "react-hot-toast";
 import baseUrl from "../../routes/sites";
+import { FaSave } from "react-icons/fa";
 
 const NewProduct = ()=>{
     const [categories, setCategories] = useState([]);
@@ -98,20 +99,20 @@ const NewProduct = ()=>{
     return(<div className="p-8">
         <Title title={'Add New Book'}></Title>
         <div>
-            <form className="p-8 rounded-lg border shadow-sm" onSubmit={handleNewBook}>
+            <form className="p-8 rounded-lg border shadow-md" onSubmit={handleNewBook}>
                 <span className="text-base label-text">Book Name</span>
                 <label className="border p-2 rounded-lg flex items-center gap-2 my-2 ">
-                    <input name="bookName" type="text" className="grow outline-none" onChange={handleInputChange} />
+                    <input name="bookName" type="text" className="grow outline-none" onChange={handleInputChange} required/>
                 </label>
                 <span className="text-base label-text">Author</span>
                 <label className="border p-2 rounded-lg flex items-center gap-2 my-2 ">
-                    <input name="author" type="text" className="grow outline-none" onChange={handleInputChange} />
+                    <input name="author" type="text" className="grow outline-none" onChange={handleInputChange} required/>
                 </label>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6">
                     <div>
                         <span className="text-base label-text">Category</span>
                         <label className="border p-2 rounded-lg flex items-center gap-2 my-2 ">
-                            <select name="category" className="grow outline-none" onChange={handleInputChange}>
+                            <select name="category" className="grow outline-none" onChange={handleInputChange} required>
                                 {categories.map(({category})=>{
                                     return <option value={category}>{category}</option>
                                 })}
@@ -127,25 +128,25 @@ const NewProduct = ()=>{
                     <div>
                         <span className="text-base label-text">Price</span>
                         <label className="border p-2 rounded-lg flex items-center gap-2 my-2 ">
-                            <input name="price" type="number" className="grow outline-none" onChange={handleInputChange} />
+                            <input name="price" type="number" className="grow outline-none" onChange={handleInputChange} required/>
                         </label>
                     </div>
                     <div>
                         <span className="text-base label-text">Total Pages</span>
                         <label className="border p-2 rounded-lg flex items-center gap-2 my-2 ">
-                            <input name="totalPages" type="text" className="grow outline-none" onChange={handleInputChange} />
+                            <input name="totalPages" type="text" className="grow outline-none" onChange={handleInputChange} required/>
                         </label> 
                     </div>
                     <div>
                         <span className="text-base label-text">Publisher</span>
                         <label className="border p-2 rounded-lg flex items-center gap-2 my-2 ">
-                            <input name="publisher" type="text" className="grow outline-none" onChange={handleInputChange} />
+                            <input name="publisher" type="text" className="grow outline-none" onChange={handleInputChange} required/>
                         </label>
                     </div>
                     <div>
                         <span className="text-base label-text">Year of Publishing</span>
                         <label className="border p-2 rounded-lg flex items-center gap-2 my-2 ">
-                            <input name="yearOfPublishing" type="number" min={1000} max={2024} className="grow outline-none" onChange={handleInputChange} />
+                            <input name="yearOfPublishing" type="number" min={1000} max={2024} className="grow outline-none" onChange={handleInputChange} required/>
                         </label>                        
                     </div>
                 </div>
@@ -154,11 +155,17 @@ const NewProduct = ()=>{
                     <label className="border p-2 rounded-lg flex items-center gap-2 my-2 ">
                         <input
                         onChange={handleFileChange}
-                        type="file" className="grow outline-none" />
+                        type="file" className="grow outline-none" required/>
                     </label>
                 </div>
-                <div className="flex justify-center">
-                    <input type="submit" className="btn btn-wide" value='Save Product'></input>
+                <div className="flex justify-center my-10">
+                    <button 
+                    type="submit" 
+                    className="btn bg-white border border-teal-600 text-teal-600 
+                    hover:bg-teal-600 hover:text-white">
+                        <FaSave></FaSave>
+                        Save Product
+                    </button>
                 </div>
             </form>
         </div>
