@@ -3,6 +3,7 @@ import Rating from "../common/Rating"
 import { FaCartPlus, FaHeart, FaDollarSign } from 'react-icons/fa';
 import toast from 'react-hot-toast';
 import { useState } from 'react';
+import BuyNowModal from './Buy/BuyNowModal';
 
 const BookDetails = ()=>{
     const [ toastMessage, setToastMessage ] = useState('');
@@ -13,11 +14,15 @@ const BookDetails = ()=>{
         toast.success(`${bookName} has been successfully added to the Wishlist`);
     }
 
+    function handleBuyNow(){
+        document.getElementById('buy_now_modal').showModal()
+    }
+
     function handleCartToast() {
         toast.success(`${bookName} has been successfully added to the Cart`);
     }
     
-    return (
+    return (<>
         <div className="hero max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl m-auto">
             <div className="border hero-content md:mt-24 md:mb-16 mx-auto bg-white rounded-md min-h-2/3 flex-col lg:flex-row shadow-lg">
                 <img
@@ -54,17 +59,20 @@ const BookDetails = ()=>{
                             Wish to Read
                         </button>
                         <button 
-                        onClick={handleCartToast} 
+                        onClick={handleBuyNow} 
                         className="btn bg-white border border-teal-600 text-teal-600 
                         hover:bg-teal-600 hover:text-white">
                             <FaCartPlus></FaCartPlus>
-                            Add to Cart
+                            Buy Now
                         </button>
                     </div>
                 </div>
             </div>
         </div>
-    )
+        <dialog id="buy_now_modal" className="modal">
+            <BuyNowModal bookName={bookName}></BuyNowModal>
+        </dialog>
+    </>)
 }
 
 export default BookDetails
