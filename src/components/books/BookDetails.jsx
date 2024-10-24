@@ -7,7 +7,8 @@ import BuyNowModal from './Buy/BuyNowModal';
 
 const BookDetails = ()=>{
     const [ toastMessage, setToastMessage ] = useState('');
-    const { bookId, review, totalPages, publisher, yearOfPublishing, bookName, author, image, tags, category, rating, price } = useLoaderData();
+    const bookDetails = useLoaderData()
+    const { _id, review, totalPages, publisher, yearOfPublishing, bookName, author, image, tags, category, rating, price } = bookDetails;
     window.scrollTo(0,0);
 
     function handleReadToast() {
@@ -70,7 +71,7 @@ const BookDetails = ()=>{
             </div>
         </div>
         <dialog id="buy_now_modal" className="modal">
-            <BuyNowModal bookName={bookName}></BuyNowModal>
+            <BuyNowModal {...bookDetails}></BuyNowModal>
         </dialog>
     </>)
 }
