@@ -21,6 +21,7 @@ import Categories from '../components/product-management/Categories.jsx';
 import Users from '../components/user-management/Users.jsx';
 import NewProduct from '../components/product-management/NewProduct.jsx';
 import Profile from '../components/profile/Profile.jsx';
+import MyOrders from '../components/order-management/my-orders/MyOrders.jsx';
 
 const router = createBrowserRouter([
     {
@@ -82,7 +83,7 @@ const router = createBrowserRouter([
         },
         {
           path: ROUTES.ORDERS,
-          element: <div>Orders Page</div>
+          element: <MyOrders></MyOrders>
         },
         {
           path: ROUTES.USERS,
