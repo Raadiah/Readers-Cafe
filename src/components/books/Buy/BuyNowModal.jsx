@@ -16,7 +16,7 @@ const BuyNowModal = ({_id, bookName, author, image, price})=>{
         const paymentMethod = paymentMethods[event.target.paymentMethod.value]
 
         const orderInfo = {
-            customer_uid: uid,
+            user_uid: uid,
             customerName: name,
             email: email,
             deliveryAddress,

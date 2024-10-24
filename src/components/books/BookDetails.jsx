@@ -2,25 +2,52 @@ import { useLoaderData } from 'react-router-dom';
 import Rating from "../common/Rating"
 import { FaCartPlus, FaHeart, FaDollarSign } from 'react-icons/fa';
 import toast from 'react-hot-toast';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import BuyNowModal from './Buy/BuyNowModal';
+import { AuthContext } from '../../provider/AuthProvider';
+import baseUrl from '../../routes/sites';
 
 const BookDetails = ()=>{
-    const [ toastMessage, setToastMessage ] = useState('');
+    const {user} = useContext(AuthContext)
     const bookDetails = useLoaderData()
     const { _id, review, totalPages, publisher, yearOfPublishing, bookName, author, image, tags, category, rating, price } = bookDetails;
+    const {uid, email} = user;
     window.scrollTo(0,0);
 
-    function handleReadToast() {
-        toast.success(`${bookName} has been successfully added to the Wishlist`);
+    const handleWishlist = async ()=> {
+        const wishlistInfo = {
+            user_uid: uid,
+            email,
+            bookId: _id,
+            bookName,
+            author,
+            image,
+            price
+        }
+
+        try{
+            const result = await fetch(`${baseUrl}/wishlist`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(wishlistInfo)
+            })
+    
+            const data = await result.json();
+            if (data.acknowledged) {
+                toast.success(`${bookName} has been successfully added to the Wishlist`);
+            } else {
+                toast.error('An error occurred while adding the book to the wishlist.');
+            }
+        } catch(error) {
+            console.error('Failed to add product to wishlist:', error);
+            toast.error('An error occurred while adding the book to the wishlist.');
+        }
     }
 
     function handleBuyNow(){
         document.getElementById('buy_now_modal').showModal()
-    }
-
-    function handleCartToast() {
-        toast.success(`${bookName} has been successfully added to the Cart`);
     }
     
     return (<>
@@ -55,7 +82,7 @@ const BookDetails = ()=>{
                         <span className='col-span-2'>{yearOfPublishing}</span>
                     </div>
                     <div className='flex justify-center gap-4'>
-                        <button onClick={handleReadToast} className="btn btn-outline">
+                        <button onClick={handleWishlist} className="btn btn-outline">
                             <FaHeart></FaHeart>
                             Wish to Read
                         </button>
