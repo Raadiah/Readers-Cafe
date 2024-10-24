@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import Rating from "../common/Rating"
-import { FaDollarSign } from "react-icons/fa"
+import { ROUTES } from "../../routes"
 
 const Book = (book)=>{
     const {_id, bookName, author, image, tags, category, rating, price} = book
@@ -15,7 +15,9 @@ const Book = (book)=>{
             <div className="card-body">
                 <div className="md:flex items-center justify-between">
                     <div className="font-bold text-xl text-ellipsis line-clamp-1 overflow-hidden mr-2">{ bookName }</div>
-                    <div className="badge bg-pink-300 min-w-content text-ellipsis line-clamp-1">{category}</div>
+                    <Link 
+                    to={`${ROUTES.BOOKS}/${category}`}
+                    className="badge bg-pink-300 text-ellipsis line-clamp-1 cursor-pointer">{category}</Link>
                 </div>
                 <h3 className="card">
                 {author}

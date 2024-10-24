@@ -53,9 +53,9 @@ const router = createBrowserRouter([
           element: <Register></Register>
         },
         {
-          path: ROUTES.BOOKS,
+          path: `${ROUTES.BOOKS}/:category?`,
           element: <Books></Books>,
-          loader: ()=>fetch(`${baseUrl}/products`)
+          loader: ({params})=>fetch(`${baseUrl}/products/${params.category ? params.category : ''}`)
         },
         {
           path: ROUTES.BOOK_DETAIL,
