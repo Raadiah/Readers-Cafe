@@ -1,12 +1,50 @@
 import { useState, useEffect } from "react";
 import baseUrl from "../../routes/sites";
+import toast from "react-hot-toast";
 
 const EditProductModal = ({_id, bookName, author, totalPages, publisher, category, tags, image, yearOfPublishing, price})=>{
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState(category)
-    const tagString = tags?.join()
-    const handleUpdateProduct = ()=>{
 
+    const tagString = tags?.join()
+
+    const handleUpdateProduct = async(event)=>{
+        event.preventDefault();
+
+        const bookName = event.target.bookName.value;
+        const author = event.target.author.value;
+        const totalPages = event.target.totalPages.value;
+        const category = selectedCategory;
+        const tags = event.target.tags.value;
+        const publisher = event.target.publisher.value;
+        const yearOfPublishing = event.target.yearOfPublishing.value;
+        const price = event.target.price.value;
+
+        const product = {
+            bookName,
+            author,
+            totalPages,
+            category,
+            tags: tags?.split(',').slice(0, 3),
+            publisher: publisher,
+            yearOfPublishing: yearOfPublishing,
+            price: price,
+        };
+
+        const result = await fetch(`${baseUrl}/product/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(product)
+        });
+
+        const data = await result.json();
+        if (data.acknowledged) {
+            toast.success(`${bookName} is updated successfully`);
+        } else {
+            toast.error('Failed to update product.');
+        }
     }
 
     useEffect(() => {
@@ -77,7 +115,10 @@ const EditProductModal = ({_id, bookName, author, totalPages, publisher, categor
                         </select>
                     </span>
                     <span 
-                    className='col-span-1 font-semibold'>Tags <span className="text-xs font-light">(Maximum 3, seperate by commas)</span></span>
+                        className='col-span-1 font-semibold'>
+                        Tags   <br />
+                        <span className="text-xs font-light">(Maximum 3, seperate by commas)</span>
+                    </span>
                     <span className='col-span-2 flex'>
                         <input 
                         name="tags" 
@@ -89,18 +130,21 @@ const EditProductModal = ({_id, bookName, author, totalPages, publisher, categor
                     <span className='col-span-1 font-semibold'>Publisher</span>
                     <span className='col-span-2 flex'>
                         <input 
+                        name="publisher"
                         defaultValue={publisher}
                         className="grow p-1 border rounded-md"></input>
                     </span>
                     <span className='col-span-1 font-semibold'>Year of Publishing</span>
                     <span className='col-span-2 flex'>
                         <input 
+                        name="yearOfPublishing"
                         defaultValue={yearOfPublishing}
                         className="grow p-1 border rounded-md"></input>
                     </span>
                     <span className='col-span-1 font-semibold'>Price</span>
                     <span className='col-span-2 flex'>
                         <input 
+                        name="price"
                         defaultValue={price}
                         className="grow p-1 border rounded-md"></input>
                     </span>
