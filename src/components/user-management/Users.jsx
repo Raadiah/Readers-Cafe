@@ -5,6 +5,8 @@ import { FaShield } from "react-icons/fa6";
 import User from "../common/User";
 import EditUserModal from "./EditUserModal";
 import { useState } from "react";
+import baseUrl from "../../routes/sites";
+import toast from "react-hot-toast";
 
 const Users = ()=>{
     const [selectedUser, setSelectedUser] = useState(null);
@@ -18,7 +20,25 @@ const Users = ()=>{
     }
 
     const handleUserRole = (id) => {
-        alert(_id);
+        const user = users.find(({uid})=>uid==id);
+        const isAdmin = user.isAdmin ? false : true
+        const userInfo = {isAdmin} 
+
+        fetch(`${baseUrl}/user/${id}`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(userInfo)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if(data?.acknowledged) {
+                toast.success("Successfully updated user role")
+            } else {
+                console.error("DB: Error while updating user role");
+            }
+        })
     }
 
     return(<div className="p-8">
@@ -49,12 +69,12 @@ const Users = ()=>{
                                             {isAdmin ? 'Admin' : 'User'}
                                         </div>
                                     </td>
-                                    <td className="flex gap-2">
+                                    <td className="flex gap-2 my-2">
                                         <button value={uid} className="btn" onClick={(event)=>handleUserEdit(event.target.value)}>
                                             <FaEdit></FaEdit> Edit
                                         </button>
-                                        <button value={uid} className="btn" onClick={(event)=>handleUserRole(event.target.value)}>
-                                            <FaShield></FaShield> Make Admin
+                                        <button value={uid} className={`btn w-32 p-2 ${isAdmin ? 'bg-lime-50' : 'bg-pink-50'}`} onClick={(event)=>handleUserRole(event.target.value)}>
+                                            <FaShield></FaShield> {isAdmin ? "Make User" : "Make Admin"}
                                         </button>
                                     </td>
                                 </tr>
