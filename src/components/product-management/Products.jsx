@@ -4,6 +4,8 @@ import { FaEdit } from "react-icons/fa";
 import { FaTrashCan } from "react-icons/fa6";
 import EditProductModal from "./EditProductModal";
 import { useState } from "react";
+import baseUrl from "../../routes/sites";
+import toast from "react-hot-toast";
 
 const Products = ()=>{
     const [selectedProduct, setSelectedProduct] = useState(null)
@@ -15,6 +17,26 @@ const Products = ()=>{
         const product = products.find(({_id})=>_id==id)
         setSelectedProduct(product)
         document.getElementById('edit_product_modal').showModal()
+    }
+
+    const handleDeleteProduct = async (id)=>{
+        const available = false;
+        const product = {available}
+
+        const result = await fetch(`${baseUrl}/product/${id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(product)
+        });
+
+        const data = await result.json();
+        if (data.acknowledged) {
+            toast.success(`Product deleted successfully`);
+        } else {
+            toast.error('Failed to delete product.');
+        }
     }
 
     return(
@@ -56,7 +78,10 @@ const Products = ()=>{
                                         hover:bg-teal-600 hover:text-white">
                                             <FaEdit className="pointer-events-none"></FaEdit> Edit
                                         </button>
-                                        <button className="btn bg-white border border-red-200 text-red-700 
+                                        <button 
+                                        value={_id}
+                                        onClick={(event)=>handleDeleteProduct(event.target.value)}
+                                        className="btn bg-white border border-red-200 text-red-700 
                                         hover:bg-red-700 hover:text-white">
                                             <FaTrashCan className="pointer-events-none"></FaTrashCan> Delete
                                         </button>
