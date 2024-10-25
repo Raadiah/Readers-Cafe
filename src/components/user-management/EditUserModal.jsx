@@ -66,7 +66,7 @@ const EditUserModal = ({uid})=>{
                 <form onSubmit={handleSaveUser}>
                     <div className='grid grid-cols-3 gap-x-4 gap-y-2'>
                         <span className='col-span-1 font-semibold'>
-                            <img src={photoURL} className="h-24"></img>
+                            <img src={photoURL} className="h-24 rounded-full"></img>
                         </span>
                         <span className='col-span-2 space-y-1'>
                             <p className="font-semibold">{name}</p>
