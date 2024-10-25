@@ -3,14 +3,18 @@ import Title from "../dashboard/Title"
 import { FaEdit } from "react-icons/fa";
 import { FaShield } from "react-icons/fa6";
 import User from "../common/User";
+import EditUserModal from "./EditUserModal";
+import { useState } from "react";
 
 const Users = ()=>{
+    const [selectedUser, setSelectedUser] = useState(null);
     const users = useLoaderData();
     const tableColumns = ['Name', 'Email', 'Role', 'Action'];
     const tableColumnsClass = ['text-start min-w-72', 'text-start min-w-24', 'min-w-24', ''];
 
-    const handleUserEdit = (id) => {
-        alert(_id);
+    const handleUserEdit = (uid) => {
+        setSelectedUser(uid);
+        document.getElementById('edit_user_modal').showModal()
     }
 
     const handleUserRole = (id) => {
@@ -32,11 +36,11 @@ const Users = ()=>{
                 </thead>
                 <tbody>
                     {
-                        users.map(({_id, email, name, isAdmin, photoURL})=>{
+                        users.map(({_id, email, name, isAdmin, photoURL, uid})=>{
                             return(
                                 <tr className="max-w-full">
                                     <td className="w-72 text-ellipsis p-2">
-                                        <User key={email} name={name} photoURL={photoURL} showNameOnSmallDevice={true}></User>
+                                        <User key={_id} name={name} photoURL={photoURL} showNameOnSmallDevice={true}></User>
                                     </td>
                                     <td className="w-24 text-ellipsis p-2">{email}</td>
                                     <td className="w-24 text-ellipsis p-2 text-center">
@@ -46,10 +50,10 @@ const Users = ()=>{
                                         </div>
                                     </td>
                                     <td className="flex gap-2">
-                                        <button className="btn" onClick={(id=_id)=>handleUserEdit(id)}>
+                                        <button value={uid} className="btn" onClick={(event)=>handleUserEdit(event.target.value)}>
                                             <FaEdit></FaEdit> Edit
                                         </button>
-                                        <button className="btn" onClick={(id=_id)=>handleUserRole(id)}>
+                                        <button value={uid} className="btn" onClick={(event)=>handleUserRole(event.target.value)}>
                                             <FaShield></FaShield> Make Admin
                                         </button>
                                     </td>
@@ -60,6 +64,9 @@ const Users = ()=>{
                 </tbody>
             </table>
         </div>
+        <dialog id="edit_user_modal" className="modal">
+            <EditUserModal uid={selectedUser}></EditUserModal>
+        </dialog>
     </div>)
 }
 
