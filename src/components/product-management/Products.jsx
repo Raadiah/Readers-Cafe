@@ -34,7 +34,7 @@ const Products = ()=>{
                     {
                         products.map(({_id, image, bookName, author, category, price})=>{
                             return(
-                                <tr className="max-w-full">
+                                <tr key={_id} className="max-w-full">
                                     <td className="flex items-center gap-2">
                                         <img className="w-8 h-8" src={image}></img>
                                         { bookName }
@@ -54,11 +54,11 @@ const Products = ()=>{
                                         onClick={(event)=>handleEditProduct(event.target.value)}
                                         className="btn bg-white border border-teal-600 text-teal-600 
                                         hover:bg-teal-600 hover:text-white">
-                                            <FaEdit></FaEdit> Edit
+                                            <FaEdit className="pointer-events-none"></FaEdit> Edit
                                         </button>
                                         <button className="btn bg-white border border-red-200 text-red-700 
                                         hover:bg-red-700 hover:text-white">
-                                            <FaTrashCan></FaTrashCan> Delete
+                                            <FaTrashCan className="pointer-events-none"></FaTrashCan> Delete
                                         </button>
                                     </td>
                                 </tr>
