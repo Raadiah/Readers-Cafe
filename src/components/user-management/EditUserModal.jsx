@@ -49,10 +49,8 @@ const EditUserModal = ({uid})=>{
         .then(data=>{
             if(data?.acknowledged) {
                 toast.success("Successfully updated user")
-                setLoader(false); 
             } else {
                 console.error("DB: Error while updating user");
-                setLoader(false);
             }
         })
     }
