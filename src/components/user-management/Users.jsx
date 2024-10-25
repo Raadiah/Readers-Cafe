@@ -49,7 +49,7 @@ const Users = ()=>{
                     <tr>
                     {
                         tableColumns.map((tableColumn, index)=>{
-                            return(<th className={`p-2 ${tableColumnsClass[index]}`}>{tableColumn}</th>)
+                            return(<th key={index+1} className={`p-2 ${tableColumnsClass[index]}`}>{tableColumn}</th>)
                         })
                     }
                     </tr>
