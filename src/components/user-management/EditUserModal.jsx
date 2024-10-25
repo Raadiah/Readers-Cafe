@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import baseUrl from "../../routes/sites";
+import toast from "react-hot-toast";
 
 const EditUserModal = ({uid})=>{
     const [user, setUser] = useState({
@@ -28,8 +29,32 @@ const EditUserModal = ({uid})=>{
         }
     }
 
-    const handleSaveUser = async()=>{
+    const handleSaveUser = async(event)=>{
+        event.preventDefault()
 
+        const name = event.target.name.value
+        const phone = event.target.phone.value
+        const address = event.target.address.value
+
+        const userInfo = {name, phone, address}
+        
+        fetch(`${baseUrl}/user/${uid}`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(userInfo)
+        })
+        .then(res=>res.json())
+        .then(data=>{
+            if(data?.acknowledged) {
+                toast.success("Successfully updated user")
+                setLoader(false); 
+            } else {
+                console.error("DB: Error while updating user");
+                setLoader(false);
+            }
+        })
     }
 
     useEffect(()=>{
@@ -53,8 +78,15 @@ const EditUserModal = ({uid})=>{
                     </div>
                     <div className="divider"></div>
                     <div className='grid grid-cols-3 gap-x-4 gap-y-2'>
+                        <span className='col-span-1 font-semibold'>Name</span>
+                        <span className='col-span-2 flex'>
+                            <input 
+                            name="name" 
+                            className="flex-1 border rounded-md h-8 p-1"
+                            defaultValue={name}></input>
+                        </span>
                         <span className='col-span-1 font-semibold'>Phone</span>
-                        <span className='col-span-2'>
+                        <span className='col-span-2 flex'>
                             <input 
                             name="phone" 
                             className="flex-1 border rounded-md h-8 p-1"
@@ -63,7 +95,7 @@ const EditUserModal = ({uid})=>{
                         <span className='col-span-1 font-semibold'>Address</span>
                         <span className='col-span-2 flex'>
                             <textarea 
-                            name="deliveryAddress" 
+                            name="address" 
                             defaultValue={address}
                             className="border border-black p-2 outline-none rounded-md flex-1 h-24"></textarea>
                         </span>

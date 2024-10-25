@@ -31,7 +31,7 @@ const Register = ()=>{
             const uid = user?.user?.uid;
             const userInfo = {email, name, phone, address, isAdmin, isBanned, photoURL, uid}
 
-            fetch(`${baseUrl}/user`, {
+            fetch(`${baseUrl}/user/${uid}`, {
                 method: "POST",
                 headers: {
                     "content-type": "application/json"
