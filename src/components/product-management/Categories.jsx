@@ -72,7 +72,7 @@ const Categories = ()=>{
                     newCategoryError && <div className="flex w-96 mb-8"><ErrorMessage message={categoryErrorMessage}></ErrorMessage></div> 
                 }
             </form>
-            <table>
+            <table className="w-full">
                 <thead>
                     <tr>
                     {
@@ -88,11 +88,14 @@ const Categories = ()=>{
                             return(
                                 <tr key={_id}>
                                     <td className="p-2 border-b">{category}</td>
-                                    <td className="p-2 border-b flex gap-2">
-                                        <button className="btn bg-green-200">
+                                    <td className="p-2 border-b flex justify-center gap-2">
+                                        <button
+                                        className="btn bg-white border border-teal-600 text-teal-600 
+                                        hover:bg-teal-600 hover:text-white">
                                             <FaEdit></FaEdit> Edit
                                         </button>
-                                        <button className="btn bg-red-700 text-white">
+                                        <button className="btn bg-white border border-red-200 text-red-700 
+                                        hover:bg-red-700 hover:text-white">
                                             <FaTrashCan></FaTrashCan> Delete
                                         </button>
                                     </td>

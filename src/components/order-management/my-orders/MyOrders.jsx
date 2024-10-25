@@ -28,7 +28,7 @@ const MyOrders = ()=>{
         <div className="p-8">
             <Title title='My Orders'></Title>
             <div className="flex justify-end text-lg mb-8">Total Price: ${totalPrice}</div>
-            <table>
+            <table className="w-full">
                 <thead>
                     <tr>
                     {
@@ -51,8 +51,10 @@ const MyOrders = ()=>{
                                     <td className="text-center p-2">${ price }</td>
                                     <td className="text-center p-2">{ quantity }</td>
                                     <td>{ paymentMethod }</td>
-                                    <td className="flex gap-2 p-2">
-                                        <button className="btn bg-green-200">
+                                    <td className="flex justify-center gap-2 p-2">
+                                        <button 
+                                        className="btn bg-white border border-teal-600 text-teal-600 
+                                        hover:bg-teal-600 hover:text-white">
                                             Pay Now
                                         </button>
                                     </td>

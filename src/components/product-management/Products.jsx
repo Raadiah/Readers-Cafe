@@ -11,7 +11,7 @@ const Products = ()=>{
     return(
         <div className="p-8">
             <Title title="All Books"></Title>
-            <table>
+            <table className="w-full">
                 <thead>
                     <tr>
                     {
@@ -26,7 +26,7 @@ const Products = ()=>{
                         products.map(({image, bookName, author, category, price})=>{
                             return(
                                 <tr className="max-w-full">
-                                    <td className="flex gap-2">
+                                    <td className="flex items-center gap-2">
                                         <img className="w-8 h-8" src={image}></img>
                                         { bookName }
                                     </td>
@@ -39,11 +39,13 @@ const Products = ()=>{
                                         </div>
                                     </td>
                                     <td className="text-center">${ price }</td>
-                                    <td className="flex gap-2">
-                                        <button className="btn bg-green-200">
+                                    <td className="justify-center flex gap-2 p-2">
+                                        <button className="btn bg-white border border-teal-600 text-teal-600 
+                                        hover:bg-teal-600 hover:text-white">
                                             <FaEdit></FaEdit> Edit
                                         </button>
-                                        <button className="btn bg-red-700 text-white">
+                                        <button className="btn bg-white border border-red-200 text-red-700 
+                                        hover:bg-red-700 hover:text-white">
                                             <FaTrashCan></FaTrashCan> Delete
                                         </button>
                                     </td>

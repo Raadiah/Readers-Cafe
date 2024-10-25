@@ -44,7 +44,7 @@ const Users = ()=>{
     return(<div className="p-8">
         <Title title={'User List'}></Title>
         <div>
-            <table>
+            <table className="w-full">
                 <thead>
                     <tr>
                     {
@@ -69,11 +69,14 @@ const Users = ()=>{
                                             {isAdmin ? 'Admin' : 'User'}
                                         </div>
                                     </td>
-                                    <td className="flex gap-2 my-2">
-                                        <button value={uid} className="btn" onClick={(event)=>handleUserEdit(event.target.value)}>
+                                    <td className="flex justify-center gap-2 my-2">
+                                        <button value={uid} 
+                                        onClick={(event)=>handleUserEdit(event.target.value)}
+                                        className="btn bg-white border border-teal-600 text-teal-600 
+                                        hover:bg-teal-600 hover:text-white">
                                             <FaEdit></FaEdit> Edit
                                         </button>
-                                        <button value={uid} className={`btn w-32 p-2 ${isAdmin ? 'bg-lime-50' : 'bg-pink-50'}`} onClick={(event)=>handleUserRole(event.target.value)}>
+                                        <button value={uid} className={`btn w-32 p-2 ${isAdmin ? 'bg-lime-50 hover:bg-green-200' : 'bg-pink-50 hover:bg-violet-200'}`} onClick={(event)=>handleUserRole(event.target.value)}>
                                             <FaShield></FaShield> {isAdmin ? "Make User" : "Make Admin"}
                                         </button>
                                     </td>
