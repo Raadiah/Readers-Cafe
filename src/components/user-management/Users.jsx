@@ -88,7 +88,7 @@ const Users = ()=>{
                                         {
                                             loggedInUser_uid == uid ?
                                             <>
-                                                <button value={uid} className="btn btn-disabled w-32 p-2 cursor-none">
+                                                <button value={uid} className="btn cursor-auto w-32 p-2">
                                                     <FaShield className="pointer-events-none"></FaShield> {isAdmin ? "Make User" : "Make Admin"}
                                                 </button>
                                             </>
