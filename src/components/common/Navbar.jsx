@@ -10,6 +10,7 @@ import { FaBook, FaCog, FaHeart, FaHome, FaList, FaPlusSquare, FaPowerOff, FaSho
 function Navbar() {
   const ACTIVE_BUTTON_CLASS = 'rounded btn-active btn-ghost'
   const {user, logout} = useContext(AuthContext);
+  const isAdmin = user?.isAdmin;
   const navigate = useNavigate();
 
   const handleLogout = ()=>{
@@ -56,58 +57,65 @@ function Navbar() {
                         Products
                     </Link>
                 </li>
-                <li className="border-t">
-                    <Link to={ROUTES.PROFILE}>
-                        <FaCog></FaCog>
-                        Dashboard
-                    </Link>
-                    <ul className="p-2 border-none">
-                        <li>
-                            <Link to={ROUTES.PROFILE}>
-                                <FaUser></FaUser>
-                                Profile
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to={ROUTES.WISHLIST}>
-                                <FaHeart></FaHeart>
-                                My Wishlist
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to={ROUTES.ORDERS}>
-                                <FaShoppingCart></FaShoppingCart>
-                                My Orders
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to={ROUTES.USERS}>
-                                <FaUsersLine></FaUsersLine>
-                                User List
-                            </Link>
-                        </li>
-                        <li className="border-t pt-2">
-                            <Link to={ROUTES.ALL_PRODUCTS}>
-                                <FaBook></FaBook>
-                                All Products
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to={ROUTES.NEW_BOOK}>
-                                <FaPlusSquare></FaPlusSquare>
-                                New Product
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to={ROUTES.PRODUCT_CATEGORY}>
-                                <FaList></FaList>
-                                Product Categories
-                            </Link>
-                        </li>
-                    </ul>
-                </li>
                 {
                     user ? <>
+                            <li className="border-t">
+                                <Link to={ROUTES.PROFILE}>
+                                    <FaCog></FaCog>
+                                    Dashboard
+                                </Link>
+                                <ul className="p-2 border-none">
+                                    <li>
+                                        <Link to={ROUTES.PROFILE}>
+                                            <FaUser></FaUser>
+                                            Profile
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={ROUTES.WISHLIST}>
+                                            <FaHeart></FaHeart>
+                                            My Wishlist
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={ROUTES.ORDERS}>
+                                            <FaShoppingCart></FaShoppingCart>
+                                            My Orders
+                                        </Link>
+                                    </li>
+                                    {
+                                        isAdmin ?
+                                        <>
+                                            <li>
+                                                <Link to={ROUTES.USERS}>
+                                                    <FaUsersLine></FaUsersLine>
+                                                    User List
+                                                </Link>
+                                            </li>
+                                            <li className="border-t pt-2">
+                                                <Link to={ROUTES.ALL_PRODUCTS}>
+                                                    <FaBook></FaBook>
+                                                    All Products
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link to={ROUTES.NEW_BOOK}>
+                                                    <FaPlusSquare></FaPlusSquare>
+                                                    New Product
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link to={ROUTES.PRODUCT_CATEGORY}>
+                                                    <FaList></FaList>
+                                                    Product Categories
+                                                </Link>
+                                            </li>
+                                        </>
+                                        :
+                                        <></>
+                                    }
+                                </ul>
+                            </li>
                         <li onClick={handleLogout} className="border-t">
                             <a>
                                 <FaPowerOff></FaPowerOff>
@@ -140,6 +148,9 @@ function Navbar() {
                 <li>
                     <Link to={ROUTES.BOOKS}>Products</Link>
                 </li>
+                {
+                user ? 
+                <>
                 <li>
                     <Link className="hidden lg:block" to={ROUTES.PROFILE}>Dashboard</Link>
                     <details className="lg:hidden">
@@ -163,33 +174,44 @@ function Navbar() {
                                     My Orders
                                 </Link>
                             </li>
-                            <li className="border-t">
-                                <Link to={ROUTES.USERS}>
-                                    <FaUsersLine></FaUsersLine>
-                                    User List
-                                </Link>
-                            </li>
-                            <li className="border-t pt-2">
-                                <Link to={ROUTES.ALL_PRODUCTS}>
-                                    <FaBook></FaBook>
-                                    All Products
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={ROUTES.NEW_BOOK}>
-                                    <FaPlusSquare></FaPlusSquare>
-                                    New Product
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={ROUTES.PRODUCT_CATEGORY}>
-                                    <FaList></FaList>
-                                    Product Categories
-                                </Link>
-                            </li>
+                            {
+                                isAdmin ? 
+                                <>
+                                    <li className="border-t">
+                                        <Link to={ROUTES.USERS}>
+                                            <FaUsersLine></FaUsersLine>
+                                            User List
+                                        </Link>
+                                    </li>
+                                    <li className="border-t pt-2">
+                                        <Link to={ROUTES.ALL_PRODUCTS}>
+                                            <FaBook></FaBook>
+                                            All Products
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={ROUTES.NEW_BOOK}>
+                                            <FaPlusSquare></FaPlusSquare>
+                                            New Product
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to={ROUTES.PRODUCT_CATEGORY}>
+                                            <FaList></FaList>
+                                            Product Categories
+                                        </Link>
+                                    </li>
+                                </>
+                                :
+                                <></>
+                            }
                         </ul>
                     </details>
                 </li>
+                </>
+                :
+                <></>
+                }
             </ul>
         </div>
         {
