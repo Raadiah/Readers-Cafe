@@ -11,7 +11,7 @@ const Category = ({category})=>{
             w-52 h-44 shadow-inner cursor-pointer
             flex justify-center items-center gap-4
             font-bold border border-black rounded-lg
-            hover:bg-green-50 hover:shadow-xl">
+            hover:bg-green-50 hover:scale-95 hover:shadow-xl">
                 <h2 className="card-title">{category}</h2>
                 <div className="card-actions justify-end">
                 <Link

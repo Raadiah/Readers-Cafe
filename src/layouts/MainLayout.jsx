@@ -7,7 +7,7 @@ function MainLayout() {
     return (
         <div className="min-h-screen flex flex-col justify-between">
             <Navbar></Navbar>
-            <div className="mt-16">
+            <div className="mt-16 p-4">
                 <Outlet></Outlet>
             </div>
             <Footer></Footer>

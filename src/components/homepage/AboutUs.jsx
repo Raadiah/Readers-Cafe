@@ -4,7 +4,7 @@ const AboutUs = ()=>{
     return (
         <>  
             <div className="space-y-4">
-                <SectionHeader headerText='About Us'></SectionHeader>
+                <SectionHeader headerText='About Developer'></SectionHeader>
                 <div className="avatar flex justify-center">
                     <div className="mask mask-squircle w-24">
                         <img src="https://static.vecteezy.com/system/resources/previews/015/943/189/non_2x/illustration-of-beautiful-muslim-woman-wearing-hijab-free-vector.jpg" />

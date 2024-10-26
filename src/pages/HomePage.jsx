@@ -1,3 +1,4 @@
+import FAQs from "../components/faq/FAQs"
 import AboutUs from "../components/homepage/AboutUs"
 import Banner from "../components/homepage/Banner"
 import Categories from "../components/homepage/categories/Categories"
@@ -11,11 +12,11 @@ function HomePage() {
         <div className="min-h-screen flex flex-col">
             <Banner></Banner>
             <div className="space-y-12 md:mx-32 md:my-14">
-                <Categories></Categories>
                 <HowItWorks></HowItWorks>
+                <Categories></Categories>
                 <TopBooks></TopBooks>
                 <AboutUs></AboutUs>
-                <ContactUs></ContactUs>
+                <FAQs></FAQs>
             </div>
         </div>
     )
