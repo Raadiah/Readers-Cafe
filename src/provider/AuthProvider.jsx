@@ -37,8 +37,9 @@ const AuthProvider = ({children})=>{
         return signOut(auth)
     }
 
+    //used when user is created/edit
     const reloadUser = async (uid)=>{
-        if(user.uid!=uid) return
+        if(user?.uid!=uid) return
         try {
             const res = await fetch(
               `${baseUrl}/user/${uid}`
