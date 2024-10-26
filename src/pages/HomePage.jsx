@@ -11,7 +11,7 @@ function HomePage() {
     return (
         <div className="min-h-screen flex flex-col">
             <Banner></Banner>
-            <div className="space-y-12 md:mx-32 md:my-14">
+            <div className="space-y-12 md:mx-32 md:my-14 p-4">
                 <HowItWorks></HowItWorks>
                 <Categories></Categories>
                 <TopBooks></TopBooks>

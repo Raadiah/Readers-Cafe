@@ -2,6 +2,8 @@ import { Link } from "react-router-dom"
 import { ROUTES } from "../../../routes";
 
 const Category = ({category})=>{
+    const categoryUrl = category == 'All' ? '' : category
+
     return(      
         <div 
         className="flex justify-center items-center
@@ -15,7 +17,7 @@ const Category = ({category})=>{
                 <h2 className="card-title">{category}</h2>
                 <div className="card-actions justify-end">
                 <Link
-                to={`${ROUTES.BOOKS}/${category}`}
+                to={`${ROUTES.BOOKS}/${categoryUrl}`}
                 className="btn bg-white border border-teal-600 text-teal-600 
                 group-hover:bg-teal-600 group-hover:text-white hover:shadow-xl"
                 >

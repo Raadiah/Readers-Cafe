@@ -20,6 +20,7 @@ const Categories = ()=>{
         <div className="p-4">
             <SectionHeader headerText="Find books by categories (Slide for more)"></SectionHeader>
             <div className="carousel rounded-box gap-4 max-w-full overflow-scroll p-4 z-40">
+                <Category category="All"></Category>
             {
                 categories?.map((category)=><Category {...category}></Category>)
             }
