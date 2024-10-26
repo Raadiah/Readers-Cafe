@@ -86,7 +86,7 @@ function Navbar() {
                                     {
                                         isAdmin ?
                                         <>
-                                            <li>
+                                            <li className="border-t pt-2">
                                                 <Link to={ROUTES.USERS}>
                                                     <FaUsersLine></FaUsersLine>
                                                     User List
