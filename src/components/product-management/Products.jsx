@@ -11,7 +11,7 @@ const Products = ()=>{
     const [selectedProduct, setSelectedProduct] = useState(null)
     const products = useLoaderData();
     const tableColumns = ['Name', 'Author', 'Category', 'Price', 'Action'];
-    const tableColumnsClass = ['text-start min-w-60', 'text-start min-w-60', 'min-w-24', 'min-w-24'];
+    const tableColumnsClass = ['text-start min-w-24', 'text-start min-w-30', 'min-w-24', 'min-w-24'];
 
     const handleEditProduct = (id)=>{
         const product = products.find(({_id})=>_id==id)
@@ -44,10 +44,10 @@ const Products = ()=>{
             <Title title="All Books"></Title>
             <table className="w-full">
                 <thead>
-                    <tr>
+                    <tr className="hidden lg:table-row">
                     {
                         tableColumns.map((tableColumn, index)=>{
-                            return(<th key={index+1} className={`p-2 ${tableColumnsClass[index]}`}>{tableColumn}</th>)
+                            return(<th key={index+1} className={`${tableColumnsClass[index]}`}>{tableColumn}</th>)
                         })
                     }
                     </tr>
@@ -56,21 +56,31 @@ const Products = ()=>{
                     {
                         products.map(({_id, image, bookName, author, category, price})=>{
                             return(
-                                <tr key={_id} className="max-w-full">
-                                    <td className="flex items-center gap-2">
-                                        <img className="w-8 h-8" src={image}></img>
-                                        { bookName }
+                                <tr key={_id} className="flex flex-col flex-none lg:table-row w-full gap-y-2 md:gap-y-4 lg:gap-y-2 divider-y">
+                                    <td>
+                                        <span className="flex items-center lg:w-60 gap-2">
+                                            <img className="w-40 h-40 lg:w-8 lg:h-8" src={image}></img>
+                                            <span className="text-2xl md:text-4xl font-semibold lg:text-base lg:font-normal">{ bookName }</span>
+                                        </span>
                                     </td>
-                                    <td>{ author }</td>
-                                    <td className="text-center">
-                                        <div 
-                                        className="text-xs rounded-2xl w-24 border p-2 overflow-hidden text-ellipsis bg-pink-50 cursor-default"
+                                    <td>
+                                        <label className="text-lg lg:hidden font-semibold">Author: </label>
+                                        <span className="text-lg lg:text-base">{author}</span>
+                                    </td>
+                                    <td className="lg:text-center">
+                                        <label className="text-lg lg:hidden font-semibold">Category: </label>
+                                        <span className="text-lg lg:hidden">{category}</span>
+                                        <span 
+                                        className="hidden lg:block text-xs rounded-2xl w-24 border p-2 overflow-hidden text-ellipsis bg-pink-50 cursor-default"
                                         title={category}>
                                         { category }
-                                        </div>
+                                        </span>
                                     </td>
-                                    <td className="text-center">${ price }</td>
-                                    <td className="justify-center flex gap-2 p-2">
+                                    <td className="lg:text-center">
+                                        <label className="text-lg lg:hidden font-semibold">Price: </label>
+                                        <span className="text-lg lg:text-base">${ price }</span>
+                                    </td>
+                                    <td className="flex lg:justify-center gap-2 mt-2 mb-4 border-b lg:border-none pb-2">
                                         <button 
                                         value={_id}
                                         onClick={(event)=>handleEditProduct(event.target.value)}

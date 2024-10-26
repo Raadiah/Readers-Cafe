@@ -25,7 +25,7 @@ const Drawer = ()=>{
     return (
         <div className="drawer h-full">
             <div className="h-full">
-                <ul className="menu bg-white shadow-md min-h-full w-80 p-4">
+                <ul className="menu bg-white shadow-md min-h-full w-60 p-4">
                 {/* Sidebar content here */}
                     <li>
                         <Link to={ROUTES.PROFILE}>
