@@ -4,12 +4,14 @@ import { FaEdit } from "react-icons/fa";
 import { FaShield } from "react-icons/fa6";
 import User from "../common/User";
 import EditUserModal from "./EditUserModal";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import baseUrl from "../../routes/sites";
 import toast from "react-hot-toast";
+import { AuthContext } from "../../provider/AuthProvider";
 
 const Users = ()=>{
     const [selectedUser, setSelectedUser] = useState(null);
+    const {reloadUser} = useContext(AuthContext);
     const users = useLoaderData();
     const tableColumns = ['Name', 'Email', 'Role', 'Action'];
     const tableColumnsClass = ['text-start min-w-72', 'text-start min-w-24', 'min-w-24', ''];
@@ -36,6 +38,7 @@ const Users = ()=>{
         .then(data=>{
             if(data?.acknowledged) {
                 toast.success("Successfully updated user role")
+                reloadUser(id)
             } else {
                 console.error("DB: Error while updating user role");
             }
