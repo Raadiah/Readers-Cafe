@@ -74,7 +74,7 @@ const Categories = ()=>{
             </form>
             <table className="w-full">
                 <thead>
-                    <tr>
+                    <tr className="hidden md:table-row">
                     {
                         tableColumns.map((tableColumn, index)=>{
                             return(<th key={index+1} className={`p-2 border-b border-double ${tableColumnsClass[index]}`}>{tableColumn}</th>)
@@ -86,9 +86,9 @@ const Categories = ()=>{
                     {
                         categories.map(({_id, category})=>{
                             return(
-                                <tr key={_id}>
-                                    <td className="p-2 border-b">{category}</td>
-                                    <td className="p-2 border-b flex justify-center gap-2">
+                                <tr className="flex flex-col md:table-row" key={_id}>
+                                    <td className="p-2 md:border-b">{category}</td>
+                                    <td className="p-2 pb-4 md:pb-2 border-b flex md:justify-center gap-2">
                                         <button
                                         className="btn bg-white border border-teal-600 text-teal-600 
                                         hover:bg-teal-600 hover:text-white">
