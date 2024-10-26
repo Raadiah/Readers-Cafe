@@ -14,8 +14,9 @@ const Users = ()=>{
     const tableColumns = ['Name', 'Email', 'Role', 'Action'];
     const tableColumnsClass = ['text-start min-w-72', 'text-start min-w-24', 'min-w-24', ''];
 
-    const handleUserEdit = (uid) => {
-        setSelectedUser(uid);
+    const handleUserEdit = (id) => {
+        const user = users.find(({uid})=>uid==id);
+        setSelectedUser(user);
         document.getElementById('edit_user_modal').showModal()
     }
 
@@ -74,10 +75,10 @@ const Users = ()=>{
                                         onClick={(event)=>handleUserEdit(event.target.value)}
                                         className="btn bg-white border border-teal-600 text-teal-600 
                                         hover:bg-teal-600 hover:text-white">
-                                            <FaEdit></FaEdit> Edit
+                                            <FaEdit className="pointer-events-none"></FaEdit> Edit
                                         </button>
                                         <button value={uid} className={`btn w-32 p-2 ${isAdmin ? 'bg-lime-50 hover:bg-green-200' : 'bg-pink-50 hover:bg-violet-200'}`} onClick={(event)=>handleUserRole(event.target.value)}>
-                                            <FaShield></FaShield> {isAdmin ? "Make User" : "Make Admin"}
+                                            <FaShield className="pointer-events-none"></FaShield> {isAdmin ? "Make User" : "Make Admin"}
                                         </button>
                                     </td>
                                 </tr>
@@ -88,7 +89,7 @@ const Users = ()=>{
             </table>
         </div>
         <dialog id="edit_user_modal" className="modal">
-            <EditUserModal uid={selectedUser}></EditUserModal>
+            <EditUserModal key={selectedUser.uid} {...selectedUser}></EditUserModal>
         </dialog>
     </div>)
 }

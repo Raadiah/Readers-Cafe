@@ -1,7 +1,9 @@
 import { FaEdit } from "react-icons/fa"
 import EditUserModal from "../user-management/EditUserModal"
 
-const ProfileDetails = ({uid, phone, address})=>{
+const ProfileDetails = (user)=>{
+    const {uid, phone, address} = user
+
     const handleUserEdit = () => {
         document.getElementById('edit_user_modal').showModal()
     }
@@ -24,7 +26,7 @@ const ProfileDetails = ({uid, phone, address})=>{
                 <span className="col-span-2">{address}</span>
             </div>
             <dialog id="edit_user_modal" className="modal">
-                <EditUserModal uid={uid}></EditUserModal>
+                <EditUserModal key={user.uid} {...user}></EditUserModal>
             </dialog>
         </div>
     )

@@ -1,33 +1,11 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import baseUrl from "../../routes/sites";
 import toast from "react-hot-toast";
+import { AuthContext } from "../../provider/AuthProvider";
 
-const EditUserModal = ({uid})=>{
-    const [user, setUser] = useState({
-        _id: null,
-        email: '',
-        name: '',
-        phone: '',
-        address: '',
-        isAdmin: false,
-        photoURL: ''
-    })
-
-    const {_id, email, name, phone, address, isAdmin, photoURL} = user;
-    const fetchUser = async()=>{
-        try {
-            const res = await fetch(
-                `${baseUrl}/user/${uid}`
-            );
-            if (!res.ok) {
-                throw new Error("Failed to fetch user data.");
-            }
-            const data = await res.json();
-            setUser(data);
-        } catch (error) {
-            console.error("Error fetching user data:", error.message);
-        }
-    }
+const EditUserModal = (user)=>{
+    const {reloadUser} = useContext(AuthContext);
+    const {uid, email, name, phone, address, isAdmin, photoURL} = user;
 
     const handleSaveUser = async(event)=>{
         event.preventDefault()
@@ -49,15 +27,12 @@ const EditUserModal = ({uid})=>{
         .then(data=>{
             if(data?.acknowledged) {
                 toast.success("Successfully updated user")
+                reloadUser(uid)
             } else {
                 console.error("DB: Error while updating user");
             }
         })
     }
-
-    useEffect(()=>{
-        fetchUser()
-    }, [uid] )
     
     return(
         <div className="modal-box w-full h-full">

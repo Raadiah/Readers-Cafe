@@ -18,28 +18,39 @@ const AuthProvider = ({children})=>{
     const [loading, setLoading] = useState(true);
 
     const createUser = (email, password)=>{
-        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     const loginWithEmailPassword = (email, password)=>{
-        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password);
     }
 
     const loginWithGoogle = (provider)=>{
-        setLoading(true)
         return signInWithPopup(auth, provider);
     }
 
     const loginWithGitHub = (provider)=>{
-        setLoading(true)
         return signInWithPopup(auth, provider);
     }
 
     const logout = ()=>{
-        setLoading(true)
         return signOut(auth)
+    }
+
+    const reloadUser = async (uid)=>{
+        if(user.uid!=uid) return
+        try {
+            const res = await fetch(
+              `${baseUrl}/user/${uid}`
+            );
+            if (!res.ok) {
+              throw new Error("Failed to fetch user data.");
+            }
+            const data = await res.json();
+            setUser(data);
+          } catch (error) {
+            console.error("Error fetching user data:", error.message);
+          }
     }
 
     useEffect(()=>{
@@ -70,6 +81,7 @@ const AuthProvider = ({children})=>{
     const authInfo = {
         user,
         loading,
+        reloadUser,
         createUser,
         loginWithEmailPassword,
         loginWithGoogle,
