@@ -109,21 +109,21 @@ const EditProductModal = ({_id, bookName, author, totalPages, publisher, categor
                             <input 
                             name="bookName"
                             defaultValue={bookName}
-                            className="grow p-1 border rounded-md"></input>
+                            className="flex-1 p-1 border rounded-md"></input>
                         </span>
                         <span className='col-span-1 font-semibold'>Author</span>
                         <span className='col-span-2 flex'>
                             <input 
                             name="author"
                             defaultValue={author}
-                            className="grow p-1 border rounded-md"></input>
+                            className="flex-1 p-1 border rounded-md"></input>
                         </span>
                         <span className='col-span-1 font-semibold'>Total Pages</span>
                         <span className='col-span-2 flex'>
                             <input 
                             name="totalPages"
                             defaultValue={totalPages}
-                            className="grow p-1 border rounded-md"></input>
+                            className="flex-1 p-1 border rounded-md"></input>
                         </span>
                         <span className='col-span-1 font-semibold'>Category</span>
                         <span className='col-span-2 flex'>
@@ -131,7 +131,7 @@ const EditProductModal = ({_id, bookName, author, totalPages, publisher, categor
                             name="category" 
                             value={selectedCategory}
                             onChange={(event)=>setSelectedCategory(event.target.value)}
-                            className="grow border p-1 outline-none rounded-md" required>
+                            className="flex-1 border p-1 outline-none rounded-md" required>
                                 {categories.map(({category, _id})=>{
                                     return <option key={_id} label={category} value={category}>{category}</option>
                                 })}
@@ -155,21 +155,21 @@ const EditProductModal = ({_id, bookName, author, totalPages, publisher, categor
                             <input 
                             name="publisher"
                             defaultValue={publisher}
-                            className="grow p-1 border rounded-md"></input>
+                            className="flex-1 p-1 border rounded-md"></input>
                         </span>
                         <span className='col-span-1 font-semibold'>Year of Publishing</span>
                         <span className='col-span-2 flex'>
                             <input 
                             name="yearOfPublishing"
                             defaultValue={yearOfPublishing}
-                            className="grow p-1 border rounded-md"></input>
+                            className="flex-1 p-1 border rounded-md"></input>
                         </span>
                         <span className='col-span-1 font-semibold'>Price</span>
                         <span className='col-span-2 flex'>
                             <input 
                             name="price"
                             defaultValue={price}
-                            className="grow p-1 border rounded-md"></input>
+                            className="flex-1 p-1 border rounded-md"></input>
                         </span>
                     </div>
                     <div className="flex gap-2 items-center justify-center mt-8">

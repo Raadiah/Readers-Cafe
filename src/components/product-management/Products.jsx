@@ -60,7 +60,7 @@ const Products = ()=>{
                                     <td>
                                         <span className="flex items-center lg:w-60 gap-2">
                                             <img className="w-40 h-40 lg:w-8 lg:h-8" src={image}></img>
-                                            <span className="text-2xl md:text-4xl font-semibold lg:text-base lg:font-normal">{ bookName }</span>
+                                            <span className="text-2xl font-semibold lg:text-base lg:font-normal">{ bookName }</span>
                                         </span>
                                     </td>
                                     <td>
