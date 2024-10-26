@@ -23,13 +23,19 @@ function Footer() {
                     <h6 className="footer-title">Social</h6>
                     <div className="grid grid-flow-col gap-4">
                         <p className='flex gap-3 items-center'>
-                            <a href='https://www.linkedin.com/in/soomanib/'>
+                            <a 
+                            target='_blank'
+                            href='https://www.linkedin.com/in/soomanib/'>
                                 <FaLinkedin className='w-8 h-8 text-sky-600'></FaLinkedin>
                             </a>
-                            <a href='https://github.com/Raadiah'>
+                            <a 
+                            target='_blank'
+                            href='https://github.com/Raadiah'>
                                 <FaGithub className='w-8 h-8'></FaGithub>
                             </a>
-                            <a href='https://youtube.com/'>
+                            <a 
+                            target='_blank'
+                            href='https://www.youtube.com/channel/UCR64KS_prM1LaY_hgESeJ2Q'>
                                 <FaYoutube className='w-8 h-8 text-red-600'></FaYoutube>
                             </a>
                         </p>
