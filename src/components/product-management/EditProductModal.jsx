@@ -103,30 +103,30 @@ const EditProductModal = ({_id, bookName, author, totalPages, publisher, categor
                         </span>
                     </div>
                     <div className="divider"></div>
-                    <div className='grid grid-cols-3 gap-x-4 gap-y-2'>
+                    <div className='grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-2'>
                         <span className='col-span-1 font-semibold'>Name</span>
-                        <span className='col-span-2 flex'>
+                        <span className='col-span-1 md:col-span-2 flex'>
                             <input 
                             name="bookName"
                             defaultValue={bookName}
                             className="flex-1 p-1 border rounded-md"></input>
                         </span>
                         <span className='col-span-1 font-semibold'>Author</span>
-                        <span className='col-span-2 flex'>
+                        <span className='col-span-1 md:col-span-2 flex'>
                             <input 
                             name="author"
                             defaultValue={author}
                             className="flex-1 p-1 border rounded-md"></input>
                         </span>
                         <span className='col-span-1 font-semibold'>Total Pages</span>
-                        <span className='col-span-2 flex'>
+                        <span className='col-span-1 md:col-span-2 flex'>
                             <input 
                             name="totalPages"
                             defaultValue={totalPages}
                             className="flex-1 p-1 border rounded-md"></input>
                         </span>
                         <span className='col-span-1 font-semibold'>Category</span>
-                        <span className='col-span-2 flex'>
+                        <span className='col-span-1 md:col-span-2 flex'>
                             <select 
                             name="category" 
                             value={selectedCategory}
@@ -142,7 +142,7 @@ const EditProductModal = ({_id, bookName, author, totalPages, publisher, categor
                             Tags   <br />
                             <span className="text-xs font-light">(Maximum 3, seperate by commas)</span>
                         </span>
-                        <span className='col-span-2 flex'>
+                        <span className='col-span-1 md:col-span-2 flex'>
                             <input 
                             name="tags" 
                             className="flex-1 border rounded-md h-8 p-1" 
@@ -151,21 +151,21 @@ const EditProductModal = ({_id, bookName, author, totalPages, publisher, categor
                             ></input>
                         </span>
                         <span className='col-span-1 font-semibold'>Publisher</span>
-                        <span className='col-span-2 flex'>
+                        <span className='col-span-1 md:col-span-2 flex'>
                             <input 
                             name="publisher"
                             defaultValue={publisher}
                             className="flex-1 p-1 border rounded-md"></input>
                         </span>
                         <span className='col-span-1 font-semibold'>Year of Publishing</span>
-                        <span className='col-span-2 flex'>
+                        <span className='col-span-1 md:col-span-2 flex'>
                             <input 
                             name="yearOfPublishing"
                             defaultValue={yearOfPublishing}
                             className="flex-1 p-1 border rounded-md"></input>
                         </span>
                         <span className='col-span-1 font-semibold'>Price</span>
-                        <span className='col-span-2 flex'>
+                        <span className='col-span-1 md:col-span-2 flex'>
                             <input 
                             name="price"
                             defaultValue={price}
