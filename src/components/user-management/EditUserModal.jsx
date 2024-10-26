@@ -1,10 +1,11 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import baseUrl from "../../routes/sites";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const EditUserModal = (user)=>{
     const {reloadUser} = useContext(AuthContext);
+    const closeButtonRef = useRef(null)
     const {uid, email, name, phone, address, isAdmin, photoURL} = user;
 
     const handleSaveUser = async(event)=>{
@@ -26,6 +27,7 @@ const EditUserModal = (user)=>{
         .then(res=>res.json())
         .then(data=>{
             if(data?.acknowledged) {
+                closeButtonRef.current?.click()
                 toast.success("Successfully updated user")
                 reloadUser(uid)
             } else {
@@ -81,7 +83,7 @@ const EditUserModal = (user)=>{
                             Update
                         </button>
                         <form method="dialog">
-                            <button className="btn btn-outline w-24">Close</button>
+                            <button ref={closeButtonRef} className="btn btn-outline w-24">Close</button>
                         </form>
                     </div>
                 </form>
