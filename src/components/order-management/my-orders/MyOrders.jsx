@@ -27,7 +27,7 @@ const MyOrders = ()=>{
     return (
         <div className="p-8">
             <Title title='My Orders'></Title>
-            <div className="flex justify-end text-lg mb-8">Total Price: ${totalPrice}</div>
+            <div className="flex font-semibold justify-end text-lg mb-8">Total Price: ${totalPrice}</div>
             <table className="w-full">
                 <thead>
                     <tr className="hidden lg:table-row">
