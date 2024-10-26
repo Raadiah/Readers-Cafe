@@ -89,7 +89,7 @@ const Users = ()=>{
             </table>
         </div>
         <dialog id="edit_user_modal" className="modal">
-            <EditUserModal key={selectedUser.uid} {...selectedUser}></EditUserModal>
+            <EditUserModal key={selectedUser?.uid} {...selectedUser}></EditUserModal>
         </dialog>
     </div>)
 }

@@ -26,7 +26,7 @@ const ProfileDetails = (user)=>{
                 <span className="col-span-2">{address}</span>
             </div>
             <dialog id="edit_user_modal" className="modal">
-                <EditUserModal key={user.uid} {...user}></EditUserModal>
+                <EditUserModal key={user?.uid} {...user}></EditUserModal>
             </dialog>
         </div>
     )

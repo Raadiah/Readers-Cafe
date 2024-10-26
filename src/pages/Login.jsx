@@ -9,7 +9,7 @@ import Loader from "./Loader";
 
 const Login = ()=>{
     const [loader, setLoader] = useState(false);
-    const { loginWithEmailPassword, loginWithGoogle, loginWithGitHub } = useContext(AuthContext);
+    const { loginWithEmailPassword, loginWithGoogle, loginWithGitHub, reloadUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
@@ -26,6 +26,7 @@ const Login = ()=>{
         .then(()=>{
             toast.success('You are successfully logged in');
             setLoader(false);
+            reloadUser()
             navigate( state ? state : ROUTES.HOME );
         })
         .catch((error)=>{
