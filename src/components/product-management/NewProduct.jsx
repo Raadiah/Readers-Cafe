@@ -41,7 +41,7 @@ const NewProduct = ()=>{
                     image: imgData.data.url,
                     totalPages: formData.totalPages,
                     category: formData.category,
-                    tags: formData.tags?.split(',').slice(0, 3),
+                    tags: formData.tags?.length ? formData.tags?.split(',').slice(0, 3) : [],
                     publisher: formData.publisher,
                     yearOfPublishing: formData.yearOfPublishing,
                     price: formData.price,

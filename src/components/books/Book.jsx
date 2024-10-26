@@ -33,9 +33,12 @@ const Book = (book)=>{
                 <div className="card-actions">  
                     <p className="justify-end flex flex-wrap gap-2">
                         {
+                            tags?.length?
                             tags.map(
                                 (tag)=><span className="text-xs italic">#{tag}</span>
                             )
+                            :
+                            <span className="text-xs italic">No tag given</span>
                         }
                     </p> 
                 </div>

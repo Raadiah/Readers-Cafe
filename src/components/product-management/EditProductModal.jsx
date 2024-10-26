@@ -28,7 +28,7 @@ const EditProductModal = ({_id, bookName, author, totalPages, publisher, categor
             author,
             totalPages,
             category,
-            tags: tags?.split(',').slice(0, 3),
+            tags: tags?.length ? tags?.split(',').slice(0, 3) : [],
             publisher: publisher,
             yearOfPublishing: yearOfPublishing,
             price: price,
@@ -140,7 +140,7 @@ const EditProductModal = ({_id, bookName, author, totalPages, publisher, categor
                         <span 
                             className='col-span-1 font-semibold'>
                             Tags   <br />
-                            <span className="text-xs font-light">(Maximum 3, seperate by commas)</span>
+                            <span className="text-xs font-light">(Maximum 3, seperated by commas)</span>
                         </span>
                         <span className='col-span-1 md:col-span-2 flex'>
                             <input 

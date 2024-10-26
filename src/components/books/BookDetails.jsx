@@ -64,16 +64,16 @@ const BookDetails = ()=>{
                     <div className="card-actions">  
                         <Rating ratingValue={rating}></Rating> 
                     </div>
-                    <p className='italic'>
+                    {/* <p className='italic'>
                         "{review}"
-                    </p>
+                    </p> */}
                     <div className='grid grid-cols-3 gap-x-4'>
                         <span className='col-span-1 font-semibold'>Price</span>
                         <span className='col-span-2 font-semibold'>{price}</span>
                         <span className='col-span-1 font-semibold'>Category</span>
                         <span className='col-span-2'>{category}</span>
                         <span className='col-span-1 font-semibold'>Tags</span>
-                        <span className='col-span-2'>{tags.join(', ')}</span>
+                        <span className='col-span-2'>{tags?.length ? tags.join(', ') : 'No tag given'}</span>
                         <span className='col-span-1 font-semibold'>Total Pages</span>
                         <span className='col-span-2'>{totalPages}</span>
                         <span className='col-span-1 font-semibold'>Publisher</span>
