@@ -22,6 +22,7 @@ import Users from '../components/user-management/Users.jsx';
 import NewProduct from '../components/product-management/NewProduct.jsx';
 import Profile from '../components/profile/Profile.jsx';
 import MyOrders from '../components/order-management/my-orders/MyOrders.jsx';
+import AdminRoute from './AdminRoute.jsx';
 
 const router = createBrowserRouter([
     {
@@ -87,21 +88,21 @@ const router = createBrowserRouter([
         },
         {
           path: ROUTES.USERS,
-          element: <Users></Users>,
+          element: <AdminRoute><Users></Users></AdminRoute>,
           loader: ()=>fetch(`${baseUrl}/users`)
         },
         {
           path: ROUTES.ALL_PRODUCTS,
-          element: <Products></Products>,
+          element: <AdminRoute><Products></Products></AdminRoute>,
           loader: ()=>fetch(`${baseUrl}/products`)
         },
         {
           path: ROUTES.NEW_BOOK,
-          element: <NewProduct></NewProduct>
+          element: <AdminRoute><NewProduct></NewProduct></AdminRoute>
         },
         {
           path: ROUTES.PRODUCT_CATEGORY,
-          element: <Categories></Categories>,
+          element: <AdminRoute><Categories></Categories></AdminRoute>,
           loader: ()=>fetch(`${baseUrl}/categories`)
         }
       ]
