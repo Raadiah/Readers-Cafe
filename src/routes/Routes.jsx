@@ -80,7 +80,7 @@ const router = createBrowserRouter([
         },
         {
           path: ROUTES.WISHLIST,
-          element: <div>Wishlist Page</div>
+          element: <DevelopmentInProgress pageName='Wishlist'></DevelopmentInProgress>
         },
         {
           path: ROUTES.ORDERS,
