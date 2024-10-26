@@ -11,8 +11,9 @@ import { AuthContext } from "../../provider/AuthProvider";
 
 const Users = ()=>{
     const [selectedUser, setSelectedUser] = useState(null);
-    const {reloadUser} = useContext(AuthContext);
+    const {user, reloadUser} = useContext(AuthContext);
     const users = useLoaderData();
+    const loggedInUser_uid = user.uid;
     const tableColumns = ['Name', 'Email', 'Role', 'Action'];
     const tableColumnsClass = ['text-start min-w-72', 'text-start min-w-24', 'min-w-24', ''];
 
@@ -23,6 +24,10 @@ const Users = ()=>{
     }
 
     const handleUserRole = (id) => {
+        if(id==loggedInUser_uid) {
+            toast.error('Cannot change your own role');
+            return;
+        }
         const user = users.find(({uid})=>uid==id);
         const isAdmin = user.isAdmin ? false : true
         const userInfo = {isAdmin} 
@@ -80,9 +85,18 @@ const Users = ()=>{
                                         hover:bg-teal-600 hover:text-white">
                                             <FaEdit className="pointer-events-none"></FaEdit> Edit
                                         </button>
-                                        <button value={uid} className={`btn w-32 p-2 ${isAdmin ? 'bg-lime-50 hover:bg-green-200' : 'bg-pink-50 hover:bg-violet-200'}`} onClick={(event)=>handleUserRole(event.target.value)}>
-                                            <FaShield className="pointer-events-none"></FaShield> {isAdmin ? "Make User" : "Make Admin"}
-                                        </button>
+                                        {
+                                            loggedInUser_uid == uid ?
+                                            <>
+                                                <button value={uid} className="btn btn-disabled w-32 p-2 cursor-none">
+                                                    <FaShield className="pointer-events-none"></FaShield> {isAdmin ? "Make User" : "Make Admin"}
+                                                </button>
+                                            </>
+                                            :
+                                            <button value={uid} className={`btn w-32 p-2 ${isAdmin ? 'bg-lime-50 hover:bg-green-200' : 'bg-pink-50 hover:bg-violet-200'}`} onClick={(event)=>handleUserRole(event.target.value)}>
+                                                <FaShield className="pointer-events-none"></FaShield> {isAdmin ? "Make User" : "Make Admin"}
+                                            </button>
+                                        }
                                     </td>
                                 </tr>
                             )
