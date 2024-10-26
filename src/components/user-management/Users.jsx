@@ -15,7 +15,7 @@ const Users = ()=>{
     const users = useLoaderData();
     const loggedInUser_uid = user.uid;
     const tableColumns = ['Name', 'Email', 'Role', 'Action'];
-    const tableColumnsClass = ['text-start min-w-72', 'text-start min-w-24', 'min-w-24', ''];
+    const tableColumnsClass = ['text-start min-w-24', 'text-start min-w-24', 'min-w-24', ''];
 
     const handleUserEdit = (id) => {
         const user = users.find(({uid})=>uid==id);
@@ -55,7 +55,7 @@ const Users = ()=>{
         <div>
             <table className="w-full">
                 <thead>
-                    <tr>
+                    <tr className="hidden lg:table-row">
                     {
                         tableColumns.map((tableColumn, index)=>{
                             return(<th key={index+1} className={`p-2 ${tableColumnsClass[index]}`}>{tableColumn}</th>)
@@ -67,18 +67,25 @@ const Users = ()=>{
                     {
                         users.map(({_id, email, name, isAdmin, photoURL, uid})=>{
                             return(
-                                <tr className="max-w-full">
-                                    <td className="w-72 text-ellipsis p-2">
-                                        <User key={_id} name={name} photoURL={photoURL} showNameOnSmallDevice={true}></User>
+                                <tr className="flex flex-col lg:table-row max-w-full">
+                                    <td className="text-ellipsis p-2">
+                                        <div className="flex items-center mr-2 gap-2">
+                                            <img className="w-32 lg:w-8 rounded-full" title={name} src={photoURL} alt="" />
+                                            <span className="text-2xl lg:text-sm">{name}</span>
+                                        </div>
                                     </td>
-                                    <td className="w-24 text-ellipsis p-2">{email}</td>
-                                    <td className="w-24 text-ellipsis p-2 text-center">
+                                    <td className="w-24 text-ellipsis p-2 space-x-2">
+                                        <label className="font-semibold lg:hidden">Email:</label>
+                                        <span className="italic">{email}</span>
+                                    </td>
+                                    <td className="flex items-center lg:table-cell lg:w-24 text-ellipsis p-2 lg:text-center space-x-2">
+                                        <label className="lg:hidden font-semibold">Role:</label>
                                         <div 
-                                        className={`${(isAdmin ? "bg-pink-50" : "bg-lime-50")} text-xs rounded-2xl w-24 border px-2 py-1 overflow-hidden text-ellipsis cursor-default`}>
+                                        className={`${(isAdmin ? "bg-pink-50" : "bg-lime-50")} lg:text-xs text-center rounded-2xl w-24 border px-2 py-1 overflow-hidden text-ellipsis cursor-default`}>
                                             {isAdmin ? 'Admin' : 'User'}
                                         </div>
                                     </td>
-                                    <td className="flex justify-center gap-2 my-2">
+                                    <td className="flex lg:justify-center gap-2 my-2 border-b lg:border-none pb-4 lg:pb-0">
                                         <button value={uid} 
                                         onClick={(event)=>handleUserEdit(event.target.value)}
                                         className="btn bg-white border border-teal-600 text-teal-600 
