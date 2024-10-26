@@ -4,11 +4,23 @@ import { AuthContext } from "../../provider/AuthProvider"
 import User from "../common/User"
 import { useContext } from "react"
 import { FaUser, FaUsersLine } from "react-icons/fa6"
-import { FaBook, FaHeart, FaList, FaPlusSquare, FaShoppingCart } from "react-icons/fa"
+import { FaBook, FaHeart, FaList, FaPlusSquare, FaPowerOff, FaShoppingCart } from "react-icons/fa"
+import toast from "react-hot-toast"
 
 const Drawer = ()=>{
-    const {user} = useContext(AuthContext)
+    const {user, logout} = useContext(AuthContext)
     const {isAdmin} = user
+
+    const handleLogout = ()=>{
+        logout()
+        .then(()=>{
+            toast.success('You are successfully signed out')
+        })
+        .catch((error)=>{
+            toast.error('Request could not be processed')
+            console.error(error);
+        });;
+    }
 
     return (
         <div className="drawer h-full">
@@ -66,6 +78,13 @@ const Drawer = ()=>{
                         :
                         <></>
                     }
+                    <div className="divider"></div>
+                    <li onClick={handleLogout}>
+                        <a>
+                            <FaPowerOff></FaPowerOff>
+                            Log Out
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
