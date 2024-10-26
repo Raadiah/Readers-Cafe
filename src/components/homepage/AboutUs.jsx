@@ -10,7 +10,7 @@ const AboutUs = ()=>{
                         <img src="https://static.vecteezy.com/system/resources/previews/015/943/189/non_2x/illustration-of-beautiful-muslim-woman-wearing-hijab-free-vector.jpg" />
                     </div>
                 </div>
-                <div className="text-justify">Soomanib Kamruzzaman, the owner of the website, is a book-lover just like you. In her professional life, she is a government official specialized in Software Engineering. Currently she is learning the MERN Stack as a part of training of the trainers in Web Development bootcamp. She wants to pursue higher studies on advanced computer science technologies.</div>
+                <div className="text-justify">Soomanib Kamruzzaman, the owner of the website, is a book-lover just like you. In her professional life, she is a government official specialized in Software Engineering. She mostly works with Vue, React and Laravel. She wants to pursue higher studies on advanced computer science technologies in future.</div>
             </div>
         </>
     )
