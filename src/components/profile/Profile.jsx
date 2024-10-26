@@ -11,7 +11,7 @@ const Profile = ()=>{
             <div>
                 <ImageSection {...user}></ImageSection>
             </div>
-            <div>
+            <div className="p-4">
                 <ProfileDetails {...user}></ProfileDetails>
             </div>
         </div>
