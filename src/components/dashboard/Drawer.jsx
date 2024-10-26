@@ -7,6 +7,9 @@ import { FaUser, FaUsersLine } from "react-icons/fa6"
 import { FaBook, FaHeart, FaList, FaPlusSquare, FaShoppingCart } from "react-icons/fa"
 
 const Drawer = ()=>{
+    const {user} = useContext(AuthContext)
+    const {isAdmin} = user
+
     return (
         <div className="drawer h-full">
             <div className="h-full">
@@ -30,32 +33,39 @@ const Drawer = ()=>{
                             My Orders
                         </Link>
                     </li>
-                    <div className="divider"></div>
-                    <li>
-                        <Link to={ROUTES.USERS}>
-                            <FaUsersLine></FaUsersLine>
-                            User List
-                        </Link>
-                    </li>
-                    <div className="divider"></div>
-                    <li>
-                        <Link to={ROUTES.ALL_PRODUCTS}>
-                            <FaBook></FaBook>
-                            All Products
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to={ROUTES.NEW_BOOK}>
-                            <FaPlusSquare></FaPlusSquare>
-                            New Product
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to={ROUTES.PRODUCT_CATEGORY}>
-                            <FaList></FaList>
-                            Product Categories
-                        </Link>
-                    </li>
+                    {
+                        isAdmin ?
+                        <>
+                            <div className="divider"></div>
+                            <li>
+                                <Link to={ROUTES.USERS}>
+                                    <FaUsersLine></FaUsersLine>
+                                    User List
+                                </Link>
+                            </li>
+                            <div className="divider"></div>
+                            <li>
+                                <Link to={ROUTES.ALL_PRODUCTS}>
+                                    <FaBook></FaBook>
+                                    All Products
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={ROUTES.NEW_BOOK}>
+                                    <FaPlusSquare></FaPlusSquare>
+                                    New Product
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={ROUTES.PRODUCT_CATEGORY}>
+                                    <FaList></FaList>
+                                    Product Categories
+                                </Link>
+                            </li>
+                        </>
+                        :
+                        <></>
+                    }
                 </ul>
             </div>
         </div>
