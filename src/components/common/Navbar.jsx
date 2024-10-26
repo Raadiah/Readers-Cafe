@@ -217,10 +217,9 @@ function Navbar() {
         {
             user ? <>
                 <div className="navbar-end">
-                    <User key={user} {...user} showNameOnSmallDevice={false}></User>
-                    <button
-                    onClick={handleLogout}
-                    className="btn hidden md:flex">Log Out</button>
+                    <Link to={ROUTES.PROFILE}>
+                        <User key={user} {...user} showNameOnSmallDevice={false}></User>
+                    </Link>
                 </div>
             </>:<>
                 <div className="navbar-end hidden gap-x-2 md:flex">

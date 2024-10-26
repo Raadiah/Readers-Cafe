@@ -10,20 +10,22 @@ const ProfileDetails = (user)=>{
 
     return (
         <div>
-            <div className="grid grid-cols-3 p-4 gap-y-2 w-1/2 border m-auto shadow-md">
-                <span className="col-span-3 flex justify-end">
+            <div className="flex flex-col md:flex-row m-4 space-y-4 gap-4 md:w-1/2 md:m-auto p-4 border rounded-md shadow-md">
+                <div className="flex-1 grid grid-cols-3 gap-y-2">
+                    <span className="col-span-1 font-semibold">Phone</span>
+                    <span className="col-span-2">{phone}</span>
+                    <span className="col-span-1 font-semibold">Address</span>
+                    <span className="col-span-2">{address}</span>
+                </div>
+                <div className="flex justify-center">
                     <button 
                     value={uid} 
-                    className="btn bg-white text-teal-600 
-                        hover:bg-teal-600 hover:text-white"
+                    className="btn w-60 md:w-32 bg-white text-teal-600 
+                    hover:bg-teal-600 hover:text-white"
                     onClick={(event)=>handleUserEdit(event.target.value)}>
                         <FaEdit></FaEdit> Edit
                     </button>
-                </span>
-                <span className="col-span-1">Phone</span>
-                <span className="col-span-2">{phone}</span>
-                <span className="col-span-1">Address</span>
-                <span className="col-span-2">{address}</span>
+                </div>
             </div>
             <dialog id="edit_user_modal" className="modal">
                 <EditUserModal key={user?.uid} {...user}></EditUserModal>
