@@ -9,8 +9,8 @@ const MyOrders = ()=>{
     const [totalPrice, setTotalPrice] = useState(0);
     const {user} = useContext(AuthContext);
     const uid = user?.uid;
-    const tableColumns = ['Book', 'Date', 'Price', 'Quantity', 'Payment Method', 'Action'];
-    const tableColumnsClass = ['text-start min-w-72', 'text-start min-w-24', 'min-w-24', 'min-w-24', 'text-start min-w-24'];
+    const tableColumns = ['Book', 'Price', 'Quantity', 'Payment Method', 'Date', 'Action'];
+    const tableColumnsClass = ['text-start min-w-24', 'min-w-24', 'min-w-24', 'text-start min-w-24', 'text-start min-w-24'];
     
     const fetchOrders = async()=>{
         const orderJson = await fetch(`${baseUrl}/myOrders/${uid}`)
@@ -30,7 +30,7 @@ const MyOrders = ()=>{
             <div className="flex justify-end text-lg mb-8">Total Price: ${totalPrice}</div>
             <table className="w-full">
                 <thead>
-                    <tr>
+                    <tr className="hidden lg:table-row">
                     {
                         tableColumns.map((tableColumn, index)=>{
                             return(<th key={index+1} className={`p-2 ${tableColumnsClass[index]}`}>{tableColumn}</th>)
@@ -42,16 +42,30 @@ const MyOrders = ()=>{
                     {
                         orders.map(({image, bookName, price, quantity, orderDate, paymentMethod})=>{
                             return(
-                                <tr>
-                                    <td className="flex gap-2 p-2">
-                                        <img className="w-8 h-8" src={image}></img>
-                                        { bookName }
+                                <tr className="flex flex-col lg:table-row space-y-2">
+                                    <td className="gap-2 pt-2">
+                                        <span className="flex items-center gap-2">
+                                            <img className="w-24 h-24 lg:w-8 lg:h-8" src={image}></img>
+                                            <span className="text-2xl font-semibold lg:text-base lg:font-normal">{ bookName }</span>
+                                        </span>
                                     </td>
-                                    <td className="text-center p-2">{ formatDate(orderDate) }</td>
-                                    <td className="text-center p-2">${ price }</td>
-                                    <td className="text-center p-2">{ quantity }</td>
-                                    <td>{ paymentMethod }</td>
-                                    <td className="flex justify-center gap-2 p-2">
+                                    <td className="lg:text-center">
+                                        <label className="lg:hidden font-semibold">Price: </label>
+                                        <span>${ price }</span>
+                                    </td>
+                                    <td className="lg:text-center">
+                                        <label className="lg:hidden font-semibold">Quantity: </label>
+                                        <span>{ quantity }</span>
+                                    </td>
+                                    <td>
+                                        <label className="lg:hidden font-semibold">Payment Method: </label>
+                                        <span>{ paymentMethod }</span>
+                                    </td>
+                                    <td className="lg:text-center">
+                                        <label className="lg:hidden font-semibold">Date of Purchase: </label>
+                                        <span>{ formatDate(orderDate) }</span>
+                                    </td>
+                                    <td className="flex lg:justify-center gap-2 p-4 lg:p-2 border-b">
                                         <button 
                                         className="btn bg-white border border-teal-600 text-teal-600 
                                         hover:bg-teal-600 hover:text-white">
