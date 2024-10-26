@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useRef } from "react"
 import { AuthContext } from "../../../provider/AuthProvider"
 import { FaCartPlus, FaCross } from "react-icons/fa6";
 import baseUrl from "../../../routes/sites";
@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 
 const BuyNowModal = ({_id, bookName, author, image, price})=>{
     const {user} = useContext(AuthContext);
+    const closeButtonRef = useRef(null)
     const {uid, name, email, address, phone} = user;
     const paymentMethods = ['Cash On Delivery', 'Mobile Wallet', 'Card']
 
@@ -41,6 +42,7 @@ const BuyNowModal = ({_id, bookName, author, image, price})=>{
     
             const data = await result.json();
             if (data.acknowledged) {
+                closeButtonRef.current?.click()
                 toast.success(`Succesfully ordered ${bookName}`);
             } else {
                 toast.error('Failed to buy product.');
@@ -77,19 +79,25 @@ const BuyNowModal = ({_id, bookName, author, image, price})=>{
                         <span className='col-span-1 font-semibold'>Quantity</span>
                         <span className='col-span-2 flex'>
                             <input 
+                            defaultValue={1}
                             name="quantity" 
                             className="flex-1 border rounded-md h-8 p-1" 
                             type="number"
                             min={1}
-                            max={10}></input>
+                            max={10}
+                            required></input>
                         </span>
                         <span className='col-span-1 font-semibold'>Delivery Address</span>
                         <span className='col-span-2 flex'>
-                            <textarea name="deliveryAddress" className="border border-black p-2 outline-none rounded-md flex-1 h-24"></textarea>
+                            <textarea 
+                            defaultValue={address}
+                            name="deliveryAddress" 
+                            className="border border-black p-2 outline-none rounded-md flex-1 h-24"
+                            required></textarea>
                         </span>
                         <span className='col-span-1 font-semibold'>Payment Method</span>
                         <span className='col-span-2 flex'>
-                            <select name="paymentMethod" className="flex-1 border rounded-md h-8 p-1">
+                            <select name="paymentMethod" className="flex-1 border rounded-md h-8 p-1" required>
                                 <option className="text-gray-700" disabled>Select One</option>
                                 {
                                     paymentMethods.map((paymentMethod, index)=><option value={index}>{paymentMethod}</option>)
@@ -106,7 +114,7 @@ const BuyNowModal = ({_id, bookName, author, image, price})=>{
                             Buy Now
                         </button>
                         <form method="dialog">
-                            <button className="btn btn-outline w-24">Close</button>
+                            <button ref={closeButtonRef} className="btn btn-outline w-24">Close</button>
                         </form>
                     </div>
                 </form>

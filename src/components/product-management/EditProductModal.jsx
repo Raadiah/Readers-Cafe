@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import baseUrl from "../../routes/sites";
 import toast from "react-hot-toast";
 import Loader from "../../pages/Loader";
@@ -7,6 +7,7 @@ const EditProductModal = ({_id, bookName, author, totalPages, publisher, categor
     const [categories, setCategories] = useState([]);
     const [showLoading, setShowLoading] = useState(false)
     const [selectedCategory, setSelectedCategory] = useState(category)
+    const closeButtonRef = useRef(null) 
 
     const tagString = tags?.join()
 
@@ -47,6 +48,7 @@ const EditProductModal = ({_id, bookName, author, totalPages, publisher, categor
         if (data.acknowledged) {
             toast.success(`${bookName} is updated successfully`);
             setShowLoading(false)
+            closeButtonRef.current?.click()
         } else {
             toast.error('Failed to update product.');
             setShowLoading(false)
@@ -77,7 +79,14 @@ const EditProductModal = ({_id, bookName, author, totalPages, publisher, categor
     return(<div className="modal-box">
         {
             showLoading ?
-            <><Loader></Loader></>
+            <>
+            <div className="flex flex-col items-center space-y-8">
+                <Loader></Loader>
+                <form method="dialog">
+                    <button ref={closeButtonRef} className="btn btn-outline w-24">Close</button>
+                </form>
+            </div>
+            </>
             :
             <>
             <h3 className="font-bold text-lg">Edit book - {bookName}</h3>
@@ -171,7 +180,7 @@ const EditProductModal = ({_id, bookName, author, totalPages, publisher, categor
                             Update
                         </button>
                         <form method="dialog">
-                            <button className="btn btn-outline w-24">Close</button>
+                            <button ref={closeButtonRef} className="btn btn-outline w-24">Close</button>
                         </form>
                     </div>
                 </form>
