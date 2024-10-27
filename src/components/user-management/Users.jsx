@@ -70,7 +70,7 @@ const Users = ()=>{
                                 <tr className="flex flex-col lg:table-row max-w-full">
                                     <td className="text-ellipsis p-2">
                                         <div className="flex items-center mr-2 gap-2">
-                                            <img className="w-32 lg:w-8 rounded-full" title={name} src={photoURL} alt="" />
+                                            <img className="w-32 h-32 lg:w-8 lg:h-8 rounded-full" title={name} src={photoURL} alt="" />
                                             <span className="text-2xl lg:text-sm">{name}</span>
                                         </div>
                                     </td>

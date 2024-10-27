@@ -95,6 +95,16 @@ const EditProductModal = ({_id, bookName, author, totalPages, publisher, categor
                     <div className='grid grid-cols-3 gap-x-4 gap-y-2'>
                         <span className='col-span-1 font-semibold'>
                             <img src={image} className="h-24"></img>
+                            <div className="flex justify-center">
+                                <span 
+                                className="
+                                -mt-8 ml-2 z-40 cursor-pointer
+                                w-8 h-8 p-1 bg-white rounded-full shadow-sm border
+                                tooltip tooltip-right" 
+                                data-tip="Upload Photo">
+                                    <button className=""><FaCamera></FaCamera></button>
+                                </span>
+                            </div>
                         </span>
                         <span className='col-span-2'>
                             <p className="font-semibold">{bookName}</p>
