@@ -90,7 +90,7 @@ const EditUserModal = ({uid, email, name, phone, address, isAdmin, photoURL})=>{
                             <div className="flex justify-center">
                                 <span 
                                 className="
-                                -mt-8 ml-2 z-40 cursor-pointer
+                                -mt-8 z-40 cursor-pointer
                                 w-8 h-8 p-1 bg-white rounded-full shadow-sm border
                                 tooltip tooltip-right" 
                                 data-tip="Upload Photo">
