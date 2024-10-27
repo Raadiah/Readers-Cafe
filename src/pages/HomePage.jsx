@@ -8,11 +8,13 @@ import HowItWorks from "../components/homepage/HowItWorks"
 import TopBooks from "../components/homepage/TopBooks"
 
 function HomePage() {
+    const metaDescription = "Reader's Cafe has rare collection of original books from all over the world. You can borrow or lend books, add book reviews, request for books and write blogs for the world to know."
     window.scrollTo(0,0);
     return (
         <>
             <Helmet>
                 <title>Reader's Cafe</title>
+                <meta name="description" value={metaDescription} />
             </Helmet>
             <div className="min-h-screen flex flex-col">
                 <Banner></Banner>
