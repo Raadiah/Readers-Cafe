@@ -23,7 +23,7 @@ const MyOrders = ()=>{
 
     useEffect(()=>{
         fetchOrders()
-    }, [])
+    }, [user])
 
     return (
         <>
@@ -45,9 +45,9 @@ const MyOrders = ()=>{
                     </thead>
                     <tbody>
                         {
-                            orders.map(({image, bookName, price, quantity, orderDate, paymentMethod})=>{
+                            orders.map(({_id, image, bookName, price, quantity, orderDate, paymentMethod})=>{
                                 return(
-                                    <tr className="flex flex-col lg:table-row space-y-2">
+                                    <tr key={_id} className="flex flex-col lg:table-row space-y-2">
                                         <td className="gap-2 pt-2">
                                             <span className="flex items-center gap-2">
                                                 <img className="w-24 h-24 lg:w-8 lg:h-8" src={image}></img>

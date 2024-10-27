@@ -100,7 +100,7 @@ const BuyNowModal = ({_id, bookName, author, image, price})=>{
                             <select name="paymentMethod" className="flex-1 border rounded-md h-8 p-1" required>
                                 <option className="text-gray-700" disabled>Select One</option>
                                 {
-                                    paymentMethods.map((paymentMethod, index)=><option value={index}>{paymentMethod}</option>)
+                                    paymentMethods.map((paymentMethod, index)=><option key={index+1} value={index}>{paymentMethod}</option>)
                                 }
                             </select>
                         </span>

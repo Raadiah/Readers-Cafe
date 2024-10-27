@@ -37,7 +37,7 @@ const Book = (book)=>{
                             {
                                 tags?.length?
                                 tags.map(
-                                    (tag)=><span className="text-xs italic">#{tag}</span>
+                                    (tag, index)=><span key={index+1} className="text-xs italic">#{tag}</span>
                                 )
                                 :
                                 <span className="text-xs italic">No tag given</span>

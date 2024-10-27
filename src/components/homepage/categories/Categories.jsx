@@ -21,9 +21,9 @@ const Categories = ()=>{
             <SectionHeader headerText="Find books by categories (Slide for more)"></SectionHeader>
             <div className="carousel rounded-box gap-4 max-w-full overflow-scroll p-4 z-40">
                 <Category category="All"></Category>
-            {
-                categories?.map((category)=><Category {...category}></Category>)
-            }
+                {
+                    categories?.map((category)=><Category key={category._id}  {...category}></Category>)
+                }
             </div>
         </div>
     )

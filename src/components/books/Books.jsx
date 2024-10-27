@@ -5,7 +5,6 @@ import { useLoaderData, useParams } from "react-router-dom";
 const Books = ()=>{
     const books = useLoaderData();
     const { category } = useParams();
-    console.log(category)
     window.scrollTo(0,0);
 
     return (

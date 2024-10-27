@@ -73,7 +73,7 @@ const Users = ()=>{
                             {
                                 users.map(({_id, email, name, isAdmin, photoURL, uid})=>{
                                     return(
-                                        <tr className="flex flex-col lg:table-row max-w-full">
+                                        <tr key={_id} className="flex flex-col lg:table-row max-w-full">
                                             <td className="text-ellipsis p-2">
                                                 <div className="flex items-center mr-2 gap-2">
                                                     <img className="w-32 h-32 lg:w-8 lg:h-8 rounded-full" title={name} src={photoURL} alt="" />

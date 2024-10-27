@@ -24,7 +24,7 @@ const FAQs = ()=>{
         <>
             <div className="mt-20 mb-16 pb-4 w-3/4 m-auto">
                 <h3 className="font-semibold text-center my-6">Frequently Asked Questions</h3>
-                { faqs.map((faq)=>(<FAQ {...faq}></FAQ>)) }
+                { faqs.map((faq, index)=>(<FAQ key={index+1} {...faq}></FAQ>)) }
             </div>
         </>
     )

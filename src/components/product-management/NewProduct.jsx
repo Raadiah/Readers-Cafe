@@ -119,8 +119,8 @@ const NewProduct = ()=>{
                                 <span className="text-base label-text">Category</span>
                                 <label className="border p-2 rounded-lg flex items-center gap-2 my-2 ">
                                     <select name="category" className="grow outline-none" onChange={handleInputChange} required>
-                                        {categories.map(({category})=>{
-                                            return <option value={category}>{category}</option>
+                                        {categories.map(({_id, category})=>{
+                                            return <option key={_id} value={category}>{category}</option>
                                         })}
                                     </select>
                                 </label>
