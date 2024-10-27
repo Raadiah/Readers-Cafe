@@ -25,30 +25,19 @@ const Register = ()=>{
         const isAdmin = false;
         const isBanned = false;
         const photoURL = "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png";
+        const userInfo = {email, name, phone, address, isAdmin, isBanned, photoURL}
 
-        createUser(email, password)
-        .then((user)=>{
-            const uid = user?.user?.uid;
-            const userInfo = {email, name, phone, address, isAdmin, isBanned, photoURL, uid}
-
-            fetch(`${baseUrl}/user/${uid}`, {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json"
-                },
-                body: JSON.stringify(userInfo)
-            })
-            .then(res=>res.json())
-            .then(data=>{
-                if(data?.acknowledged) {
-                    toast.success("Successfully Registered")
-                    setLoader(false);
-                    navigate(ROUTES.HOME)
-                } else {
-                    console.error("DB: Data Insertion Error");
-                    setLoader(false);
-                }
-            })
+        createUser(email, password, userInfo)
+        .then((success)=>{
+            if(success) {
+                toast.success("Successfully Registered")
+                setLoader(false);
+                navigate(ROUTES.PROFILE)
+            } else {
+                toast.error('Request could not be processed')
+                console.error("DB: Data Insertion Error");
+                setLoader(false);
+            }
         })
         .catch((error)=>{
             toast.error('Request could not be processed')

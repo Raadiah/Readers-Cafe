@@ -17,11 +17,55 @@ const AuthProvider = ({children})=>{
     const [user, setUser] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const createUser = (email, password)=>{
-        return createUserWithEmailAndPassword(auth, email, password);
+    const addUserToDatabase = async (uid, userInfo)=>{
+        try {
+            const res = await fetch(`${baseUrl}/user/${uid}`, {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(userInfo)
+            })
+
+            if (!res.ok) {
+                throw new Error("Failed to fetch user data.");
+            }
+
+            const data = await res.json()
+
+            if(data?.upsertedCount==0) {
+                console.error("DB: New User data Insertion Error");
+                return false
+            }
+
+            return true;
+        } catch(error) {
+            console.error(error)
+            return false
+        }
     }
 
-    const loginWithEmailPassword = (email, password)=>{
+    const createUser = async (email, password, userInfo)=>{
+        if(user) await logout()
+
+        try {
+            const {user} = await createUserWithEmailAndPassword(auth, email, password);
+            const {uid} = user;
+            const successfulDbInsertion = await addUserToDatabase(uid, {...userInfo, uid})
+            if(successfulDbInsertion) {
+                const successfulReload = await reloadUser(uid)
+                return successfulReload
+            } else {
+                return false
+            }
+        } catch(error) {
+            console.error(error)
+            return false
+        }
+    }
+
+    const loginWithEmailPassword = async(email, password)=>{
+        if(user) await logout()
         return signInWithEmailAndPassword(auth, email, password);
     }
 
@@ -39,38 +83,29 @@ const AuthProvider = ({children})=>{
 
     //used when user is created/edit
     const reloadUser = async (uid)=>{
-        if(user?.uid!=uid) return
+        if(user && user.uid!=uid) return false //when editing user data, check if it is user's own data
         try {
             const res = await fetch(
               `${baseUrl}/user/${uid}`
             );
             if (!res.ok) {
               throw new Error("Failed to fetch user data.");
+              return false
             }
             const data = await res.json();
             setUser(data);
-          } catch (error) {
+        } catch (error) {
             console.error("Error fetching user data:", error.message);
-          }
+            return false
+        }
+
+        return true
     }
 
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth, async (currentUser)=>{
-            if(currentUser) {
-                try {
-                    const res = await fetch(
-                      `${baseUrl}/user/${currentUser.uid}`
-                    );
-                    if (!res.ok) {
-                      throw new Error("Failed to fetch user data.");
-                    }
-                    const data = await res.json();
-                    setUser(data);
-                  } catch (error) {
-                    console.error("Error fetching user data:", error.message);
-                  }
-            } else {
-                setUser(currentUser);
+            if(!currentUser) {
+                setUser(currentUser); //when logged out
             }
         })
 

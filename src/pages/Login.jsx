@@ -9,7 +9,9 @@ import Loader from "./Loader";
 
 const Login = ()=>{
     const [loader, setLoader] = useState(false);
-    const { loginWithEmailPassword, loginWithGoogle, loginWithGitHub, user } = useContext(AuthContext);
+    const { 
+        loginWithEmailPassword, loginWithGoogle, loginWithGitHub, 
+        user, reloadUser } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
     const {state} = useLocation();
@@ -22,8 +24,12 @@ const Login = ()=>{
         const password = event.target.password.value;
         setLoader(true);
         loginWithEmailPassword(email, password)
-        .then(()=>{
-            toast.success('You are successfully logged in');
+        .then(({user})=>reloadUser(user.uid))
+        .then((success)=>{
+            if(success) {
+                toast.success('You are successfully logged in');
+                setLoader(false)
+            }
         })
         .catch((error)=>{
             toast.error('Request could not be processed')
