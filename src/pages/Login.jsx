@@ -6,9 +6,13 @@ import toast from "react-hot-toast";
 import { AuthContext } from "../provider/AuthProvider"
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth"
 import Loader from "./Loader";
+import ErrorMessage from "../components/common/ErrorMessage";
 
 const Login = ()=>{
     const [loader, setLoader] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [errors, setErrors] = useState({});
+
     const { 
         loginWithEmailPassword, loginWithGoogle, loginWithGitHub, 
         user, reloadUser } = useContext(AuthContext);
@@ -18,10 +22,39 @@ const Login = ()=>{
 
     window.scrollTo(0,0);
 
+    const handleErrorMessage = (errorCode)=>{
+        if(!errorCode) return
+        switch(errorCode) {
+            case 'auth/invalid-email':
+                setErrorMessage('Invalid email or password')
+                break;
+            case 'auth/invalid-credential':
+                setErrorMessage('Invalid email or password')
+                break;
+            default:
+                setErrorMessage('An unexpected error occured while tring to login');
+        }
+    }
+
+    const validateForm = (email, password) => {
+        const newErrors = {};
+        if (!email) {
+            newErrors.email = "Please enter a valid email";
+        }
+        if (!password) {
+            newErrors.password = "Please enter your password";
+        }
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
     const handleLogin = (event)=>{
         event.preventDefault();
         const email = event.target.email.value;
         const password = event.target.password.value;
+
+        if(!validateForm(email, password)) return;
+
         setLoader(true);
         loginWithEmailPassword(email, password)
         .then(({user})=>reloadUser(user.uid))
@@ -32,9 +65,10 @@ const Login = ()=>{
             }
         })
         .catch((error)=>{
-            toast.error('Request could not be processed')
+            const errorCode = error.code;
+            handleErrorMessage(errorCode)
+            toast.error(errorMessage)
             setLoader(false);
-            console.error(error);
         });
     }
 
@@ -96,6 +130,9 @@ const Login = ()=>{
                                 </svg>
                                 <input id="email" type="text" className="grow" placeholder="Email" />
                                 </label>
+                                {
+                                    errors.email && <ErrorMessage message={errors.email}></ErrorMessage>
+                                }
                                 <label className="input input-bordered flex items-center gap-2">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -109,6 +146,9 @@ const Login = ()=>{
                                 </svg>
                                 <input id="password" type="password" className="grow" placeholder="******" />
                                 </label>
+                                {
+                                    errors.password && <ErrorMessage message={errors.password}></ErrorMessage>
+                                }
                                 <div className="flex justify-center">
                                     <button type="submit" className="btn btn-wide">Login</button>
                                 </div>

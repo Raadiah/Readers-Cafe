@@ -90,11 +90,9 @@ const Register = ()=>{
                     </svg>
                     <input id="username" type="text" className="grow" placeholder="Full Name" />
                     </label>
-                    <div className="flex grow">
                     {
                         errors.name && <ErrorMessage message={errors.name}></ErrorMessage>
                     }
-                    </div>
                     <label className="input input-bordered flex items-center gap-2">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -108,11 +106,9 @@ const Register = ()=>{
                     </svg>
                     <input id="email" type="text" className="grow" placeholder="Email" />
                     </label>
-                    <div className="flex grow">
                     {
                         errors.email && <ErrorMessage message={errors.email}></ErrorMessage>
                     }
-                    </div>
                     <label className="input input-bordered flex items-center gap-2">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -151,11 +147,9 @@ const Register = ()=>{
                     </svg>
                     <input id="password" type="password" className="grow" placeholder="******"/>
                     </label>
-                    <div className="flex grow">
                     {
                         errors.password && <ErrorMessage message={errors.password}></ErrorMessage>
                     }
-                    </div>
                     <div className="flex justify-center">
                         <button type="submit" className="btn btn-wide">Register</button>
                     </div>
