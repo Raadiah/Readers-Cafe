@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import app from "../Firebase/firebase.init";
 import baseUrl from "../routes/sites";
+import toast from "react-hot-toast";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -48,6 +49,18 @@ const AuthProvider = ({children})=>{
     const createUser = async (email, password, userInfo)=>{
         if(user) await logout()
 
+        const handleErrorMessage = (errorCode)=>{
+            if(!errorCode) return
+            switch(errorCode) {
+                case 'auth/email-already-in-use':
+                case 'auth/email-already-exists':
+                    toast.error('Email is already registered')
+                    break;
+                default:
+                    toast.error('An unexpected error occured while tring to login');
+            }
+        }
+
         try {
             const {user} = await createUserWithEmailAndPassword(auth, email, password);
             const {uid} = user;
@@ -56,10 +69,12 @@ const AuthProvider = ({children})=>{
                 const successfulReload = await reloadUser(uid)
                 return successfulReload
             } else {
+                toast.error('Data could not be added into server')
                 return false
             }
         } catch(error) {
-            console.error(error)
+            const errorCode = error.code;
+            handleErrorMessage(errorCode)
             return false
         }
     }
@@ -95,6 +110,7 @@ const AuthProvider = ({children})=>{
             const data = await res.json();
             setUser(data);
         } catch (error) {
+            toast.error("Unable to fetch user data")
             console.error("Error fetching user data:", error.message);
             return false
         }

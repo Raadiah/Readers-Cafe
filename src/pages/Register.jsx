@@ -54,7 +54,6 @@ const Register = ()=>{
                 setLoader(false);
                 navigate(ROUTES.PROFILE)
             } else {
-                toast.error('Request could not be processed')
                 console.error("DB: Data Insertion Error");
                 setLoader(false);
             }
