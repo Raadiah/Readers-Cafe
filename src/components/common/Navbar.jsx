@@ -205,6 +205,12 @@ function Navbar() {
                                 :
                                 <></>
                             }
+                            <li onClick={handleLogout} className="border-t">
+                                <a>
+                                    <FaPowerOff></FaPowerOff>
+                                    Log Out
+                                </a>
+                            </li>
                         </ul>
                     </details>
                 </li>
