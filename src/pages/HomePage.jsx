@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async"
 import FAQs from "../components/faq/FAQs"
 import AboutUs from "../components/homepage/AboutUs"
 import Banner from "../components/homepage/Banner"
@@ -9,16 +10,21 @@ import TopBooks from "../components/homepage/TopBooks"
 function HomePage() {
     window.scrollTo(0,0);
     return (
-        <div className="min-h-screen flex flex-col">
-            <Banner></Banner>
-            <div className="space-y-12 md:mx-32 md:my-14 p-4">
-                <HowItWorks></HowItWorks>
-                <Categories></Categories>
-                <TopBooks></TopBooks>
-                <AboutUs></AboutUs>
-                <FAQs></FAQs>
+        <>
+            <Helmet>
+                <title>Reader's Cafe</title>
+            </Helmet>
+            <div className="min-h-screen flex flex-col">
+                <Banner></Banner>
+                <div className="space-y-12 md:mx-32 md:my-14 p-4">
+                    <HowItWorks></HowItWorks>
+                    <Categories></Categories>
+                    <TopBooks></TopBooks>
+                    <AboutUs></AboutUs>
+                    <FAQs></FAQs>
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 

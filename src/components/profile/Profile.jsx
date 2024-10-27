@@ -2,19 +2,26 @@ import { useContext } from "react"
 import ImageSection from "./ImageSection"
 import ProfileDetails from "./ProfileDetails"
 import { AuthContext } from "../../provider/AuthProvider"
+import { Helmet } from "react-helmet-async"
 
 const Profile = ()=>{
     const {user} = useContext(AuthContext);
+    const {name} = user
     
     return (
-        <div>
+        <>
+            <Helmet>
+                <title>{name}</title>
+            </Helmet>
             <div>
-                <ImageSection {...user}></ImageSection>
+                <div>
+                    <ImageSection {...user}></ImageSection>
+                </div>
+                <div className="p-4">
+                    <ProfileDetails {...user}></ProfileDetails>
+                </div>
             </div>
-            <div className="p-4">
-                <ProfileDetails {...user}></ProfileDetails>
-            </div>
-        </div>
+        </>
     )
 }
 

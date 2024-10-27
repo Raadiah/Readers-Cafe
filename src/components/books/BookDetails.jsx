@@ -6,6 +6,7 @@ import { useContext, useState } from 'react';
 import BuyNowModal from './Buy/BuyNowModal';
 import { AuthContext } from '../../provider/AuthProvider';
 import baseUrl from '../../routes/sites';
+import { Helmet } from 'react-helmet-async';
 
 const BookDetails = ()=>{
     const {user} = useContext(AuthContext)
@@ -51,6 +52,9 @@ const BookDetails = ()=>{
     }
     
     return (<>
+        <Helmet>
+            <title>{bookName}</title>
+        </Helmet>
         <div className="hero max-w-screen-sm md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl m-auto">
             <div className="border hero-content md:mt-24 md:mb-16 mx-auto bg-white rounded-md min-h-2/3 flex-col lg:flex-row shadow-lg">
                 <img

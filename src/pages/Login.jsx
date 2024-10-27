@@ -7,6 +7,7 @@ import { AuthContext } from "../provider/AuthProvider"
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth"
 import Loader from "./Loader";
 import ErrorMessage from "../components/common/ErrorMessage";
+import { Helmet } from "react-helmet-async";
 
 const Login = ()=>{
     const [loader, setLoader] = useState(false);
@@ -96,6 +97,9 @@ const Login = ()=>{
 
     return (
         <>
+        <Helmet>
+            <title>Login | Reader's Cafe</title>
+        </Helmet>
         {
             user ? 
             <Navigate to={state ? state : ROUTES.PROFILE}></Navigate>
