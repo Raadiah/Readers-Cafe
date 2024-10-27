@@ -110,7 +110,7 @@ const AuthProvider = ({children})=>{
             const data = await res.json();
             setUser(data);
         } catch (error) {
-            toast.error("Unable to fetch user data")
+            //toast.error("Unable to fetch user data")
             console.error("Error fetching user data:", error.message);
             return false
         }
