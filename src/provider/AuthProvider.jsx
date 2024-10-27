@@ -82,8 +82,8 @@ const AuthProvider = ({children})=>{
     }
 
     //used when user is created/edit
-    const reloadUser = async (uid)=>{
-        if(user && user.uid!=uid) return false //when editing user data, check if it is user's own data
+    const reloadUser = async (uid, refresh=false)=>{
+        if(!refresh && (user && user.uid!=uid)) return false //when editing user data, check if it is user's own data
         try {
             const res = await fetch(
               `${baseUrl}/user/${uid}`
@@ -106,6 +106,9 @@ const AuthProvider = ({children})=>{
         const unsubscribe = onAuthStateChanged(auth, async (currentUser)=>{
             if(!currentUser) {
                 setUser(currentUser); //when logged out
+            } else {
+                const {uid} = currentUser;
+                reloadUser(uid, true)
             }
         })
 
