@@ -10,7 +10,6 @@ import ErrorMessage from "../components/common/ErrorMessage";
 
 const Login = ()=>{
     const [loader, setLoader] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
     const [errors, setErrors] = useState({});
 
     const { 
@@ -25,11 +24,9 @@ const Login = ()=>{
     const handleErrorMessage = (errorCode)=>{
         if(!errorCode) return
         switch(errorCode) {
-            case 'auth/invalid-email':
-                setErrorMessage('Invalid email or password')
-                break;
             case 'auth/invalid-credential':
-                setErrorMessage('Invalid email or password')
+            case 'auth/invalid-email':
+                toast.error('Invalid email or password')
                 break;
             default:
                 setErrorMessage('An unexpected error occured while tring to login');
@@ -67,7 +64,6 @@ const Login = ()=>{
         .catch((error)=>{
             const errorCode = error.code;
             handleErrorMessage(errorCode)
-            toast.error(errorMessage)
             setLoader(false);
         });
     }
