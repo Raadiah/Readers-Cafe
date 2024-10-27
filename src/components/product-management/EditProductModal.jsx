@@ -1,18 +1,58 @@
 import { useState, useEffect, useRef } from "react";
-import baseUrl from "../../routes/sites";
+import baseUrl, { SITES } from "../../routes/sites";
 import toast from "react-hot-toast";
 import Loader from "../../pages/Loader";
+import { FaCamera } from "react-icons/fa";
 
 const EditProductModal = ({_id, bookName, author, totalPages, publisher, category, tags, image, yearOfPublishing, price})=>{
     const [categories, setCategories] = useState([]);
     const [showLoading, setShowLoading] = useState(false)
     const [selectedCategory, setSelectedCategory] = useState(category)
-    const closeButtonRef = useRef(null) 
-
+    const [newPicFile, setNewPicFile] = useState(null)
+    const [newPicFileURL, setNewPicFileURL] = useState(image)
+    const closeButtonRef = useRef(null)
+    const cameraInputRef = useRef(null)
     const tagString = tags?.join()
+
+    const upload = ()=>{
+        cameraInputRef.current?.click()
+    }
+
+    const handleFileChange = (e)=>{
+        const newPicFile = e.target.files[0]
+        const newPicFileURL = URL.createObjectURL(newPicFile)
+        setNewPicFile(newPicFile)
+        setNewPicFileURL(newPicFileURL)
+    }
+
+    const handleSaveImage = async()=>{
+        if(!newPicFile) return image;
+
+        const imageHostKey = import.meta.env.VITE_APP_IMGBB_KEY;
+        const imageUploadUrl = `${SITES.IMAGE_BB_SITE}?key=${imageHostKey}`;
+
+        const imageData = new FormData(); 
+
+        imageData.append('image', newPicFile);
+
+        const imageUploadOnServer = await fetch(imageUploadUrl, {
+            method: 'POST',
+            body: imageData
+        });
+        
+        const imgData = await imageUploadOnServer.json();
+
+        if(imgData.success) {
+            return imgData.data.url
+        } else {
+            toast.error('A problem occurred while trying to upload file. Updating remaining information...')
+            return image
+        }
+    }
 
     const handleUpdateProduct = async(event)=>{
         event.preventDefault();
+        setShowLoading(true)
 
         const bookName = event.target.bookName.value;
         const author = event.target.author.value;
@@ -23,6 +63,8 @@ const EditProductModal = ({_id, bookName, author, totalPages, publisher, categor
         const yearOfPublishing = event.target.yearOfPublishing.value;
         const price = event.target.price.value;
 
+        const serverFileURL = await handleSaveImage()
+
         const product = {
             bookName,
             author,
@@ -32,11 +74,10 @@ const EditProductModal = ({_id, bookName, author, totalPages, publisher, categor
             publisher: publisher,
             yearOfPublishing: yearOfPublishing,
             price: price,
+            image: serverFileURL
         };
 
-        setShowLoading(true)
-
-        const result = await fetch(`${baseUrl}/product/${_id}`, {
+        const result = await fetch(`${baseUrl}/product/${_id}`, { 
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -94,15 +135,22 @@ const EditProductModal = ({_id, bookName, author, totalPages, publisher, categor
                 <form onSubmit={handleUpdateProduct}>
                     <div className='grid grid-cols-3 gap-x-4 gap-y-2'>
                         <span className='col-span-1 font-semibold'>
-                            <img src={image} className="h-24"></img>
+                            <img src={newPicFileURL} className="h-24"></img>
                             <div className="flex justify-center">
                                 <span 
                                 className="
-                                -mt-8 ml-2 z-40 cursor-pointer
-                                w-8 h-8 p-1 bg-white rounded-full shadow-sm border
+                                -mt-8 z-40 cursor-pointer
+                                w-8 h-8 p-1 bg-white hover:bg-base-300 rounded-full shadow-sm border
                                 tooltip tooltip-right" 
                                 data-tip="Upload Photo">
-                                    <button className=""><FaCamera></FaCamera></button>
+                                    <button 
+                                    type="button"
+                                    className="" onClick={upload}><FaCamera></FaCamera></button>
+                                    <input 
+                                    ref={cameraInputRef} 
+                                    onChange={handleFileChange}
+                                    type="file"
+                                    className="hidden"></input>
                                 </span>
                             </div>
                         </span>

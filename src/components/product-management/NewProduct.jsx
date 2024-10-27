@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Title from "../dashboard/Title"
 import toast from "react-hot-toast";
-import baseUrl from "../../routes/sites";
+import baseUrl, { SITES } from "../../routes/sites";
 import { FaSave } from "react-icons/fa";
 
 const NewProduct = ()=>{
@@ -23,7 +23,7 @@ const NewProduct = ()=>{
         event.preventDefault();
         const image = formData.image;
         const imageHostKey = import.meta.env.VITE_APP_IMGBB_KEY;
-        const imageUploadUrl = `https://api.imgbb.com/1/upload?key=${imageHostKey}`;
+        const imageUploadUrl = `${SITES.IMAGE_BB_SITE}?key=${imageHostKey}`;
         const imageData = new FormData();
         imageData.append('image', image);
 
