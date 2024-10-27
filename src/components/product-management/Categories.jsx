@@ -59,7 +59,7 @@ const Categories = ()=>{
         <div className="p-8">
             <Title title='Book Categories'></Title>
             <form onSubmit={handleNewCategory} className="mb-8">
-                <div className="flex gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mb-4">
                     <input 
                     name="category" 
                     className="w-96 border-2 p-2 rounded-lg"
