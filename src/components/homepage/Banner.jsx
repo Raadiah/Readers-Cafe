@@ -18,8 +18,8 @@ function Banner() {
               Unlock a World of Stories – Find Your Next Favorite Book.
             </div>
             <Link 
-            to={ROUTES.BUY}
-            className="btn bg-teal-600 text-white">Buy Book</Link>
+            to={ROUTES.BOOKS}
+            className="btn bg-teal-600 text-white hover:bg-teal-700 hover:shadow-md">Buy Book</Link>
             </div>
         </div>
     </div>
