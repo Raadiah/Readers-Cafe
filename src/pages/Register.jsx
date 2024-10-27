@@ -6,17 +6,35 @@ import toast from "react-hot-toast";
 import { AuthContext } from "../provider/AuthProvider"
 import Loader from "./Loader";
 import baseUrl from "../routes/sites";
+import ErrorMessage from "../components/common/ErrorMessage";
 
 const Register = ()=>{
     const [loader, setLoader] = useState(false);
     const { createUser } = useContext(AuthContext);
+    const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
     window.scrollTo(0,0);
 
+    const validateForm = (name, email, password) => {
+        const newErrors = {};
+        if (!name) {
+            newErrors.name = "Name is Required";
+        }
+        if (!email) {
+            newErrors.email = "Email is Required";
+        }
+        if (!password) {
+            newErrors.password = "A 6 character long password is required";
+        } else if (password.length < 6) {
+            newErrors.password = "Password must be 6 characters long";
+        }
+        setErrors(newErrors);
+        return Object.keys(newErrors).length === 0;
+    };
+
     const handleRegister = (event)=>{
         event.preventDefault();
-        setLoader(true);
         const name = event.target.username.value;
         const email = event.target.email.value;
         const phone = event.target.phone.value;
@@ -27,6 +45,8 @@ const Register = ()=>{
         const photoURL = "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png";
         const userInfo = {email, name, phone, address, isAdmin, isBanned, photoURL}
 
+        if(!validateForm(name, email, password)) return;
+        setLoader(true);
         createUser(email, password, userInfo)
         .then((success)=>{
             if(success) {
@@ -70,6 +90,11 @@ const Register = ()=>{
                     </svg>
                     <input id="username" type="text" className="grow" placeholder="Full Name" />
                     </label>
+                    <div className="flex grow">
+                    {
+                        errors.name && <ErrorMessage message={errors.name}></ErrorMessage>
+                    }
+                    </div>
                     <label className="input input-bordered flex items-center gap-2">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -83,6 +108,11 @@ const Register = ()=>{
                     </svg>
                     <input id="email" type="text" className="grow" placeholder="Email" />
                     </label>
+                    <div className="flex grow">
+                    {
+                        errors.email && <ErrorMessage message={errors.email}></ErrorMessage>
+                    }
+                    </div>
                     <label className="input input-bordered flex items-center gap-2">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -119,8 +149,13 @@ const Register = ()=>{
                         d="M14 6a4 4 0 0 1-4.899 3.899l-1.955 1.955a.5.5 0 0 1-.353.146H5v1.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-2.293a.5.5 0 0 1 .146-.353l3.955-3.955A4 4 0 1 1 14 6Zm-4-2a.75.75 0 0 0 0 1.5.5.5 0 0 1 .5.5.75.75 0 0 0 1.5 0 2 2 0 0 0-2-2Z"
                         clipRule="evenodd" />
                     </svg>
-                    <input id="password" type="password" className="grow" placeholder="******" />
+                    <input id="password" type="password" className="grow" placeholder="******"/>
                     </label>
+                    <div className="flex grow">
+                    {
+                        errors.password && <ErrorMessage message={errors.password}></ErrorMessage>
+                    }
+                    </div>
                     <div className="flex justify-center">
                         <button type="submit" className="btn btn-wide">Register</button>
                     </div>
