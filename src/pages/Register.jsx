@@ -151,6 +151,9 @@ const Register = ()=>{
                     <button type="submit" className="btn btn-wide">Register</button>
                 }
                 </div>
+                <div className="text-xs italic text-center p-2">
+                    Already have an account? <Link className="font-semibold text-cyan-700" to={ROUTES.LOGIN}>Login</Link> here.
+                </div>
             </form>
         </div>   
     )
