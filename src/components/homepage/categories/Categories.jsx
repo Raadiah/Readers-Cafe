@@ -4,7 +4,7 @@ import SectionHeader from "../../common/SectionHeader";
 import Category from "./Category";
 
 const Categories = ()=>{
-    const [categories, setCategories] = useState();
+    const [categories, setCategories] = useState([]);
     
     const fetchCategories = async()=>{
         const categoryJson = await fetch(`${baseUrl}/categories`)
