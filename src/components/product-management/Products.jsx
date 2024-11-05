@@ -3,17 +3,24 @@ import Title from "../dashboard/Title";
 import { FaEdit } from "react-icons/fa";
 import { FaTrashCan } from "react-icons/fa6";
 import EditProductModal from "./EditProductModal";
-import { useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import baseUrl from "../../routes/sites";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
 
 const Products = ()=>{
     const [selectedProduct, setSelectedProduct] = useState(null)
-    const products = useLoaderData();
+    const [products, setProducts] = useState([]);
+    const [update, forceUpdate] = useReducer(x=>x+1, 0)
     const tableColumns = ['Name', 'Author', 'Category', 'Price', 'Action'];
     const tableColumnsClass = ['text-start min-w-24', 'text-start min-w-30', 'min-w-24', 'min-w-24'];
 
+    const fetchProducts = async()=>{
+        const productsJson = await fetch(`${baseUrl}/products`)
+        const products = await productsJson.json()
+        setProducts(products)
+    }
+    
     const handleEditProduct = (id)=>{
         const product = products.find(({_id})=>_id==id)
         setSelectedProduct(product)
@@ -33,12 +40,17 @@ const Products = ()=>{
         });
 
         const data = await result.json();
-        if (data.acknowledged) {
+        if (data.modifiedCount===1) {
             toast.success(`Product deleted successfully`);
+            forceUpdate()
         } else {
             toast.error('Failed to delete product.');
         }
     }
+
+    useEffect(()=>{
+        fetchProducts()
+    }, [update])
 
     return(
         <>

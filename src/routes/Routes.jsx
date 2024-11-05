@@ -94,7 +94,6 @@ const router = createBrowserRouter([
         {
           path: ROUTES.ALL_PRODUCTS,
           element: <AdminRoute><Products></Products></AdminRoute>,
-          loader: ()=>fetch(`${baseUrl}/products`)
         },
         {
           path: ROUTES.NEW_BOOK,
