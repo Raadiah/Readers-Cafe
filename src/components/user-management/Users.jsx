@@ -4,7 +4,7 @@ import { FaEdit } from "react-icons/fa";
 import { FaShield } from "react-icons/fa6";
 import User from "../common/User";
 import EditUserModal from "./EditUserModal";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import baseUrl from "../../routes/sites";
 import toast from "react-hot-toast";
 import { AuthContext } from "../../provider/AuthProvider";
@@ -13,10 +13,16 @@ import { Helmet } from "react-helmet-async";
 const Users = ()=>{
     const [selectedUser, setSelectedUser] = useState(null);
     const {user, reloadUser} = useContext(AuthContext);
-    const users = useLoaderData();
+    const [users, setUser] = useState([]);
     const loggedInUser_uid = user.uid;
     const tableColumns = ['Name', 'Email', 'Role', 'Action'];
     const tableColumnsClass = ['text-start min-w-24', 'text-start min-w-24', 'min-w-24', ''];
+
+    const fetchUsers = async()=>{
+        const usersJson = await fetch(`${baseUrl}/users`)
+        const users = await usersJson.json()
+        setUser(users)
+    }
 
     const handleUserEdit = (id) => {
         const user = users.find(({uid})=>uid==id);
@@ -50,6 +56,10 @@ const Users = ()=>{
             }
         })
     }
+
+    useEffect(()=>{
+        fetchUsers()
+    }, [])
 
     return(
         <>
@@ -119,7 +129,10 @@ const Users = ()=>{
                     </table>
                 </div>
                 <dialog id="edit_user_modal" className="modal">
-                    <EditUserModal key={selectedUser?.uid} {...selectedUser}></EditUserModal>
+                    <EditUserModal 
+                    key={selectedUser?.uid} 
+                    {...selectedUser}
+                    fetchUsers={fetchUsers}></EditUserModal>
                 </dialog>
             </div>
         </>

@@ -5,7 +5,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import { FaCamera } from "react-icons/fa";
 import Loader from "../../pages/Loader";
 
-const EditUserModal = ({uid, email, name, phone, address, isAdmin, photoURL})=>{
+const EditUserModal = ({uid, email, name, phone, address, isAdmin, photoURL, fetchUsers})=>{
     const [showLoading, setShowLoading] = useState(false)
     const [newPicFile, setNewPicFile] = useState(null)
     const [newPicFileURL, setNewPicFileURL] = useState(photoURL)
@@ -73,6 +73,7 @@ const EditUserModal = ({uid, email, name, phone, address, isAdmin, photoURL})=>{
                 closeButtonRef.current?.click()
                 toast.success("Succesfully updated user information")
                 reloadUser(uid)
+                if(fetchUsers) fetchUsers()
             } else {
                 console.error("DB: Error while updating user");
             }

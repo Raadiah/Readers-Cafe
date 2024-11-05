@@ -88,12 +88,11 @@ const router = createBrowserRouter([
         },
         {
           path: ROUTES.USERS,
-          element: <AdminRoute><Users></Users></AdminRoute>,
-          loader: ()=>fetch(`${baseUrl}/users`)
+          element: <AdminRoute><Users></Users></AdminRoute>
         },
         {
           path: ROUTES.ALL_PRODUCTS,
-          element: <AdminRoute><Products></Products></AdminRoute>,
+          element: <AdminRoute><Products></Products></AdminRoute>
         },
         {
           path: ROUTES.NEW_BOOK,
