@@ -4,6 +4,8 @@ import { AuthContext } from "../../../provider/AuthProvider";
 import Title from "../../dashboard/Title";
 import formatDate from "../../../utils/common/dateFormatter";
 import { Helmet } from "react-helmet-async";
+import { ROUTES } from "../../../routes";
+import { Link } from "react-router-dom";
 
 const MyOrders = ()=>{
     const [orders, setOrders] = useState([]);
@@ -45,41 +47,54 @@ const MyOrders = ()=>{
                     </thead>
                     <tbody>
                         {
-                            orders.map(({_id, image, bookName, price, quantity, orderDate, paymentMethod})=>{
-                                return(
-                                    <tr key={_id} className="flex flex-col lg:table-row space-y-2">
-                                        <td className="gap-2 pt-2">
-                                            <span className="flex items-center gap-2">
-                                                <img className="w-24 h-24 lg:w-8 lg:h-8" src={image}></img>
-                                                <span className="text-2xl font-semibold lg:text-base lg:font-normal">{ bookName }</span>
-                                            </span>
-                                        </td>
-                                        <td className="lg:text-center">
-                                            <label className="lg:hidden font-semibold">Price: </label>
-                                            <span>${ price }</span>
-                                        </td>
-                                        <td className="lg:text-center">
-                                            <label className="lg:hidden font-semibold">Quantity: </label>
-                                            <span>{ quantity }</span>
-                                        </td>
-                                        <td>
-                                            <label className="lg:hidden font-semibold">Payment Method: </label>
-                                            <span>{ paymentMethod }</span>
-                                        </td>
-                                        <td className="lg:text-center">
-                                            <label className="lg:hidden font-semibold">Date of Purchase: </label>
-                                            <span>{ formatDate(orderDate) }</span>
-                                        </td>
-                                        <td className="flex lg:justify-center gap-2 p-4 lg:p-2 border-b">
-                                            <button 
-                                            className="btn bg-white border border-teal-600 text-teal-600 
-                                            hover:bg-teal-600 hover:text-white">
-                                                Pay Now
-                                            </button>
-                                        </td>
-                                    </tr>
-                                )
-                            })
+                            orders?.length?
+                            (
+                                orders.map(({_id, image, bookName, price, quantity, orderDate, paymentMethod})=>{
+                                    return(
+                                        <tr key={_id} className="flex flex-col lg:table-row space-y-2">
+                                            <td className="gap-2 pt-2">
+                                                <span className="flex items-center gap-2">
+                                                    <img className="w-24 h-24 lg:w-8 lg:h-8" src={image}></img>
+                                                    <span className="text-2xl font-semibold lg:text-base lg:font-normal">{ bookName }</span>
+                                                </span>
+                                            </td>
+                                            <td className="lg:text-center">
+                                                <label className="lg:hidden font-semibold">Price: </label>
+                                                <span>${ price }</span>
+                                            </td>
+                                            <td className="lg:text-center">
+                                                <label className="lg:hidden font-semibold">Quantity: </label>
+                                                <span>{ quantity }</span>
+                                            </td>
+                                            <td>
+                                                <label className="lg:hidden font-semibold">Payment Method: </label>
+                                                <span>{ paymentMethod }</span>
+                                            </td>
+                                            <td className="lg:text-center">
+                                                <label className="lg:hidden font-semibold">Date of Purchase: </label>
+                                                <span>{ formatDate(orderDate) }</span>
+                                            </td>
+                                            <td className="flex lg:justify-center gap-2 p-4 lg:p-2 border-b">
+                                                <button 
+                                                className="btn bg-white border border-teal-600 text-teal-600 
+                                                hover:bg-teal-600 hover:text-white">
+                                                    Pay Now
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    )
+                                })
+                            )
+                            :
+                            (
+                                <tr>
+                                    <td
+                                    className="text-center text-lg my-8 p-4 italic"
+                                    colSpan={tableColumns.length}>
+                                        No Order Yet. Check out our latest books <Link className="cursor-pointer text-cyan-600" to={ROUTES.BOOKS}>here</Link>.
+                                    </td>
+                                </tr>
+                            )
                         }
                     </tbody>
                 </table>
