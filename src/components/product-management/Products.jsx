@@ -120,7 +120,10 @@ const Products = ()=>{
                     </tbody>
                 </table>
                 <dialog id="edit_product_modal" className="modal">
-                    <EditProductModal key={selectedProduct?._id} {...selectedProduct}></EditProductModal>
+                    <EditProductModal 
+                    key={selectedProduct?._id} 
+                    {...selectedProduct}
+                    fetchProducts={fetchProducts}></EditProductModal>
                 </dialog>
             </div>
         </>

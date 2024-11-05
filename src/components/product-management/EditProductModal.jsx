@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import Loader from "../../pages/Loader";
 import { FaCamera } from "react-icons/fa";
 
-const EditProductModal = ({_id, bookName, author, totalPages, publisher, category, tags, image, yearOfPublishing, price})=>{
+const EditProductModal = ({_id, bookName, author, totalPages, publisher, category, tags, image, yearOfPublishing, price, fetchProducts} )=>{
     const [categories, setCategories] = useState([]);
     const [showLoading, setShowLoading] = useState(false)
     const [selectedCategory, setSelectedCategory] = useState(category)
@@ -86,10 +86,11 @@ const EditProductModal = ({_id, bookName, author, totalPages, publisher, categor
         });
 
         const data = await result.json();
-        if (data.acknowledged) {
+        if (data.modifiedCount===1) {
             toast.success(`${bookName} is updated successfully`);
             setShowLoading(false)
             closeButtonRef.current?.click()
+            fetchProducts()
         } else {
             toast.error('Failed to update product.');
             setShowLoading(false)
