@@ -6,7 +6,7 @@ import { ROUTES } from "../../../routes";
 const CategoryMenu = ({selectedCategory})=>{
     const [categories, setCategories] = useState([]);
     const classNameStr = `w-fit min-w-20 h-8 p-1 px-2 overflow-hidden text-ellipsis cursor-pointer
-        border border-green-600 rounded-lg text-xs flex items-center
+        border border-green-600 rounded-lg text-xs flex items-center justify-center
         hover:bg-green-50 hover:scale-95`;
 
     const allCategorySelectedStr = selectedCategory ? '' : 'bg-green-100'
