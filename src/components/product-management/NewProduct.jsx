@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useReducer } from "react";
 import Title from "../dashboard/Title"
 import toast from "react-hot-toast";
 import baseUrl, { SITES } from "../../routes/sites";
 import { FaSave } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
+import Loader from "../../pages/Loader";
 
 const NewProduct = ()=>{
     const [categories, setCategories] = useState([]);
+    const [loader, setLoader] = useState(false);
+    const [formKey, updateForm] = useReducer(formKey=>formKey+1, 0)
 
     const [formData, setFormData] = useState({
         bookName: '',
@@ -29,6 +32,7 @@ const NewProduct = ()=>{
         imageData.append('image', image);
 
         try {
+            setLoader(true)
             const res = await fetch(imageUploadUrl, {
                 method: 'POST',
                 body: imageData
@@ -62,15 +66,21 @@ const NewProduct = ()=>{
                 const data = await result.json();
                 if (data.acknowledged) {
                     toast.success(`${formData.bookName} is added successfully`);
+                    setLoader(false)
+                    updateForm()
+                    document.querySelector("#new-product-form").scrollIntoView( { behavior: 'smooth', block: 'start' } );;
                 } else {
                     toast.error('Failed to add product.');
+                    setLoader(false)
                 }
             } else {
                 toast.error('Image upload failed. Please try again.');
+                setLoader(false)
             }
         } catch (error) {
             console.error('Failed to add product:', error);
             toast.error('An error occurred while adding the product.');
+            setLoader(false)
         }
     }
 
@@ -102,10 +112,10 @@ const NewProduct = ()=>{
             <Helmet>
                 <title>New Product</title>
             </Helmet>
-            <div className="p-8">
+            <div id="new-product-form" className="p-8">
                 <Title title={'Add New Book'}></Title>
                 <div>
-                    <form className="p-8 rounded-lg border shadow-md" onSubmit={handleNewBook}>
+                    <form key={formKey} className="p-8 rounded-lg border shadow-md" onSubmit={handleNewBook}>
                         <span className="text-base label-text">Book Name</span>
                         <label className="border p-2 rounded-lg flex items-center gap-2 my-2 ">
                             <input name="bookName" type="text" className="grow outline-none" onChange={handleInputChange} required/>
@@ -165,13 +175,18 @@ const NewProduct = ()=>{
                             </label>
                         </div>
                         <div className="flex justify-center my-10">
-                            <button 
-                            type="submit" 
-                            className="btn bg-white border border-teal-600 text-teal-600 
-                            hover:bg-teal-600 hover:text-white">
-                                <FaSave></FaSave>
-                                Save Product
-                            </button>
+                            {
+                                loader ?
+                                <Loader></Loader>
+                                :
+                                <button 
+                                type="submit" 
+                                className="btn bg-white border border-teal-600 text-teal-600 
+                                hover:bg-teal-600 hover:text-white">
+                                    <FaSave></FaSave>
+                                    Save Product
+                                </button>
+                            }
                         </div>
                     </form>
                 </div>
