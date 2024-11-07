@@ -85,11 +85,11 @@ const BookDetails = ()=>{
                         <span className='col-span-1 font-semibold'>Year of Publishing</span>
                         <span className='col-span-2'>{yearOfPublishing}</span>
                     </div>
-                    <div className='flex justify-center gap-4'>
-                        <button onClick={handleWishlist} className="btn btn-outline">
+                    <div className='flex justify-start'>
+                        {/* <button onClick={handleWishlist} className="btn btn-outline">
                             <FaHeart></FaHeart>
                             Wish to Read
-                        </button>
+                        </button> */}
                         <button 
                         onClick={handleBuyNow} 
                         className="btn bg-white border border-teal-600 text-teal-600 

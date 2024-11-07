@@ -33,12 +33,12 @@ const Drawer = ()=>{
                             Profile
                         </Link>
                     </li>
-                    <li>
+                    {/* <li>
                         <Link to={ROUTES.WISHLIST}>
                             <FaHeart></FaHeart>
                             My Wishlist
                         </Link>
-                    </li>
+                    </li> */}
                     <li>
                         <Link to={ROUTES.ORDERS}>
                             <FaShoppingCart></FaShoppingCart>

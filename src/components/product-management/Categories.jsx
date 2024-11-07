@@ -11,8 +11,8 @@ import { Helmet } from "react-helmet-async";
 const Categories = ()=>{
     const [newCategoryError, setNewCategoryError] = useState(false);
     const categories = useLoaderData();
-    const tableColumns = ['Category', 'Action'];
-    const tableColumnsClass = ['text-start min-w-60', 'min-w-24'];
+    const tableColumns = ['Category'];
+    const tableColumnsClass = ['text-start min-w-60'];
     const categoryErrorMessage = 'Category already present';
 
     const checkDuplicateCategory = (newCategory)=>{
@@ -92,18 +92,7 @@ const Categories = ()=>{
                             categories.map(({_id, category})=>{
                                 return(
                                     <tr className="flex flex-col md:table-row" key={_id}>
-                                        <td className="p-2 md:border-b">{category}</td>
-                                        <td className="p-2 pb-4 md:pb-2 border-b flex md:justify-center gap-2">
-                                            <button
-                                            className="btn bg-white border border-teal-600 text-teal-600 
-                                            hover:bg-teal-600 hover:text-white">
-                                                <FaEdit></FaEdit> Edit
-                                            </button>
-                                            <button className="btn bg-white border border-red-200 text-red-700 
-                                            hover:bg-red-700 hover:text-white">
-                                                <FaTrashCan></FaTrashCan> Delete
-                                            </button>
-                                        </td>
+                                        <td className="p-2 h-14 md:border-b">{category}</td>
                                     </tr>
                                 )
                             })
