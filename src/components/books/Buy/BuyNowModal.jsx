@@ -108,8 +108,7 @@ const BuyNowModal = ({_id, bookName, author, image, price})=>{
                     <div className="flex gap-2 items-center justify-center mt-8">
                         <button 
                         type="submit"
-                        className="btn bg-white border border-teal-600 text-teal-600 
-                        hover:bg-teal-600 hover:text-white">
+                        className="button-primary-rc">
                             <FaCartPlus className="pointer-events-none"></FaCartPlus>
                             Buy Now
                         </button>

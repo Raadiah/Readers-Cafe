@@ -234,8 +234,7 @@ const EditProductModal = ({_id, bookName, author, totalPages, publisher, categor
                     <div className="flex gap-2 items-center justify-center mt-8">
                         <button 
                         type="submit"
-                        className="btn bg-white border border-teal-600 text-teal-600 
-                        hover:bg-teal-600 hover:text-white">
+                        className="button-primary-rc">
                             Update
                         </button>
                         <form method="dialog">

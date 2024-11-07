@@ -69,12 +69,12 @@ const Categories = ()=>{
                         name="category" 
                         className="w-96 border-2 p-2 rounded-lg"
                         onChange={handleNewCategoryInput}></input>
-                        <button className="btn" type="submit">
+                        <button className="button-primary-rc" type="submit">
                             Add New
                         </button>
                     </div>
                     {
-                        newCategoryError && <div className="flex w-96 mb-8"><ErrorMessage message={categoryErrorMessage}></ErrorMessage></div> 
+                        newCategoryError && <div className="flex w-full mb-8"><ErrorMessage message={categoryErrorMessage}></ErrorMessage></div> 
                     }
                 </form>
                 <table className="w-full">

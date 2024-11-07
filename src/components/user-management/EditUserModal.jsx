@@ -144,8 +144,7 @@ const EditUserModal = ({uid, email, name, phone, address, isAdmin, photoURL, fet
                             <>
                                 <button 
                                 type="submit"
-                                className="btn bg-white border border-teal-600 text-teal-600 
-                                hover:bg-teal-600 hover:text-white">
+                                className="button-primary-rc">
                                     Update
                                 </button>
                             </>

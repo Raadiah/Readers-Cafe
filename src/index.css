@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.button-primary-rc {
+    @apply btn bg-white border border-teal-600 text-teal-600 hover:bg-teal-600 hover:text-white;
+}

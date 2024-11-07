@@ -101,8 +101,7 @@ const Products = ()=>{
                                             <button 
                                             value={_id}
                                             onClick={(event)=>handleEditProduct(event.target.value)}
-                                            className="btn bg-white border border-teal-600 text-teal-600 
-                                            hover:bg-teal-600 hover:text-white">
+                                            className="button-primary-rc">
                                                 <FaEdit className="pointer-events-none"></FaEdit> Edit
                                             </button>
                                             <button 

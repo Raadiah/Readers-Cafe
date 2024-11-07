@@ -76,8 +76,7 @@ const MyOrders = ()=>{
                                             </td>
                                             <td className="flex lg:justify-center gap-2 p-4 lg:p-2 border-b">
                                                 <button 
-                                                className="btn bg-white border border-teal-600 text-teal-600 
-                                                hover:bg-teal-600 hover:text-white">
+                                                className="button-primary-rc">
                                                     Pay Now
                                                 </button>
                                             </td>

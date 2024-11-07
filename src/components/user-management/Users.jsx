@@ -104,8 +104,7 @@ const Users = ()=>{
                                             <td className="flex lg:justify-center gap-2 my-2 border-b lg:border-none pb-4 lg:pb-0">
                                                 <button value={uid} 
                                                 onClick={(event)=>handleUserEdit(event.target.value)}
-                                                className="btn bg-white border border-teal-600 text-teal-600 
-                                                hover:bg-teal-600 hover:text-white">
+                                                className="button-primary-rc">
                                                     <FaEdit className="pointer-events-none"></FaEdit> Edit
                                                 </button>
                                                 {

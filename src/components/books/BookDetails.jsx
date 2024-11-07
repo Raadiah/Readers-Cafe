@@ -92,8 +92,7 @@ const BookDetails = ()=>{
                         </button> */}
                         <button 
                         onClick={handleBuyNow} 
-                        className="btn bg-white border border-teal-600 text-teal-600 
-                        hover:bg-teal-600 hover:text-white">
+                        className="button-primary-rc">
                             <FaCartPlus></FaCartPlus>
                             Buy Now
                         </button>
