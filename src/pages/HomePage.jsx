@@ -3,7 +3,6 @@ import FAQs from "../components/faq/FAQs"
 import AboutUs from "../components/homepage/AboutUs"
 import Banner from "../components/homepage/Banner"
 import Categories from "../components/homepage/categories/Categories"
-import ContactUs from "../components/homepage/ContactUs"
 import HowItWorks from "../components/homepage/HowItWorks"
 import TopBooks from "../components/homepage/TopBooks"
 
@@ -15,6 +14,7 @@ function HomePage() {
             <Helmet>
                 <title>Reader's Cafe</title>
                 <meta name="description" value={metaDescription} />
+                <meta property="og:image" content="https://readerscafe.netlify.app/books.png" />
             </Helmet>
             <div className="min-h-screen flex flex-col">
                 <Banner></Banner>
