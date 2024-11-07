@@ -5,10 +5,6 @@ import { ROUTES } from "../../../routes";
 
 const CategoryMenu = ({selectedCategory})=>{
     const [categories, setCategories] = useState([]);
-    const classNameStr = `w-fit min-w-20 h-8 p-1 px-2 overflow-hidden text-ellipsis cursor-pointer
-        border border-green-600 rounded-lg text-xs flex items-center justify-center
-        hover:bg-green-50 hover:scale-95`;
-
     const allCategorySelectedStr = selectedCategory ? '' : 'bg-green-100'
     
     const fetchCategories = async()=>{
@@ -22,10 +18,11 @@ const CategoryMenu = ({selectedCategory})=>{
     }, [])
 
     return(<>
-        <div className="flex flex-wrap items-center justify-center gap-2">
+        <div className="carousel gap-2 flex-wrap justify-center">
             <Link
             to={`${ROUTES.BOOKS}`}
-            className={`${classNameStr} ${allCategorySelectedStr}`}>
+            className={`${allCategorySelectedStr}
+                min-w-fit line-clamp-1 p-2 rounded-lg border hover:bg-lime-50`}>
                 All
             </Link>
             {
@@ -37,7 +34,8 @@ const CategoryMenu = ({selectedCategory})=>{
                         <>
                             <Link
                             to={`${ROUTES.BOOKS}/${categoryUrl}`}
-                            className={`${classNameStr} ${selectedCategoryStr}`}>
+                            className={`${selectedCategoryStr}
+                                min-w-fit line-clamp-1 p-2 rounded-lg border hover:bg-lime-50`}>
                                 {category}
                             </Link>
                         </>
